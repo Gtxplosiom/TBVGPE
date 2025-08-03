@@ -46,5 +46,3 @@ namespace TBVGPE.ViewModels
         }
     }
 }
-
-// TODO: make toggle button
