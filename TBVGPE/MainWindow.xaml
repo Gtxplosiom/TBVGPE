@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow"
+        WindowStartupLocation="Manual"
+        Left="0" Top="0"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Canvas>
+        <Button 
+        Name="toggleMenuBtn"
+        Content="{Binding ToggleButtonText}" 
+        Command="{Binding ToggleButtonCommand}"
+        Width="50" Height="20"
+        Background="White" Foreground="Black"
+        HorizontalAlignment="Right"
+        Margin="20" />
+    </Canvas>
 </Window>

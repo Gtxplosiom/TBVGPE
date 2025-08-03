@@ -1,6 +1,6 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
+using TBVGPE.ViewModels;
+using TBVGPE.Views;
 
 namespace TBVGPE
 {
@@ -10,7 +10,20 @@ namespace TBVGPE
         {
             base.OnStartup(e);
 
-            var mainWindow = new MainWindow();
+            // View Model Instances
+            var menuBarViewModel = new MenuBarViewModel();
+            var mainWindowViewModel = new MainWindowViewModel(menuBarViewModel);
+
+            // View Instances
+            var menuBar = new MenuBar()
+            {
+                DataContext = menuBarViewModel
+            };
+
+            var mainWindow = new MainWindow()
+            {
+                DataContext = mainWindowViewModel
+            };
             mainWindow.Show();
         }
     }
