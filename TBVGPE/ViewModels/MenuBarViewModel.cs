@@ -17,7 +17,7 @@ namespace TBVGPE.ViewModels
             VirtualGamePadsCollection = new ObservableCollection<VirtualGamePads>
             {
                 new VirtualGamePads { Id = -1, Name = "Select a GamePad..." },
-                new VirtualGamePads { Id = 1, Name = "Nintendo 3DS" }
+                new VirtualGamePads { Id = 1, Name = "3DS" }
             };
 
             SelectedVirtualGamePad = VirtualGamePadsCollection[0];
