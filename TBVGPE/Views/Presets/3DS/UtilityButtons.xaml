@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="200">
     <Canvas Name="PadCanvas">
+        <!-- TODO: Put in stack panel -->
         <Button x:Name="StartBtn"
                 Width="50" Height="30"
                 Content="START"

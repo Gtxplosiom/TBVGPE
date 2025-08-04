@@ -15,10 +15,15 @@ namespace TBVGPE.ViewModels
         // viewmodelbase as a type??
         private ViewModelBase? _currentControllerViewModel;
 
-        private string _toggleButtontext = "Hide";
+        private string _toggleMenuText = "Hide Menu";
+        private string _toggleControllerText = "Hide Controls";
+
+        private Visibility _closeAppBtnVisibility = Visibility.Visible;
+        private Visibility _controllerVisibility = Visibility.Visible;
 
         // implement this
         public ICommand ToggleMenuCommand { get; set; }
+        public ICommand ToggleControllerCommand { get; set; }
         public ICommand CloseApplicationCommand { get; set; }
 
         public MainWindowViewModel(MenuBarViewModel menuBarViewModel, Dictionary<int, ViewModelBase> controllerViewModels)
@@ -29,6 +34,7 @@ namespace TBVGPE.ViewModels
             _menuBarViewModel.PropertyChanged += MenuBarViewModel_PropertyChanged;
 
             ToggleMenuCommand = new ToggleMenuCommand(_menuBarViewModel, this);
+            ToggleControllerCommand = new ToggleControllerCommand(this);
             CloseApplicationCommand = new CloseApplicationCommand();
 
             ShowMenuBar();
@@ -48,15 +54,54 @@ namespace TBVGPE.ViewModels
             }
         }
 
-        public string ToggleButtonText
+        public string ToggleMenuText
         {
-            get => _toggleButtontext;
+            get => _toggleMenuText;
             set
             {
-                if (_toggleButtontext != value)
+                if (_toggleMenuText != value)
                 {
-                    _toggleButtontext = value;
-                    OnPropertyChanged(nameof(ToggleButtonText));
+                    _toggleMenuText = value;
+                    OnPropertyChanged(nameof(ToggleMenuText));
+                }
+            }
+        }
+
+        public string ToggleControllerText
+        {
+            get => _toggleControllerText;
+            set
+            {
+                if (_toggleControllerText != value)
+                {
+                    _toggleControllerText = value;
+                    OnPropertyChanged(nameof(ToggleControllerText));
+                }
+            }
+        }
+
+        public Visibility CloseAppToggleControllerBtnVisibility
+        {
+            get => _closeAppBtnVisibility;
+            set
+            {
+                if (_closeAppBtnVisibility != value)
+                {
+                    _closeAppBtnVisibility = value;
+                    OnPropertyChanged(nameof(CloseAppToggleControllerBtnVisibility));
+                }
+            }
+        }
+
+        public Visibility ControllerVisibility
+        {
+            get => _controllerVisibility;
+            set
+            {
+                if (value != _controllerVisibility)
+                {
+                    _controllerVisibility = value;
+                    OnPropertyChanged(nameof(ControllerVisibility));
                 }
             }
         }

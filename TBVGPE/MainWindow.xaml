@@ -24,33 +24,48 @@
     </Window.Resources>
 
     <Grid>
-        <ContentControl Content="{Binding CurrentControllerViewModel}"
-                        Height="450"
-                        VerticalAlignment="Bottom" 
-                        Margin="0,0,0,100"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" /> <!-- para ma fill an rest na diri gagamit ngan ma anchor ha ubos an utility ngan controller -->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="450"/> <!-- 450 an height han controller container, para diri umobos hinduro an utility kun ka hide an controller -->
+        </Grid.RowDefinitions>
 
-        <Button 
-            Name="toggleMenuBtn"
-            Content="{Binding ToggleButtonText}" 
-            Command="{Binding ToggleMenuCommand}"
-            Width="100" Height="35"
-            FontSize="14" FontWeight="Bold"
-            Foreground="White" Background="#AAA"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Margin="0,0,20,500"
-            />
-
-        <Button 
+        <StackPanel x:Name="UtilityButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
+            <Button 
             Name="CloseApplicationBtn"
             Content="Close Application" 
             Command="{Binding CloseApplicationCommand}"
             Width="120" Height="35"
             FontSize="14" FontWeight="Bold"
             Foreground="White" Background="#AAA"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Margin="20,0,0,500"
-            />
+            Margin="10,0,0,0"
+            Visibility="{Binding CloseAppToggleControllerBtnVisibility}"/>
+
+            <Button 
+            Name="ToggleControllerBtn"
+            Content="{Binding ToggleControllerText}" 
+            Command="{Binding ToggleControllerCommand}"
+            Width="120" Height="35"
+            FontSize="14" FontWeight="Bold"
+            Foreground="White" Background="#AAA"
+            Margin="10,0,0,0"
+            Visibility="{Binding CloseAppToggleControllerBtnVisibility}"/>
+
+            <Button 
+            Name="toggleMenuBtn"
+            Content="{Binding ToggleMenuText}" 
+            Command="{Binding ToggleMenuCommand}"
+            Width="120" Height="35"
+            FontSize="14" FontWeight="Bold"
+            Foreground="White" Background="#AAA"
+            Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <ContentControl Grid.Row="2"
+                    Content="{Binding CurrentControllerViewModel}"
+                    Height="450"
+                    VerticalAlignment="Bottom" 
+                    Margin="0,0,0,100"
+                    Visibility="{Binding ControllerVisibility}"/>
     </Grid>
 </Window>
