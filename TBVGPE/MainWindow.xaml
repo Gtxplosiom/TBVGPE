@@ -39,6 +39,18 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Margin="0,0,20,500"
-            />  
+            />
+
+        <Button 
+            Name="CloseApplicationBtn"
+            Content="Close Application" 
+            Command="{Binding CloseApplicationCommand}"
+            Width="120" Height="35"
+            FontSize="14" FontWeight="Bold"
+            Foreground="White" Background="#AAA"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="20,0,0,500"
+            />
     </Grid>
 </Window>

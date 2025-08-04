@@ -64,15 +64,25 @@ namespace TBVGPE.Views.Presets._3DS
             _mouseHook?.Dispose();
         }
 
-        // Helper method to update button screen bounds (called on SizeChanged/LayoutUpdated)
+        // Helper method para mag update button screen bounds (called on SizeChanged/LayoutUpdated)
         private void UpdateButtonScreenBounds()
         {
             Dispatcher.Invoke(() =>
             {
-                _xBtnBounds = new Rect(XBtn.PointToScreen(new Point(0, 0)), XBtn.RenderSize);
-                _yBtnBounds = new Rect(YBtn.PointToScreen(new Point(0, 0)), YBtn.RenderSize);
-                _bBtnBounds = new Rect(BBtn.PointToScreen(new Point(0, 0)), BBtn.RenderSize);
-                _aBtnBounds = new Rect(ABtn.PointToScreen(new Point(0, 0)), ABtn.RenderSize);
+                if (!IsLoaded || PresentationSource.FromVisual(this) == null)
+                    return;
+
+                try
+                {
+                    _xBtnBounds = new Rect(XBtn.PointToScreen(new Point(0, 0)), XBtn.RenderSize);
+                    _yBtnBounds = new Rect(YBtn.PointToScreen(new Point(0, 0)), YBtn.RenderSize);
+                    _bBtnBounds = new Rect(BBtn.PointToScreen(new Point(0, 0)), BBtn.RenderSize);
+                    _aBtnBounds = new Rect(ABtn.PointToScreen(new Point(0, 0)), ABtn.RenderSize);
+                }
+                catch (InvalidOperationException)
+                {
+                    // para guard pag unload ha content control diri mag error an visual tree chuchu
+                }
             });
         }
 

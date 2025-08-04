@@ -18,7 +18,8 @@ namespace TBVGPE.ViewModels
         private string _toggleButtontext = "Hide";
 
         // implement this
-        public ICommand ToggleButtonCommand { get; set; }
+        public ICommand ToggleMenuCommand { get; set; }
+        public ICommand CloseApplicationCommand { get; set; }
 
         public MainWindowViewModel(MenuBarViewModel menuBarViewModel, Dictionary<int, ViewModelBase> controllerViewModels)
         {
@@ -27,7 +28,8 @@ namespace TBVGPE.ViewModels
 
             _menuBarViewModel.PropertyChanged += MenuBarViewModel_PropertyChanged;
 
-            ToggleButtonCommand = new ToggleMenuCommand(_menuBarViewModel, this);
+            ToggleMenuCommand = new ToggleMenuCommand(_menuBarViewModel, this);
+            CloseApplicationCommand = new CloseApplicationCommand();
 
             ShowMenuBar();
             _controllerViewModels = controllerViewModels;
