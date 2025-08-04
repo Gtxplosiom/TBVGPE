@@ -8,9 +8,13 @@
              d:DesignHeight="150" d:DesignWidth="150"
              Background="Transparent">
     <Canvas x:Name="PadCanvas" SizeChanged="PadCanvas_SizeChanged">
-        <Ellipse Width="150" Height="150" Fill="#333" Opacity="0.5" />
+        <Ellipse Width="150" Height="150"
+                 Fill="#333"
+                 Opacity="0.5" />
 
-        <Ellipse x:Name="Thumb" Width="120" Height="120" Fill="#AAA"
+        <Ellipse x:Name="Thumb"
+                 Width="120" Height="120"
+                 Fill="#AAA"
                  MouseDown="Thumb_MouseDown"
                  MouseMove="Thumb_MouseMove"
                  MouseUp="Thumb_MouseUp"/>

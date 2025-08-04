@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace TBVGPE
 {

@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
-        xmlns:controller="clr-namespace:TBVGPE.Views.Presets._3DS"
+        xmlns:views="clr-namespace:TBVGPE.Views.Presets._3DS"
+        xmlns:viewModels="clr-namespace:TBVGPE.ViewModels.Controllers"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="Manual"
@@ -13,10 +14,18 @@
         AllowsTransparency="True"
         Background="Transparent"
         Topmost="True">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:_3DSControllerViewModel}">
+            <views:_3DSControllerLayout />
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
-        <!-- I Guess I'll just have to rely on the margin for screen positioning haha, or better -->
-        <!-- TODO: Programmatically load this when 3DS control is selected, make it responsive as well -->
-        <controller:_3DSControllerLayout/>
+        <ContentControl Content="{Binding CurrentControllerViewModel}"
+                        Height="450"
+                        VerticalAlignment="Bottom" 
+                        Margin="0,0,0,100"/>
 
         <Button 
             Name="toggleMenuBtn"
@@ -25,6 +34,6 @@
             Width="50" Height="20"
             Background="White" Foreground="Black"
             HorizontalAlignment="Right" VerticalAlignment="Center"
-            Margin="20" />
+            Margin="20,0,0,500" />
     </Grid>
 </Window>

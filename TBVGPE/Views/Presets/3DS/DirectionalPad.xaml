@@ -5,8 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TBVGPE.Views.Presets._3DS"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="150" d:DesignWidth="150">
+    <Canvas Name="PadCanvas">
+        <Button x:Name="UpBtn"
+                Width="50" Height="50"
+                Background="#AAA"
+                Canvas.Left="50"/>
+        
+        <Button x:Name="LeftBtn"
+                Width="50" Height="50"
+                Background="#AAA"
+                Canvas.Top="50" />
+        
+        <Button x:Name="DownBtn"
+                Width="50" Height="50"
+                Background="#AAA"
+                Canvas.Left="50" Canvas.Top="100" />
+        
+        <Button x:Name="RightBtn"
+                Width="50" Height="50"
+                Background="#AAA"
+                Canvas.Left="100" Canvas.Top="50" />
+        
+        <!-- Filler la ini -->
+        <Rectangle Width="50" Height="50" Fill="#AAA" Canvas.Left="50" Canvas.Top="50" />
+    </Canvas>
 </UserControl>

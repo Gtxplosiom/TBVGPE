@@ -8,8 +8,45 @@
              d:DesignHeight="200" d:DesignWidth="200">
     <Canvas Name="PadCanvas">
         <Ellipse x:Name="XBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" />
+        <Label Content="X"
+               Width="70" Height="70"
+               Canvas.Left="65"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="24" FontWeight="Bold"
+               Foreground="Blue"
+               Background="Transparent"
+               IsHitTestVisible="False"/>
+
         <Ellipse x:Name="YBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Top="65" />
+        <Label Content="Y"
+               Width="70" Height="70"
+               Canvas.Top="65"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="24" FontWeight="Bold"
+               Foreground="Green"
+               Background="Transparent"
+               IsHitTestVisible="False"/>
+
         <Ellipse x:Name="BBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" Canvas.Top="130" />
+        <Label Content="B"
+               Width="70" Height="70"
+               Canvas.Left="65" Canvas.Top="130"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="24" FontWeight="Bold"
+               Foreground="Yellow"
+               Background="Transparent"
+               IsHitTestVisible="False"/>
+
         <Ellipse x:Name="ABtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="130" Canvas.Top="65" />
+        <Label Content="A"
+               Width="70" Height="70"
+               Canvas.Left="130" Canvas.Top="65"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="24" FontWeight="Bold"
+               Foreground="Red"
+               Background="Transparent"
+               IsHitTestVisible="False"/>
     </Canvas>
 </UserControl>

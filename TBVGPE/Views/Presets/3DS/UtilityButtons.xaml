@@ -5,8 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TBVGPE.Views.Presets._3DS"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="50" d:DesignWidth="200">
+    <Canvas Name="PadCanvas">
+        <Button x:Name="StartBtn"
+                Width="50" Height="30"
+                Content="START"
+                FontSize="11" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Canvas.Left="130"
+                Margin="10"/>
+
+        <Button x:Name="SelectBtn"
+                Width="50" Height="30"
+                Content="SELECT"
+                FontSize="11" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Margin="10"/>
+
+        <Button x:Name="HomeBtn"
+                Width="50" Height="30"
+                Content="HOME"
+                FontSize="11" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Canvas.Left="65"
+                Margin="10"/>
+    </Canvas>
 </UserControl>

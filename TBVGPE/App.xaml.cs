@@ -21,18 +21,16 @@ namespace TBVGPE
                 new VirtualGamePads { Id = 1, Name = "3DS" }
             };
 
+            // list of Controllers View Model Instances
+            var controllerViewModels = new Dictionary<int, ViewModelBase>
+            {
+                [1] = new _3DSControllerViewModel()
+                // Add future controller ViewModels here
+            };
+
             // View Model Instances
             var menuBarViewModel = new MenuBarViewModel(virtualGamePadsCollection);
-            var mainWindowViewModel = new MainWindowViewModel(menuBarViewModel);
-
-            // Controllers View Model Instances
-            var _3dsControllerViewModel = new _3DSControllerViewModel();
-
-            // User controls Instances
-            var _3dsController = new _3DSControllerLayout()
-            {
-                DataContext = _3dsControllerViewModel
-            };
+            var mainWindowViewModel = new MainWindowViewModel(menuBarViewModel, controllerViewModels);   
 
             // View Instances
             var menuBar = new MenuBar()
