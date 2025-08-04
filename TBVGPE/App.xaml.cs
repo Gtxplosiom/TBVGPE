@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using TBVGPE.Views.Presets._3DS;
 using TBVGPE.Models;
 using TBVGPE.ViewModels;
+using TBVGPE.ViewModels.Controllers;
 using TBVGPE.Views;
 
 namespace TBVGPE
@@ -22,6 +24,15 @@ namespace TBVGPE
             // View Model Instances
             var menuBarViewModel = new MenuBarViewModel(virtualGamePadsCollection);
             var mainWindowViewModel = new MainWindowViewModel(menuBarViewModel);
+
+            // Controllers View Model Instances
+            var _3dsControllerViewModel = new _3DSControllerViewModel();
+
+            // User controls Instances
+            var _3dsController = new _3DSControllerLayout()
+            {
+                DataContext = _3dsControllerViewModel
+            };
 
             // View Instances
             var menuBar = new MenuBar()

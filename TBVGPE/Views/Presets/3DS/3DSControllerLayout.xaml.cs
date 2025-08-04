@@ -10,16 +10,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TBVGPE.Views.Presets
+namespace TBVGPE.Views.Presets._3DS
 {
-    /// <summary>
-    /// Interaction logic for Nintendo3DSGamePad.xaml
-    /// </summary>
-    public partial class Nintendo3DSGamePad : Window
+    public partial class _3DSControllerLayout : UserControl
     {
-        public Nintendo3DSGamePad()
+        public _3DSControllerLayout()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace TBVGPE.Controllers._3DS
+namespace TBVGPE.Views.Presets._3DS
 {
     public partial class UtilityButtons : UserControl
     {

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
-        xmlns:controller="clr-namespace:TBVGPE.Controllers._3DS"
+        xmlns:controller="clr-namespace:TBVGPE.Views.Presets._3DS"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="Manual"

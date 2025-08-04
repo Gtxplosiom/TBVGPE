@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="TBVGPE.Controllers._3DS.CirclePad"
+﻿<UserControl x:Class="TBVGPE.Views.Presets._3DS.CirclePad"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TBVGPE.Controllers._3DS"
+             xmlns:local="clr-namespace:TBVGPE.Views.Presets._3DS"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="150"
              Background="Transparent">

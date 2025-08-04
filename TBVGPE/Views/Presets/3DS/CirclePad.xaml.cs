@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace TBVGPE.Controllers._3DS
+namespace TBVGPE.Views.Presets._3DS
 {
     public partial class CirclePad : UserControl
     {
