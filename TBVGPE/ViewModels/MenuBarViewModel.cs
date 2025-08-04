@@ -11,14 +11,11 @@ namespace TBVGPE.ViewModels
         private VirtualGamePads? _selectedVirtualGamepad;
         private Visibility _visibilityState = Visibility.Collapsed;
 
-        public MenuBarViewModel()
+        public MenuBarViewModel(ObservableCollection<VirtualGamePads>? virtualGamePadsCollection)
         {
-            // Dummy data
-            VirtualGamePadsCollection = new ObservableCollection<VirtualGamePads>
-            {
-                new VirtualGamePads { Id = -1, Name = "Select a GamePad..." },
-                new VirtualGamePads { Id = 1, Name = "3DS" }
-            };
+            if (virtualGamePadsCollection == null) return;
+
+            VirtualGamePadsCollection = virtualGamePadsCollection;
 
             SelectedVirtualGamePad = VirtualGamePadsCollection[0];
         }

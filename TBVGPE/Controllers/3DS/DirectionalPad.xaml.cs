@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace TBVGPE.ControllerElements._3DS
+namespace TBVGPE.Controllers._3DS
 {
     public partial class DirectionalPad : UserControl
     {

@@ -16,9 +16,6 @@ namespace TBVGPE
 
             this.Width = _screenDimentions.X;
             this.Height = _screenDimentions.Y;
-
-            Canvas.SetTop(toggleMenuBtn, 40);
-            Canvas.SetLeft(toggleMenuBtn, _screenDimentions.X - (toggleMenuBtn.Width * 2));
         }
     }
 }

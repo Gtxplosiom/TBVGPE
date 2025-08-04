@@ -4,20 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
-        xmlns:controller="clr-namespace:TBVGPE.ControllerElements._3DS"
+        xmlns:controller="clr-namespace:TBVGPE.Controllers._3DS"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="Manual"
         Left="0" Top="0"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent">
+        Background="Transparent"
+        Topmost="True">
     <Grid>
         <!-- I Guess I'll just have to rely on the margin for screen positioning haha, or better -->
         <!-- TODO: Programmatically load this when 3DS control is selected, make it responsive as well -->
-        <controller:CirclePad x:Name="CirclePadControl" Width="200" Height="200"
-                              HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" 
-                              Visibility="Collapsed"/>
+        <controller:_3DSControllerLayout/>
 
         <Button 
             Name="toggleMenuBtn"
@@ -25,7 +24,7 @@
             Command="{Binding ToggleButtonCommand}"
             Width="50" Height="20"
             Background="White" Foreground="Black"
-            HorizontalAlignment="Right" VerticalAlignment="Top"
+            HorizontalAlignment="Right" VerticalAlignment="Center"
             Margin="20" />
     </Grid>
 </Window>
