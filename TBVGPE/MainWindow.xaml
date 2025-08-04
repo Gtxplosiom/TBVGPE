@@ -32,7 +32,7 @@
         <Button 
             Name="toggleMenuBtn"
             Content="{Binding ToggleButtonText}" 
-            Command="{Binding ToggleButtonCommand}"
+            Command="{Binding ToggleMenuCommand}"
             Width="100" Height="35"
             FontSize="14" FontWeight="Bold"
             Foreground="White" Background="#AAA"
