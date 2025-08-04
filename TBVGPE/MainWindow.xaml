@@ -27,7 +27,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" /> <!-- para ma fill an rest na diri gagamit ngan ma anchor ha ubos an utility ngan controller -->
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="450"/> <!-- 450 an height han controller container, para diri umobos hinduro an utility kun ka hide an controller -->
+            <!-- Height is 550 because 450(controller container height + margin 100) to account for the margin and make the shoulder buttons visible-->
+            <RowDefinition Height="550"/>
         </Grid.RowDefinitions>
 
         <StackPanel x:Name="UtilityButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
@@ -61,6 +62,7 @@
             Margin="10,0,0,0"/>
         </StackPanel>
 
+        <!-- margin is 100 para umigbaw ngan diri mag overlap ha taskbar -->
         <ContentControl Grid.Row="2"
                     Content="{Binding CurrentControllerViewModel}"
                     Height="450"

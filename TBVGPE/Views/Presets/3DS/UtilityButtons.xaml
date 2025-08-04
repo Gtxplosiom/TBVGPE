@@ -9,35 +9,41 @@
     <Canvas Name="PadCanvas">
         <!-- TODO: Put in stack panel -->
         <Button x:Name="StartBtn"
+                Tag="RETURN"
                 Width="50" Height="30"
                 Content="START"
                 FontSize="11" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
                 Canvas.Left="130"
                 Margin="10"
-                PreviewMouseDown="StartBtn_PreviewMouseDown"
-                PreviewMouseUp="StartBtn_PreviewMouseUp"
-                MouseLeave="StartBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="SelectBtn"
+                Tag="SPACE"
                 Width="50" Height="30"
                 Content="SELECT"
                 FontSize="11" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
                 Margin="10"
-                PreviewMouseDown="SelectBtn_PreviewMouseDown"
-                PreviewMouseUp="SelectBtn_PreviewMouseUp"
-                MouseLeave="SelectBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="HomeBtn"
+                Tag="HOME"
                 Width="50" Height="30"
                 Content="HOME"
                 FontSize="11" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
                 Canvas.Left="65"
                 Margin="10"
-                PreviewMouseDown="HomeBtn_PreviewMouseDown"
-                PreviewMouseUp="HomeBtn_PreviewMouseUp"
-                MouseLeave="HomeBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
     </Canvas>
 </UserControl>

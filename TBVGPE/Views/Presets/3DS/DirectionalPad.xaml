@@ -6,67 +6,126 @@
              xmlns:local="clr-namespace:TBVGPE.Views.Presets._3DS"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="150">
+    <!-- TODO: experiment with this later on, to remove that blue highlight bullc**p -->
+    <UserControl.Resources>
+        <Style x:Key="FlatButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Focusable" Value="True"/>
+            <Setter Property="Background" Value="#AAA"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="DarkGray"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+
     <Canvas Name="PadCanvas">
+        <!-- an FocusVisualStyle="{x:Null}" napa tanggal han blue na highlight kun na interact ha buttons -->
         <Button x:Name="UpBtn"
+                Tag="UP"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="50"
-                PreviewMouseDown="UpBtn_PreviewMouseDown"
-                PreviewMouseUp="UpBtn_PreviewMouseUp"
-                MouseLeave="UpBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="LeftBtn"
+                Tag="LEFT"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Top="50"
-                PreviewMouseDown="LeftBtn_PreviewMouseDown"
-                PreviewMouseUp="LeftBtn_PreviewMouseUp"
-                MouseLeave="LeftBtn_MouseLeave"/> 
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="DownBtn"
+                Tag="DOWN"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="50" Canvas.Top="100"
-                PreviewMouseDown="DownBtn_PreviewMouseDown"
-                PreviewMouseUp="DownBtn_PreviewMouseUp"
-                MouseLeave="DownBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="RightBtn"
+                Tag="RIGHT"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="100" Canvas.Top="50"
-                PreviewMouseDown="RightBtn_PreviewMouseDown"
-                PreviewMouseUp="RightBtn_PreviewMouseUp"
-                MouseLeave="RightBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
-        <Button x:Name="UpLeftBtn" Width="50" Height="50" Background="Gray"
+        <Button x:Name="UpLeftBtn"
+                Tag="UP,LEFT"
+                Width="50" Height="50"
+                Background="Gray"
                 Canvas.Left="0" Canvas.Top="0"
-                PreviewMouseDown="UpLeftBtn_PreviewMouseDown"
-                PreviewMouseUp="UpLeftBtn_PreviewMouseUp"
-                MouseLeave="UpLeftBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>        
 
-        <Button x:Name="UpRightBtn" Width="50" Height="50" Background="Gray"
+        <Button x:Name="UpRightBtn"
+                Tag="UP,RIGHT"
+                Width="50" Height="50"
+                Background="Gray"
                 Canvas.Left="100" Canvas.Top="0"
-                PreviewMouseDown="UpRightBtn_PreviewMouseDown"
-                PreviewMouseUp="UpRightBtn_PreviewMouseUp"
-                MouseLeave="UpRightBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
-        <Button x:Name="DownLeftBtn" Width="50" Height="50" Background="Gray"
+        <Button x:Name="DownLeftBtn"
+                Tag="DOWN,LEFT"
+                Width="50" Height="50"
+                Background="Gray"
                 Canvas.Left="0" Canvas.Top="100"
-                PreviewMouseDown="DownLeftBtn_PreviewMouseDown"
-                PreviewMouseUp="DownLeftBtn_PreviewMouseUp"
-                MouseLeave="DownLeftBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
-        <Button x:Name="DownRightBtn" Width="50" Height="50" Background="Gray"
+        <Button x:Name="DownRightBtn"
+                Tag="DOWN,RIGHT"
+                Width="50" Height="50"
+                Background="Gray"
                 Canvas.Left="100" Canvas.Top="100"
-                PreviewMouseDown="DownRightBtn_PreviewMouseDown"
-                PreviewMouseUp="DownRightBtn_PreviewMouseUp"
-                MouseLeave="DownRightBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <!-- Filler la ini -->
         <Rectangle Width="50" Height="50"
                    Fill="#AAA"
                    Canvas.Left="50" Canvas.Top="50"
                    IsHitTestVisible="False"/>
+
+        <Border x:Name="FocusResetTarget" Focusable="True" Visibility="Collapsed"/>
     </Canvas>
 </UserControl>

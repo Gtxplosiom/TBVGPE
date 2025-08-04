@@ -15,8 +15,8 @@
         <Ellipse x:Name="Thumb"
                  Width="120" Height="120"
                  Fill="#AAA"
-                 MouseDown="Thumb_MouseDown"
-                 MouseMove="Thumb_MouseMove"
-                 MouseUp="Thumb_MouseUp"/>
+                 TouchDown="Thumb_TouchDown"
+                 TouchMove="Thumb_TouchMove"
+                 TouchUp="Thumb_TouchUp"/>
     </Canvas>
 </UserControl>

@@ -14,6 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="LBtn"
+                Tag="VK_1"
                 Width="100" Height="30"
                 Content="L"
                 FontSize="20" FontWeight="Bold"
@@ -21,11 +22,13 @@
                 Grid.Column="0"
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
                 Margin="10"
-                PreviewMouseDown="LBtn_PreviewMouseDown"
-                PreviewMouseUp="LBtn_PreviewMouseUp"
-                MouseLeave="LBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="ZLBtn"
+                Tag="VK_2"
                 Width="70" Height="30"
                 Content="ZL"
                 FontSize="20" FontWeight="Bold"
@@ -33,11 +36,13 @@
                 Grid.Column="0"
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 Margin="10,50,0,0"
-                PreviewMouseDown="ZLBtn_PreviewMouseDown"
-                PreviewMouseUp="ZLBtn_PreviewMouseUp"
-                MouseLeave="ZLBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="RBtn"
+                Tag="VK_0"
                 Width="100" Height="30"
                 Content="R"
                 FontSize="20" FontWeight="Bold"
@@ -45,11 +50,13 @@
                 Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Top" 
                 Margin="10"
-                PreviewMouseDown="RBtn_PreviewMouseDown"
-                PreviewMouseUp="RBtn_PreviewMouseUp"
-                MouseLeave="RBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="ZRBtn"
+                Tag="VK_9"
                 Width="70" Height="30"
                 Content="ZR"
                 FontSize="20" FontWeight="Bold"
@@ -57,8 +64,9 @@
                 Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Top"
                 Margin="0,50,10,0"
-                PreviewMouseDown="ZRBtn_PreviewMouseDown"
-                PreviewMouseUp="ZRBtn_PreviewMouseUp"
-                MouseLeave="ZRBtn_MouseLeave"/>
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
     </Grid>
 </UserControl>

@@ -38,17 +38,18 @@ namespace TBVGPE.Views.Presets._3DS
             ResetThumbPosition();
         }
 
-        private void Thumb_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Thumb_TouchDown(object sender, TouchEventArgs e)
         {
             _isDragging = true;
-            Thumb.CaptureMouse();
+            Thumb.CaptureTouch(e.TouchDevice);
+            e.Handled = true;
         }
 
-        private void Thumb_MouseMove(object sender, MouseEventArgs e)
+        private void Thumb_TouchMove(object sender, TouchEventArgs e)
         {
             if (!_isDragging) return;
 
-            Point currentPos = e.GetPosition(PadCanvas);
+            Point currentPos = e.GetTouchPoint(PadCanvas).Position;
             Vector offset = currentPos - _center;
 
             double centralDeadZone = _radius * 0.20;
@@ -144,12 +145,14 @@ namespace TBVGPE.Views.Presets._3DS
 
             Canvas.SetLeft(Thumb, _center.X + offset.X - (Thumb.Width / 2));
             Canvas.SetTop(Thumb, _center.Y + offset.Y - (Thumb.Height / 2));
+
+            e.Handled = true;
         }
 
-        private void Thumb_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Thumb_TouchUp(object sender, TouchEventArgs e)
         {
             _isDragging = false;
-            Thumb.ReleaseMouseCapture();
+            Thumb.ReleaseTouchCapture(e.TouchDevice);
             ResetThumbPosition();
 
             if (_isLeftKeyPressed)
@@ -172,7 +175,8 @@ namespace TBVGPE.Views.Presets._3DS
                 _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_S);
                 _isDownKeyPressed = false;
             }
-            // --- END ADDED ---
+
+            e.Handled = true;
         }
 
         private void ResetThumbPosition()
@@ -187,25 +191,21 @@ namespace TBVGPE.Views.Presets._3DS
         public void OnMoveLeft()
         {
             MoveLeft?.Invoke(this, EventArgs.Empty);
-            Debug.WriteLine("Moving left");
         }
 
         public void OnMoveRight()
         {
             MoveRight?.Invoke(this, EventArgs.Empty);
-            Debug.WriteLine("Moving right");
         }
 
         public void OnMoveUp()
         {
             MoveUp?.Invoke(this, EventArgs.Empty);
-            Debug.WriteLine("Moving up");
         }
 
         public void OnMoveDown()
         {
             MoveDown?.Invoke(this, EventArgs.Empty);
-            Debug.WriteLine("Moving down");
         }
     }
 }
