@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
         xmlns:views="clr-namespace:TBVGPE.Views.Presets._3DS"
-        xmlns:viewModels="clr-namespace:TBVGPE.ViewModels.Controllers"
+        xmlns:threeDSViewModel="clr-namespace:TBVGPE.ViewModels.Controllers._3DS"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="Manual"
@@ -13,10 +13,12 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Topmost="True">
+        Topmost="True"
+        ShowInTaskbar="False"
+        Focusable="False">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModels:_3DSControllerViewModel}">
+        <DataTemplate DataType="{x:Type threeDSViewModel:_3DSControllerViewModel}">
             <views:_3DSControllerLayout />
         </DataTemplate>
     </Window.Resources>
@@ -31,9 +33,12 @@
             Name="toggleMenuBtn"
             Content="{Binding ToggleButtonText}" 
             Command="{Binding ToggleButtonCommand}"
-            Width="50" Height="20"
-            Background="White" Foreground="Black"
-            HorizontalAlignment="Right" VerticalAlignment="Center"
-            Margin="20,0,0,500" />
+            Width="100" Height="35"
+            FontSize="14" FontWeight="Bold"
+            Foreground="White" Background="#AAA"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0,0,20,500"
+            />  
     </Grid>
 </Window>

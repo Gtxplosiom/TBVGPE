@@ -29,7 +29,7 @@
                              Grid.Column="0"
                              Margin="50,0,0,150" />
 
-            <local:DirectionalPad x:Name="DPadControl"
+            <local:DirectionalPad x:Name="DirectionalPadControl"
                                   Width="150" Height="150"
                                   HorizontalAlignment="Left" VerticalAlignment="Center"
                                   Grid.Column="0"

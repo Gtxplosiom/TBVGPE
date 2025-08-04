@@ -3,7 +3,6 @@ using System.Windows;
 using TBVGPE.Views.Presets._3DS;
 using TBVGPE.Models;
 using TBVGPE.ViewModels;
-using TBVGPE.ViewModels.Controllers;
 using TBVGPE.Views;
 
 namespace TBVGPE
@@ -24,7 +23,7 @@ namespace TBVGPE
             // list of Controllers View Model Instances
             var controllerViewModels = new Dictionary<int, ViewModelBase>
             {
-                [1] = new _3DSControllerViewModel()
+                [1] = new ViewModels.Controllers._3DS._3DSControllerViewModel()
                 // Add future controller ViewModels here
             };
 

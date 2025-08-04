@@ -10,24 +10,63 @@
         <Button x:Name="UpBtn"
                 Width="50" Height="50"
                 Background="#AAA"
-                Canvas.Left="50"/>
-        
+                Canvas.Left="50"
+                PreviewMouseDown="UpBtn_PreviewMouseDown"
+                PreviewMouseUp="UpBtn_PreviewMouseUp"
+                MouseLeave="UpBtn_MouseLeave"/>
+
         <Button x:Name="LeftBtn"
                 Width="50" Height="50"
                 Background="#AAA"
-                Canvas.Top="50" />
-        
+                Canvas.Top="50"
+                PreviewMouseDown="LeftBtn_PreviewMouseDown"
+                PreviewMouseUp="LeftBtn_PreviewMouseUp"
+                MouseLeave="LeftBtn_MouseLeave"/> 
+
         <Button x:Name="DownBtn"
                 Width="50" Height="50"
                 Background="#AAA"
-                Canvas.Left="50" Canvas.Top="100" />
-        
+                Canvas.Left="50" Canvas.Top="100"
+                PreviewMouseDown="DownBtn_PreviewMouseDown"
+                PreviewMouseUp="DownBtn_PreviewMouseUp"
+                MouseLeave="DownBtn_MouseLeave"/>
+
         <Button x:Name="RightBtn"
                 Width="50" Height="50"
                 Background="#AAA"
-                Canvas.Left="100" Canvas.Top="50" />
-        
+                Canvas.Left="100" Canvas.Top="50"
+                PreviewMouseDown="RightBtn_PreviewMouseDown"
+                PreviewMouseUp="RightBtn_PreviewMouseUp"
+                MouseLeave="RightBtn_MouseLeave"/>
+
+        <Button x:Name="UpLeftBtn" Width="50" Height="50" Background="Gray"
+                Canvas.Left="0" Canvas.Top="0"
+                PreviewMouseDown="UpLeftBtn_PreviewMouseDown"
+                PreviewMouseUp="UpLeftBtn_PreviewMouseUp"
+                MouseLeave="UpLeftBtn_MouseLeave"/>
+
+        <Button x:Name="UpRightBtn" Width="50" Height="50" Background="Gray"
+                Canvas.Left="100" Canvas.Top="0"
+                PreviewMouseDown="UpRightBtn_PreviewMouseDown"
+                PreviewMouseUp="UpRightBtn_PreviewMouseUp"
+                MouseLeave="UpRightBtn_MouseLeave"/>
+
+        <Button x:Name="DownLeftBtn" Width="50" Height="50" Background="Gray"
+                Canvas.Left="0" Canvas.Top="100"
+                PreviewMouseDown="DownLeftBtn_PreviewMouseDown"
+                PreviewMouseUp="DownLeftBtn_PreviewMouseUp"
+                MouseLeave="DownLeftBtn_MouseLeave"/>
+
+        <Button x:Name="DownRightBtn" Width="50" Height="50" Background="Gray"
+                Canvas.Left="100" Canvas.Top="100"
+                PreviewMouseDown="DownRightBtn_PreviewMouseDown"
+                PreviewMouseUp="DownRightBtn_PreviewMouseUp"
+                MouseLeave="DownRightBtn_MouseLeave"/>
+
         <!-- Filler la ini -->
-        <Rectangle Width="50" Height="50" Fill="#AAA" Canvas.Left="50" Canvas.Top="50" />
+        <Rectangle Width="50" Height="50"
+                   Fill="#AAA"
+                   Canvas.Left="50" Canvas.Top="50"
+                   IsHitTestVisible="False"/>
     </Canvas>
 </UserControl>

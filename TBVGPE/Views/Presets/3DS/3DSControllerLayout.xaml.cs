@@ -12,3 +12,5 @@ namespace TBVGPE.Views.Presets._3DS
         }
     }
 }
+
+// TODO: REMOVE REPETITIVE CODE IN THE CODE-BEHINDS OF THE USER CONTROLS

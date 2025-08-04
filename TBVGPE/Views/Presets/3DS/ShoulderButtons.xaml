@@ -19,7 +19,10 @@
                 Foreground="White" Background="#AAA"
                 Grid.Column="0"
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
-                Margin="10"/>
+                Margin="10"
+                PreviewMouseDown="LBtn_PreviewMouseDown"
+                PreviewMouseUp="LBtn_PreviewMouseUp"
+                MouseLeave="LBtn_MouseLeave"/>
 
         <Button x:Name="ZLBtn"
                 Width="70" Height="30"
@@ -28,7 +31,10 @@
                 Foreground="White" Background="#AAA"
                 Grid.Column="0"
                 HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="10,50,0,0"/>
+                Margin="10,50,0,0"
+                PreviewMouseDown="ZLBtn_PreviewMouseDown"
+                PreviewMouseUp="ZLBtn_PreviewMouseUp"
+                MouseLeave="ZLBtn_MouseLeave"/>
 
         <Button x:Name="RBtn"
                 Width="100" Height="30"
@@ -37,7 +43,10 @@
                 Foreground="White" Background="#AAA"
                 Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Top" 
-                Margin="10"/>
+                Margin="10"
+                PreviewMouseDown="RBtn_PreviewMouseDown"
+                PreviewMouseUp="RBtn_PreviewMouseUp"
+                MouseLeave="RBtn_MouseLeave"/>
 
         <Button x:Name="ZRBtn"
                 Width="70" Height="30"
@@ -46,6 +55,9 @@
                 Foreground="White" Background="#AAA"
                 Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Top"
-                Margin="0,50,10,0"/>
+                Margin="0,50,10,0"
+                PreviewMouseDown="ZRBtn_PreviewMouseDown"
+                PreviewMouseUp="ZRBtn_PreviewMouseUp"
+                MouseLeave="ZRBtn_MouseLeave"/>
     </Grid>
 </UserControl>
