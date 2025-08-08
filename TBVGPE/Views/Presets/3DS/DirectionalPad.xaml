@@ -80,46 +80,6 @@
                 TouchLeave="Button_TouchLeave"
                 FocusVisualStyle="{x:Null}"/>
 
-        <Button x:Name="UpLeftBtn"
-                Tag="UP,LEFT"
-                Width="50" Height="50"
-                Background="Gray"
-                Canvas.Left="0" Canvas.Top="0"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>        
-
-        <Button x:Name="UpRightBtn"
-                Tag="UP,RIGHT"
-                Width="50" Height="50"
-                Background="Gray"
-                Canvas.Left="100" Canvas.Top="0"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>
-
-        <Button x:Name="DownLeftBtn"
-                Tag="DOWN,LEFT"
-                Width="50" Height="50"
-                Background="Gray"
-                Canvas.Left="0" Canvas.Top="100"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>
-
-        <Button x:Name="DownRightBtn"
-                Tag="DOWN,RIGHT"
-                Width="50" Height="50"
-                Background="Gray"
-                Canvas.Left="100" Canvas.Top="100"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>
-
         <!-- Filler la ini -->
         <Rectangle Width="50" Height="50"
                    Fill="#AAA"

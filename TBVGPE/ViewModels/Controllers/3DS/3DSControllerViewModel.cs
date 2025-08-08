@@ -2,9 +2,6 @@
 {
     public class _3DSControllerViewModel : ViewModelBase
     {
-        public _3DSControllerViewModel()
-        {
-
-        }
+        // placeholder view model to be used later in data tempalte
     }
 }

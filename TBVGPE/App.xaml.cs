@@ -17,13 +17,15 @@ namespace TBVGPE
             var virtualGamePadsCollection = new ObservableCollection<VirtualGamePads>
             {
                 new VirtualGamePads { Id = -1, Name = "Select a GamePad..." },
-                new VirtualGamePads { Id = 1, Name = "3DS" }
+                new VirtualGamePads { Id = 1, Name = "3DS" },
+                new VirtualGamePads { Id = 2, Name = "Switch" }
             };
 
             // list of Controllers View Model Instances
             var controllerViewModels = new Dictionary<int, ViewModelBase>
             {
-                [1] = new ViewModels.Controllers._3DS._3DSControllerViewModel()
+                [1] = new ViewModels.Controllers._3DS._3DSControllerViewModel(),
+                [2] = new ViewModels.Controllers.Switch.SwitchControllerViewModel()
                 // Add future controller ViewModels here
             };
 

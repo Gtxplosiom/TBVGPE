@@ -7,16 +7,16 @@ using System.Windows.Media;
 using InputSimulatorStandard;
 using InputSimulatorStandard.Native;
 
-namespace TBVGPE.Views.Presets._3DS
+namespace TBVGPE.Views.Presets.Switch
 {
-    public partial class DirectionalPad : UserControl
+    public partial class UtilityButtons : UserControl
     {
         private readonly IInputSimulator _inputSimulator = new InputSimulator();
 
         private readonly SolidColorBrush _defaultButtonBackground = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA)); // #AAA
         private readonly SolidColorBrush _pressedButtonBackground = new SolidColorBrush(Colors.DarkGray);
 
-        public DirectionalPad()
+        public UtilityButtons()
         {
             InitializeComponent();
         }

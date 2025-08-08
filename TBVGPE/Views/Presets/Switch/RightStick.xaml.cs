@@ -5,9 +5,9 @@ using System.Windows.Input;
 using InputSimulatorStandard;
 using InputSimulatorStandard.Native;
 
-namespace TBVGPE.Views.Presets._3DS
+namespace TBVGPE.Views.Presets.Switch
 {
-    public partial class CirclePad : UserControl
+    public partial class RightStick : UserControl
     {
         private readonly IInputSimulator _inputSimulator = new InputSimulator();
 
@@ -26,7 +26,7 @@ namespace TBVGPE.Views.Presets._3DS
         public event EventHandler? MoveUp;
         public event EventHandler? MoveDown;
 
-        public CirclePad()
+        public RightStick()
         {
             InitializeComponent();
         }
@@ -55,7 +55,7 @@ namespace TBVGPE.Views.Presets._3DS
             double centralDeadZone = _radius * 0.20;
 
             // an imaginary cone ine para diri sensitive hinduro an joystick ha diagonal directions
-            // bisan guti la na deviation.
+            // bisan guti la na deviation. 
             // mas heigher an number han multiplier (3.5), mas less sensitive ngan vice versa
             double cardinalConeTolerance = _radius * 3.5;
 
@@ -91,50 +91,50 @@ namespace TBVGPE.Views.Presets._3DS
 
             if (moveLeft && !_isLeftKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_A);
+                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_F);
                 _isLeftKeyPressed = true;
                 OnMoveLeft();
             }
             else if (!moveLeft && _isLeftKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_A);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_F);
                 _isLeftKeyPressed = false;
             }
 
             // Right Key
             if (moveRight && !_isRightKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_D);
+                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_H);
                 _isRightKeyPressed = true;
                 OnMoveRight();
             }
             else if (!moveRight && _isRightKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_D);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_H);
                 _isRightKeyPressed = false;
             }
 
             if (moveUp && !_isUpKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_W);
+                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_T);
                 _isUpKeyPressed = true;
                 OnMoveUp();
             }
             else if (!moveUp && _isUpKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_W);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_T);
                 _isUpKeyPressed = false;
             }
 
             if (moveDown && !_isDownKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_S);
+                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_G);
                 _isDownKeyPressed = true;
                 OnMoveDown();
             }
             else if (!moveDown && _isDownKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_S);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_G);
                 _isDownKeyPressed = false;
             }
 

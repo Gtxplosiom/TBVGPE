@@ -20,4 +20,28 @@
     <PackageReference Include="InputSimulatorStandard" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Views\Presets\Switch\DirectionalButtons.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Presets\Switch\FaceButtons.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Presets\Switch\RightStick.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Presets\Switch\LeftStick.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Presets\Switch\StickButtons.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Presets\Switch\ShoulderButtons.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Presets\Switch\UtilityButtons.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

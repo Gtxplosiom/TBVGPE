@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
-        xmlns:views="clr-namespace:TBVGPE.Views.Presets._3DS"
-        xmlns:threeDSViewModel="clr-namespace:TBVGPE.ViewModels.Controllers._3DS"
+        xmlns:_3DSControllerView="clr-namespace:TBVGPE.Views.Presets._3DS"
+        xmlns:SwitchControllerView="clr-namespace:TBVGPE.Views.Presets.Switch"
+        xmlns:_3DSControllerViewModel="clr-namespace:TBVGPE.ViewModels.Controllers._3DS"
+        xmlns:SwitchControllerViewModel="clr-namespace:TBVGPE.ViewModels.Controllers.Switch"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="Manual"
@@ -18,8 +20,11 @@
         Focusable="False">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type threeDSViewModel:_3DSControllerViewModel}">
-            <views:_3DSControllerLayout />
+        <DataTemplate DataType="{x:Type _3DSControllerViewModel:_3DSControllerViewModel}">
+            <_3DSControllerView:_3DSControllerLayout />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type SwitchControllerViewModel:SwitchControllerViewModel}">
+            <SwitchControllerView:SwitchControllerLayout />
         </DataTemplate>
     </Window.Resources>
 
@@ -27,8 +32,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" /> <!-- para ma fill an rest na diri gagamit ngan ma anchor ha ubos an utility ngan controller -->
             <RowDefinition Height="Auto"/>
-            <!-- Height is 550 because 450(controller container height + margin 100) to account for the margin and make the shoulder buttons visible-->
-            <RowDefinition Height="550"/>
+            <!-- TODO: Make the row height below dynamic kay an controller layouts iba iba an heights -->
+            <RowDefinition Height="540"/>
         </Grid.RowDefinitions>
 
         <StackPanel x:Name="UtilityButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
@@ -63,11 +68,12 @@
         </StackPanel>
 
         <!-- margin is 100 para umigbaw ngan diri mag overlap ha taskbar -->
+        <!-- Dapat an height hini dynamic lat kay amo ini an controller placeholder/container -->
         <ContentControl Grid.Row="2"
                     Content="{Binding CurrentControllerViewModel}"
-                    Height="450"
+                    Height="500"
                     VerticalAlignment="Bottom" 
-                    Margin="0,0,0,100"
+                    Margin="0,0,0,40"
                     Visibility="{Binding ControllerVisibility}"/>
     </Grid>
 </Window>

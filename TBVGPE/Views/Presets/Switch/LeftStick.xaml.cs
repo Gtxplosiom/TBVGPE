@@ -5,9 +5,9 @@ using System.Windows.Input;
 using InputSimulatorStandard;
 using InputSimulatorStandard.Native;
 
-namespace TBVGPE.Views.Presets._3DS
+namespace TBVGPE.Views.Presets.Switch
 {
-    public partial class CirclePad : UserControl
+    public partial class LeftStick : UserControl
     {
         private readonly IInputSimulator _inputSimulator = new InputSimulator();
 
@@ -26,7 +26,7 @@ namespace TBVGPE.Views.Presets._3DS
         public event EventHandler? MoveUp;
         public event EventHandler? MoveDown;
 
-        public CirclePad()
+        public LeftStick()
         {
             InitializeComponent();
         }
@@ -55,8 +55,7 @@ namespace TBVGPE.Views.Presets._3DS
             double centralDeadZone = _radius * 0.20;
 
             // an imaginary cone ine para diri sensitive hinduro an joystick ha diagonal directions
-            // bisan guti la na deviation.
-            // mas heigher an number han multiplier (3.5), mas less sensitive ngan vice versa
+            // bisan guti la na deviation. 
             double cardinalConeTolerance = _radius * 3.5;
 
             // These booleans track the desired movement state for this frame.
