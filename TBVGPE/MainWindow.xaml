@@ -38,42 +38,52 @@
 
         <StackPanel x:Name="UtilityButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
             <Button 
-            Name="CloseApplicationBtn"
-            Content="Close Application" 
-            Command="{Binding CloseApplicationCommand}"
-            Width="120" Height="35"
-            FontSize="14" FontWeight="Bold"
-            Foreground="White" Background="#AAA"
-            Margin="10,0,0,0"
-            Visibility="{Binding CloseAppToggleControllerBtnVisibility}"/>
+                x:Name="CloseApplicationBtn"
+                Content="Close Application" 
+                Command="{Binding CloseApplicationCommand}"
+                Width="120" Height="35"
+                FontSize="14" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Margin="10,0,0,0"
+                Visibility="{Binding CloseAppToggleControllerSliderBtnVisibility}"/>
 
             <Button 
-            Name="ToggleControllerBtn"
-            Content="{Binding ToggleControllerText}" 
-            Command="{Binding ToggleControllerCommand}"
-            Width="120" Height="35"
-            FontSize="14" FontWeight="Bold"
-            Foreground="White" Background="#AAA"
-            Margin="10,0,0,0"
-            Visibility="{Binding CloseAppToggleControllerBtnVisibility}"/>
+                x:Name="ToggleControllerBtn"
+                Content="{Binding ToggleControllerText}" 
+                Command="{Binding ToggleControllerCommand}"
+                Width="120" Height="35"
+                FontSize="14" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Margin="10,0,0,0"
+                Visibility="{Binding CloseAppToggleControllerSliderBtnVisibility}"/>
+
+            <Slider
+                x:Name="ControllerTransparencySlider"
+                Minimum="0.0"
+                Maximum="1.0"
+                Value="{Binding ControllerTransparency}"
+                Width="120" Height="35"
+                Margin="10,0,0,0"
+                Visibility="{Binding CloseAppToggleControllerSliderBtnVisibility}"/>
 
             <Button 
-            Name="toggleMenuBtn"
-            Content="{Binding ToggleMenuText}" 
-            Command="{Binding ToggleMenuCommand}"
-            Width="120" Height="35"
-            FontSize="14" FontWeight="Bold"
-            Foreground="White" Background="#AAA"
-            Margin="10,0,0,0"/>
+                x:Name="toggleMenuBtn"
+                Content="{Binding ToggleMenuText}" 
+                Command="{Binding ToggleMenuCommand}"
+                Width="120" Height="35"
+                FontSize="14" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Margin="10,0,0,0"/>
         </StackPanel>
 
         <!-- margin is 100 para umigbaw ngan diri mag overlap ha taskbar -->
         <!-- Dapat an height hini dynamic lat kay amo ini an controller placeholder/container -->
         <ContentControl Grid.Row="2"
-                    Content="{Binding CurrentControllerViewModel}"
-                    Height="500"
-                    VerticalAlignment="Bottom" 
-                    Margin="0,0,0,40"
-                    Visibility="{Binding ControllerVisibility}"/>
+                        Content="{Binding CurrentControllerViewModel}"
+                        Height="500"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,0,40"
+                        Visibility="{Binding ControllerVisibility}"
+                        Opacity="{Binding ControllerTransparency}"/>
     </Grid>
 </Window>

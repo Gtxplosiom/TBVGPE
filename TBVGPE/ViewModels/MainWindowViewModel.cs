@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
@@ -17,6 +18,7 @@ namespace TBVGPE.ViewModels
 
         private string _toggleMenuText = "Hide Menu";
         private string _toggleControllerText = "Hide Controls";
+        private float _controllerTransparency = 1.0f;
 
         private Visibility _closeAppBtnVisibility = Visibility.Visible;
         private Visibility _controllerVisibility = Visibility.Visible;
@@ -80,7 +82,21 @@ namespace TBVGPE.ViewModels
             }
         }
 
-        public Visibility CloseAppToggleControllerBtnVisibility
+        public float ControllerTransparency
+        {
+            get => _controllerTransparency;
+            set
+            {
+                if (_controllerTransparency != value)
+                {
+                    _controllerTransparency = value;
+
+                    OnPropertyChanged(nameof(ControllerTransparency));
+                }
+            }
+        }
+
+        public Visibility CloseAppToggleControllerSliderBtnVisibility
         {
             get => _closeAppBtnVisibility;
             set
@@ -88,7 +104,7 @@ namespace TBVGPE.ViewModels
                 if (_closeAppBtnVisibility != value)
                 {
                     _closeAppBtnVisibility = value;
-                    OnPropertyChanged(nameof(CloseAppToggleControllerBtnVisibility));
+                    OnPropertyChanged(nameof(CloseAppToggleControllerSliderBtnVisibility));
                 }
             }
         }
