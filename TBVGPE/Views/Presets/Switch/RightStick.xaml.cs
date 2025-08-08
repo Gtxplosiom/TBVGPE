@@ -21,10 +21,10 @@ namespace TBVGPE.Views.Presets.Switch
         private double _radius;
 
         // Events are still here, but we will handle the key press logic locally.
-        public event EventHandler? MoveLeft;
-        public event EventHandler? MoveRight;
-        public event EventHandler? MoveUp;
-        public event EventHandler? MoveDown;
+        public event EventHandler? LookLeft;
+        public event EventHandler? LookRight;
+        public event EventHandler? LookUp;
+        public event EventHandler? LookDown;
 
         public RightStick()
         {
@@ -59,11 +59,11 @@ namespace TBVGPE.Views.Presets.Switch
             // mas heigher an number han multiplier (3.5), mas less sensitive ngan vice versa
             double cardinalConeTolerance = _radius * 3.5;
 
-            // These booleans track the desired movement state for this frame.
-            bool moveLeft = false;
-            bool moveRight = false;
-            bool moveUp = false;
-            bool moveDown = false;
+            // These booleans track the desired looking direction for this frame.
+            bool lookLeft = false;
+            bool lookRight = false;
+            bool lookUp = false;
+            bool lookDown = false;
 
             if (offset.Length > centralDeadZone)
             {
@@ -71,68 +71,68 @@ namespace TBVGPE.Views.Presets.Switch
 
                 if (isPrimarilyHorizontal && Math.Abs(offset.Y) < cardinalConeTolerance)
                 {
-                    if (offset.X < 0) moveLeft = true;
-                    else moveRight = true;
+                    if (offset.X < 0) lookLeft = true;
+                    else lookRight = true;
                 }
                 else if (!isPrimarilyHorizontal && Math.Abs(offset.X) < cardinalConeTolerance)
                 {
-                    if (offset.Y < 0) moveUp = true;
-                    else moveDown = true;
+                    if (offset.Y < 0) lookUp = true;
+                    else lookDown = true;
                 }
                 else
                 {
-                    if (offset.X < 0) moveLeft = true;
-                    else if (offset.X > 0) moveRight = true;
+                    if (offset.X < 0) lookLeft = true;
+                    else if (offset.X > 0) lookRight = true;
 
-                    if (offset.Y < 0) moveUp = true;
-                    else if (offset.Y > 0) moveDown = true;
+                    if (offset.Y < 0) lookUp = true;
+                    else if (offset.Y > 0) lookDown = true;
                 }
             }
 
-            if (moveLeft && !_isLeftKeyPressed)
+            if (lookLeft && !_isLeftKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_F);
                 _isLeftKeyPressed = true;
-                OnMoveLeft();
+                OnLookLeft();
             }
-            else if (!moveLeft && _isLeftKeyPressed)
+            else if (!lookLeft && _isLeftKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_F);
                 _isLeftKeyPressed = false;
             }
 
             // Right Key
-            if (moveRight && !_isRightKeyPressed)
+            if (lookRight && !_isRightKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_H);
                 _isRightKeyPressed = true;
-                OnMoveRight();
+                OnLookRight();
             }
-            else if (!moveRight && _isRightKeyPressed)
+            else if (!lookRight && _isRightKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_H);
                 _isRightKeyPressed = false;
             }
 
-            if (moveUp && !_isUpKeyPressed)
+            if (lookUp && !_isUpKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_T);
                 _isUpKeyPressed = true;
-                OnMoveUp();
+                OnLookUp();
             }
-            else if (!moveUp && _isUpKeyPressed)
+            else if (!lookUp && _isUpKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_T);
                 _isUpKeyPressed = false;
             }
 
-            if (moveDown && !_isDownKeyPressed)
+            if (lookDown && !_isDownKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_G);
                 _isDownKeyPressed = true;
-                OnMoveDown();
+                OnLookDown();
             }
-            else if (!moveDown && _isDownKeyPressed)
+            else if (!lookDown && _isDownKeyPressed)
             {
                 _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_G);
                 _isDownKeyPressed = false;
@@ -158,22 +158,22 @@ namespace TBVGPE.Views.Presets.Switch
 
             if (_isLeftKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_A);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_F);
                 _isLeftKeyPressed = false;
             }
             if (_isRightKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_D);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_H);
                 _isRightKeyPressed = false;
             }
             if (_isUpKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_W);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_T);
                 _isUpKeyPressed = false;
             }
             if (_isDownKeyPressed)
             {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_S);
+                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_G);
                 _isDownKeyPressed = false;
             }
 
@@ -189,24 +189,24 @@ namespace TBVGPE.Views.Presets.Switch
             }
         }
 
-        public void OnMoveLeft()
+        public void OnLookLeft()
         {
-            MoveLeft?.Invoke(this, EventArgs.Empty);
+            LookLeft?.Invoke(this, EventArgs.Empty);
         }
 
-        public void OnMoveRight()
+        public void OnLookRight()
         {
-            MoveRight?.Invoke(this, EventArgs.Empty);
+            LookRight?.Invoke(this, EventArgs.Empty);
         }
 
-        public void OnMoveUp()
+        public void OnLookUp()
         {
-            MoveUp?.Invoke(this, EventArgs.Empty);
+            LookUp?.Invoke(this, EventArgs.Empty);
         }
 
-        public void OnMoveDown()
+        public void OnLookDown()
         {
-            MoveDown?.Invoke(this, EventArgs.Empty);
+            LookDown?.Invoke(this, EventArgs.Empty);
         }
     }
 }
