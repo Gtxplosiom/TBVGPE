@@ -41,7 +41,7 @@
     <Canvas Name="PadCanvas">
         <!-- an FocusVisualStyle="{x:Null}" napa tanggal han blue na highlight kun na interact ha buttons -->
         <Button x:Name="UpBtn"
-                Tag="UP"
+                Tag="Up"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="50"
@@ -51,7 +51,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="LeftBtn"
-                Tag="LEFT"
+                Tag="Left"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Top="50"
@@ -61,7 +61,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="DownBtn"
-                Tag="DOWN"
+                Tag="Down"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="50" Canvas.Top="100"
@@ -71,7 +71,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="RightBtn"
-                Tag="RIGHT"
+                Tag="Right"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="100" Canvas.Top="50"

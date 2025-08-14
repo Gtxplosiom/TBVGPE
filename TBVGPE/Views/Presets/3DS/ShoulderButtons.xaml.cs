@@ -1,21 +1,16 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using InputSimulatorStandard;
-using InputSimulatorStandard.Native;
+using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace TBVGPE.Views.Presets._3DS
 {
     public partial class ShoulderButtons : UserControl
     {
         private Vector2 _screenDimentions;
-        private readonly IInputSimulator _inputSimulator = new InputSimulator();
 
         private readonly SolidColorBrush _defaultButtonBackground = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA)); // #AAA
         private readonly SolidColorBrush _pressedButtonBackground = new SolidColorBrush(Colors.DarkGray);
@@ -44,11 +39,7 @@ namespace TBVGPE.Views.Presets._3DS
         {
             if (sender is Button btn && btn.Tag is string tag)
             {
-                foreach (var key in ParseKeyTag(tag))
-                {
-                    _inputSimulator.Keyboard.KeyDown(key);
-                }
-
+                ApplyControllerInput(tag, true);
                 btn.Background = _pressedButtonBackground;
                 e.Handled = true;
             }
@@ -58,11 +49,7 @@ namespace TBVGPE.Views.Presets._3DS
         {
             if (sender is Button btn && btn.Tag is string tag)
             {
-                foreach (var key in ParseKeyTag(tag))
-                {
-                    _inputSimulator.Keyboard.KeyUp(key);
-                }
-
+                ApplyControllerInput(tag, false);
                 btn.Background = _defaultButtonBackground;
                 e.Handled = true;
             }
@@ -72,23 +59,28 @@ namespace TBVGPE.Views.Presets._3DS
         {
             if (sender is Button btn && btn.Tag is string tag)
             {
-                foreach (var key in ParseKeyTag(tag))
-                {
-                    _inputSimulator.Keyboard.KeyUp(key);
-                }
-
+                ApplyControllerInput(tag, false);
                 btn.Background = _defaultButtonBackground;
                 e.Handled = true;
             }
         }
 
-        private IEnumerable<VirtualKeyCode> ParseKeyTag(string tag)
+        private void ApplyControllerInput(string tag, bool isPressed)
         {
-            var keys = tag.Split(',');
-            foreach (var key in keys)
+            switch (tag)
             {
-                if (Enum.TryParse(key.Trim(), out VirtualKeyCode vk))
-                    yield return vk;
+                case "LB":
+                    App.Vigem.SetButtonState(Xbox360Button.LeftShoulder, isPressed);
+                    break;
+                case "RB":
+                    App.Vigem.SetButtonState(Xbox360Button.RightShoulder, isPressed);
+                    break;
+                case "LT":
+                    App.Vigem.SetTriggerValue(Xbox360Slider.LeftTrigger, isPressed ? (byte)255 : (byte)0);
+                    break;
+                case "RT":
+                    App.Vigem.SetTriggerValue(Xbox360Slider.RightTrigger, isPressed ? (byte)255 : (byte)0);
+                    break;
             }
         }
     }

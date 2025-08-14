@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-using System.Windows.Controls;
-using System.Windows;
+﻿using System.Windows.Controls;
 
 namespace TBVGPE.Views.Presets._3DS
 {

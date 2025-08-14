@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
-using TBVGPE.Views.Presets._3DS;
 using TBVGPE.Models;
 using TBVGPE.ViewModels;
 using TBVGPE.Views;
@@ -9,9 +8,18 @@ namespace TBVGPE
 {
     public partial class App : Application
     {
+        // static property to para ig-hold an vigemservice class instance
+        // para kun ma hold na, ma tatawag ini hiya via App.Vigem.... chuchu
+        public static VigemService Vigem { get; private set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            // xinput emulator instance
+            // TODO: consider switching between input types like dualshock, or directinput
+            // if xinput do something about the double inputs
+            Vigem = new VigemService();
 
             // gamepads list
             var virtualGamePadsCollection = new ObservableCollection<VirtualGamePads>

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using InputSimulatorStandard;
-using InputSimulatorStandard.Native;
 using System.Windows.Shapes;
+using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace TBVGPE.Views.Presets.Switch
 {
     public partial class FaceButtons : UserControl
     {
-        private readonly IInputSimulator _inputSimulator = new InputSimulator();
-
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)); // #333 with 0.5 opacity
         private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.DarkGray); // A darker gray for pressed state
 
@@ -25,24 +19,24 @@ namespace TBVGPE.Views.Presets.Switch
 
         private void FaceButtons_Loaded(object sender, RoutedEventArgs e)
         {
-            AttachTouchHandlers(XBtn, VirtualKeyCode.VK_I);
-            AttachTouchHandlers(YBtn, VirtualKeyCode.VK_J);
-            AttachTouchHandlers(BBtn, VirtualKeyCode.VK_K);
-            AttachTouchHandlers(ABtn, VirtualKeyCode.VK_L);
+            AttachTouchHandlers(XBtn, Xbox360Button.Y);
+            AttachTouchHandlers(YBtn, Xbox360Button.X);
+            AttachTouchHandlers(BBtn, Xbox360Button.A);
+            AttachTouchHandlers(ABtn, Xbox360Button.B);
         }
 
-        private void AttachTouchHandlers(Ellipse button, VirtualKeyCode key)
+        private void AttachTouchHandlers(Ellipse button, Xbox360Button faceButtons)
         {
             button.TouchDown += (s, e) =>
             {
-                _inputSimulator.Keyboard.KeyDown(key);
+                App.Vigem.SetButtonState(faceButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
 
             button.TouchUp += (s, e) =>
             {
-                _inputSimulator.Keyboard.KeyUp(key);
+                App.Vigem.SetButtonState(faceButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };

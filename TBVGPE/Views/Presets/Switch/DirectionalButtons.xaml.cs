@@ -1,19 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using InputSimulatorStandard;
-using InputSimulatorStandard.Native;
 using System.Windows.Shapes;
+using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace TBVGPE.Views.Presets.Switch
 {
     public partial class DirectionalButtons : UserControl
     {
-        private readonly IInputSimulator _inputSimulator = new InputSimulator();
-
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33));
         private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.DarkGray); // A darker gray for pressed state
 
@@ -25,24 +19,24 @@ namespace TBVGPE.Views.Presets.Switch
 
         private void DirectionalButtons_Loaded(object sender, RoutedEventArgs e)
         {
-            AttachTouchHandlers(UpBtn, VirtualKeyCode.UP);
-            AttachTouchHandlers(LeftBtn, VirtualKeyCode.LEFT);
-            AttachTouchHandlers(DownBtn, VirtualKeyCode.DOWN);
-            AttachTouchHandlers(RightBtn, VirtualKeyCode.RIGHT);
+            AttachTouchHandlers(UpBtn, Xbox360Button.Up);
+            AttachTouchHandlers(LeftBtn, Xbox360Button.Left);
+            AttachTouchHandlers(DownBtn, Xbox360Button.Down);
+            AttachTouchHandlers(RightBtn, Xbox360Button.Right);
         }
 
-        private void AttachTouchHandlers(Ellipse button, VirtualKeyCode key)
+        private void AttachTouchHandlers(Ellipse button, Xbox360Button directionalButtons)
         {
             button.TouchDown += (s, e) =>
             {
-                _inputSimulator.Keyboard.KeyDown(key);
+                App.Vigem.SetButtonState(directionalButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
 
             button.TouchUp += (s, e) =>
             {
-                _inputSimulator.Keyboard.KeyUp(key);
+                App.Vigem.SetButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };

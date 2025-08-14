@@ -1,30 +1,18 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using InputSimulatorStandard;
-using InputSimulatorStandard.Native;
 
 namespace TBVGPE.Views.Presets._3DS
 {
     public partial class CirclePad : UserControl
     {
-        private readonly IInputSimulator _inputSimulator = new InputSimulator();
-
-        private bool _isLeftKeyPressed;
-        private bool _isRightKeyPressed;
-        private bool _isUpKeyPressed;
-        private bool _isDownKeyPressed;
-
         private bool _isDragging;
         private Point _center;
         private double _radius;
 
-        // Events are still here, but we will handle the key press logic locally.
-        public event EventHandler? MoveLeft;
-        public event EventHandler? MoveRight;
-        public event EventHandler? MoveUp;
-        public event EventHandler? MoveDown;
+        // circlepad axes
+        private double _xValue = 0.0;
+        private double _yValue = 0.0;
 
         public CirclePad()
         {
@@ -54,89 +42,17 @@ namespace TBVGPE.Views.Presets._3DS
 
             double centralDeadZone = _radius * 0.20;
 
-            // an imaginary cone ine para diri sensitive hinduro an joystick ha diagonal directions
-            // bisan guti la na deviation.
-            // mas heigher an number han multiplier (3.5), mas less sensitive ngan vice versa
-            double cardinalConeTolerance = _radius * 3.5;
-
-            // These booleans track the desired movement state for this frame.
-            bool moveLeft = false;
-            bool moveRight = false;
-            bool moveUp = false;
-            bool moveDown = false;
-
+            // kun an circle pad outside na an deadzone
+            // calculate an axes values
             if (offset.Length > centralDeadZone)
             {
-                bool isPrimarilyHorizontal = Math.Abs(offset.X) > Math.Abs(offset.Y);
-
-                if (isPrimarilyHorizontal && Math.Abs(offset.Y) < cardinalConeTolerance)
-                {
-                    if (offset.X < 0) moveLeft = true;
-                    else moveRight = true;
-                }
-                else if (!isPrimarilyHorizontal && Math.Abs(offset.X) < cardinalConeTolerance)
-                {
-                    if (offset.Y < 0) moveUp = true;
-                    else moveDown = true;
-                }
-                else
-                {
-                    if (offset.X < 0) moveLeft = true;
-                    else if (offset.X > 0) moveRight = true;
-
-                    if (offset.Y < 0) moveUp = true;
-                    else if (offset.Y > 0) moveDown = true;
-                }
+                // Normalize offset to [-1, 1] range
+                _xValue = Math.Max(-1, Math.Min(1, offset.X / _radius));
+                _yValue = Math.Max(-1, Math.Min(1, offset.Y / _radius));
             }
 
-            if (moveLeft && !_isLeftKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_A);
-                _isLeftKeyPressed = true;
-                OnMoveLeft();
-            }
-            else if (!moveLeft && _isLeftKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_A);
-                _isLeftKeyPressed = false;
-            }
-
-            // Right Key
-            if (moveRight && !_isRightKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_D);
-                _isRightKeyPressed = true;
-                OnMoveRight();
-            }
-            else if (!moveRight && _isRightKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_D);
-                _isRightKeyPressed = false;
-            }
-
-            if (moveUp && !_isUpKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_W);
-                _isUpKeyPressed = true;
-                OnMoveUp();
-            }
-            else if (!moveUp && _isUpKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_W);
-                _isUpKeyPressed = false;
-            }
-
-            if (moveDown && !_isDownKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_S);
-                _isDownKeyPressed = true;
-                OnMoveDown();
-            }
-            else if (!moveDown && _isDownKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_S);
-                _isDownKeyPressed = false;
-            }
+            // ipasa an x and y values ha vigem client
+            App.Vigem.SetLeftStick(_xValue, _yValue);
 
             if (offset.Length > _radius)
             {
@@ -154,28 +70,13 @@ namespace TBVGPE.Views.Presets._3DS
         {
             _isDragging = false;
             Thumb.ReleaseTouchCapture(e.TouchDevice);
-            ResetThumbPosition();
 
-            if (_isLeftKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_A);
-                _isLeftKeyPressed = false;
-            }
-            if (_isRightKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_D);
-                _isRightKeyPressed = false;
-            }
-            if (_isUpKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_W);
-                _isUpKeyPressed = false;
-            }
-            if (_isDownKeyPressed)
-            {
-                _inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_S);
-                _isDownKeyPressed = false;
-            }
+            // reset axes values
+            _xValue = 0.0;
+            _yValue = 0.0;
+            App.Vigem.SetLeftStick(_xValue, _yValue);
+
+            ResetThumbPosition();
 
             e.Handled = true;
         }
@@ -187,26 +88,6 @@ namespace TBVGPE.Views.Presets._3DS
                 Canvas.SetLeft(Thumb, _center.X - (Thumb.Width / 2));
                 Canvas.SetTop(Thumb, _center.Y - (Thumb.Height / 2));
             }
-        }
-
-        public void OnMoveLeft()
-        {
-            MoveLeft?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void OnMoveRight()
-        {
-            MoveRight?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void OnMoveUp()
-        {
-            MoveUp?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void OnMoveDown()
-        {
-            MoveDown?.Invoke(this, EventArgs.Empty);
         }
     }
 }

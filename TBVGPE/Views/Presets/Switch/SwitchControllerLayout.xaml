@@ -28,7 +28,7 @@
             </Grid.ColumnDefinitions>
 
             <local:LeftStick x:Name="LeftStickControl"
-                 Width="150" Height="150"
+                 Width="180" Height="180"
                  HorizontalAlignment="Left" VerticalAlignment="Center"
                  Grid.Column="0"
                  Margin="50,0,0,180" />
@@ -40,10 +40,10 @@
                       Margin="50,200,0,10" />
 
             <local:RightStick x:Name="RightStickControl"
-                             Width="150" Height="150"
+                             Width="180" Height="180"
                              HorizontalAlignment="Right" VerticalAlignment="Bottom"
                              Grid.Column="1"
-                             Margin="0,0,180,60" />
+                             Margin="0,0,180,50" />
 
             <local:FaceButtons x:Name="FaceButtonsControl"
                                Width="200" Height="200"

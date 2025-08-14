@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TBVGPE.Views.Presets.Switch"
              mc:Ignorable="d"
-             d:DesignHeight="150" d:DesignWidth="150"
+             d:DesignHeight="180" d:DesignWidth="180"
              Background="Transparent">
     <Canvas x:Name="PadCanvas" SizeChanged="PadCanvas_SizeChanged">
-        <Ellipse Width="150" Height="150"
+        <Ellipse Width="180" Height="180"
                  Fill="#333"
                  Opacity="0.5" />
 

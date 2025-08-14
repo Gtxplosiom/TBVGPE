@@ -1,9 +1,6 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
-using TBVGPE.ViewModels;
 using TBVGPE.ViewModels.Commands;
 
 namespace TBVGPE.ViewModels
@@ -139,12 +136,20 @@ namespace TBVGPE.ViewModels
             // Look up the corresponding ViewModel in our dictionary
             if (_controllerViewModels.TryGetValue(selectedId, out var controllerVM))
             {
+                // an layout na magiging visible ay an layout nga naka attach or connected to the viewmodel
+                // na naka attach via datatemplate, which is set ha ubos na line, ha currentcontrollerviewmodel property
                 CurrentControllerViewModel = controllerVM;
+
+                // "connect" the controller, kun may na select ha virtualgamepad list
+                App.Vigem.ActivateController();
             }
             else
             {
                 // If nothing is selected or found, show nothing
                 CurrentControllerViewModel = null;
+
+                // "disconnect" the controller, kun waray na select
+                App.Vigem.DeactivateController();
             }
         }
 

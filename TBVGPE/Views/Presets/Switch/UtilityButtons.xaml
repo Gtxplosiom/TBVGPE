@@ -8,8 +8,8 @@
              d:DesignHeight="50" d:DesignWidth="250">
     <Canvas Name="PadCanvas">
         <!-- TODO: Put in stack panel -->
-        <Button x:Name="StartBtn"
-                Tag="RETURN"
+        <Button x:Name="PlusBtn"
+                Tag="Start"
                 Width="50" Height="30"
                 Content="+"
                 FontSize="11" FontWeight="Bold"
@@ -21,8 +21,8 @@
                 TouchLeave="Button_TouchLeave"
                 FocusVisualStyle="{x:Null}"/>
 
-        <Button x:Name="SelectBtn"
-                Tag="SPACE"
+        <Button x:Name="MinusBtn"
+                Tag="Back"
                 Width="50" Height="30"
                 Content="-"
                 FontSize="11" FontWeight="Bold"
@@ -34,7 +34,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="HomeBtn"
-                Tag="HOME"
+                Tag="Guide"
                 Width="50" Height="30"
                 Content="HOME"
                 FontSize="11" FontWeight="Bold"
@@ -47,7 +47,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="CaptureBtn"
-                Tag="SNAPSHOT"
+                Tag="waray pa"
                 Width="50" Height="30"
                 Content="CAP"
                 FontSize="11" FontWeight="Bold"
