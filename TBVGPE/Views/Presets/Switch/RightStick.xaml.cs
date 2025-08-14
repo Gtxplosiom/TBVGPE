@@ -50,7 +50,7 @@ namespace TBVGPE.Views.Presets.Switch
             }
 
             // same here an ginhimo ha left stick
-            App.Vigem.SetRightStick(_xValue, _yValue);
+            App.Vigem.SetRightStick(_xValue, _yValue * -1);
 
             if (offset.Length > _radius)
             {

@@ -51,7 +51,7 @@ namespace TBVGPE.Views.Presets.Switch
 
             // ipasa an axes values ha vigem client
             // na icoconvert to short didto
-            App.Vigem.SetLeftStick(_xValue, _yValue);
+            App.Vigem.SetLeftStick(_xValue, _yValue * -1);
 
             if (offset.Length > _radius)
             {

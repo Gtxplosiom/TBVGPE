@@ -52,7 +52,8 @@ namespace TBVGPE.Views.Presets._3DS
             }
 
             // ipasa an x and y values ha vigem client
-            App.Vigem.SetLeftStick(_xValue, _yValue);
+            // multiply to -1 to convert to negative, because y axis in controllers are reversed
+            App.Vigem.SetLeftStick(_xValue, _yValue * -1);
 
             if (offset.Length > _radius)
             {
