@@ -1,6 +1,6 @@
 # TBVGPE
 # The Best Virtual GamePad Ever
-A virtual gamepad overlay for windows devices that are touchscreen
+A virtual gamepad overlay for windows devices that are touchscreen capable
 
 ## Dependency
 This project requires the **ViGEmBus Driver** by [nefarius](https://github.com/nefarius).  
