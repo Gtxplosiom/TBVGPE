@@ -40,16 +40,9 @@ namespace TBVGPE.Views.Presets._3DS
             Point currentPos = e.GetTouchPoint(PadCanvas).Position;
             Vector offset = currentPos - _center;
 
-            double centralDeadZone = _radius * 0.20;
-
-            // kun an circle pad outside na an deadzone
-            // calculate an axes values
-            if (offset.Length > centralDeadZone)
-            {
-                // Normalize offset to [-1, 1] range
-                _xValue = Math.Max(-1, Math.Min(1, offset.X / _radius));
-                _yValue = Math.Max(-1, Math.Min(1, offset.Y / _radius));
-            }
+            // Normalize offset to [-1, 1] range
+            _xValue = Math.Max(-1, Math.Min(1, offset.X / _radius));
+            _yValue = Math.Max(-1, Math.Min(1, offset.Y / _radius));
 
             // ipasa an x and y values ha vigem client
             // multiply to -1 to convert to negative, because y axis in controllers are reversed

@@ -40,14 +40,9 @@ namespace TBVGPE.Views.Presets.Switch
             Point currentPos = e.GetTouchPoint(PadCanvas).Position;
             Vector offset = currentPos - _center;
 
-            double centralDeadZone = _radius * 0.20;
-
-            if (offset.Length > centralDeadZone)
-            {
-                // Normalize offset to [-1, 1] range
-                _xValue = Math.Max(-1, Math.Min(1, offset.X / _radius));
-                _yValue = Math.Max(-1, Math.Min(1, offset.Y / _radius));
-            }
+            // Normalize offset to [-1, 1] range
+            _xValue = Math.Max(-1, Math.Min(1, offset.X / _radius));
+            _yValue = Math.Max(-1, Math.Min(1, offset.Y / _radius));
 
             // same here an ginhimo ha left stick
             App.Vigem.SetRightStick(_xValue, _yValue * -1);
