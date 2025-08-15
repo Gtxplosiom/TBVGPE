@@ -6,86 +6,80 @@
              xmlns:local="clr-namespace:TBVGPE.Views.Presets._3DS"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="150">
-    <!-- TODO: experiment with this later on, to remove that blue highlight bullc**p -->
-    <UserControl.Resources>
-        <Style x:Key="FlatButtonStyle" TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Focusable" Value="True"/>
-            <Setter Property="Background" Value="#AAA"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="DarkGray"/>
-                            </Trigger>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
-
 
     <Canvas Name="PadCanvas">
-        <!-- an FocusVisualStyle="{x:Null}" napa tanggal han blue na highlight kun na interact ha buttons -->
         <Button x:Name="UpBtn"
                 Tag="Up"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Left="50"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>
+                TouchEnter="Button_TouchEnter"/>
 
         <Button x:Name="LeftBtn"
                 Tag="Left"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Top="50"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>
+                TouchEnter="Button_TouchEnter"/>
 
         <Button x:Name="DownBtn"
                 Tag="Down"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Left="50" Canvas.Top="100"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>
+                TouchEnter="Button_TouchEnter"/>
 
         <Button x:Name="RightBtn"
                 Tag="Right"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Left="100" Canvas.Top="50"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
-                FocusVisualStyle="{x:Null}"/>
+                TouchEnter="Button_TouchEnter"/>
 
-        <!-- Filler la ini -->
+        <!-- Fillers -->
         <Rectangle Width="50" Height="50"
                    Fill="#AAA"
                    Canvas.Left="50" Canvas.Top="50"
                    IsHitTestVisible="False"/>
 
-        <Border x:Name="FocusResetTarget" Focusable="True" Visibility="Collapsed"/>
+        <Rectangle Width="50" Height="50"
+                   Fill="#333"
+                   Opacity="0.3"
+                   Canvas.Left="0" Canvas.Top="0"
+                   IsHitTestVisible="False"/>
+
+        <Rectangle Width="50" Height="50"
+                   Fill="#333"
+                   Opacity="0.3"
+                   Canvas.Left="100" Canvas.Top="0"
+                   IsHitTestVisible="False"/>
+
+        <Rectangle Width="50" Height="50"
+                   Fill="#333"
+                   Opacity="0.3"
+                   Canvas.Left="0" Canvas.Top="100"
+                   IsHitTestVisible="False"/>
+
+        <Rectangle Width="50" Height="50"
+                   Fill="#333"
+                   Opacity="0.3"
+                   Canvas.Left="100" Canvas.Top="100"
+                   IsHitTestVisible="False"/>
     </Canvas>
 </UserControl>

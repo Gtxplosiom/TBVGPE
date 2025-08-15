@@ -7,7 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="150">
     <Canvas Name="PadCanvas">
-        <!-- TODO: Make the content of each buttons arrows like the switch -->
+        <!-- Background Filler -->
+        <Ellipse Width="150" Height="150"  Fill="#999" Opacity="0.1" />
+        
         <Ellipse x:Name="UpBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Left="50" />
         <Label Content="▲"
                Width="50" Height="50"

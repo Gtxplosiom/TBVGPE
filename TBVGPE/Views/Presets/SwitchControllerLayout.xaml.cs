@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace TBVGPE.Views.Presets.Switch
+namespace TBVGPE.Views.Presets
 {
     public partial class SwitchControllerLayout : UserControl
     {

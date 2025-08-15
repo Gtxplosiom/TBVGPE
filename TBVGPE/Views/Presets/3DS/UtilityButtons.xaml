@@ -22,7 +22,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="SelectBtn"
-                Tag="Back"
+                Tag="Select"
                 Width="50" Height="30"
                 Content="SELECT"
                 FontSize="11" FontWeight="Bold"
@@ -34,7 +34,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="HomeBtn"
-                Tag="Guide"
+                Tag="Home"
                 Width="50" Height="30"
                 Content="HOME"
                 FontSize="11" FontWeight="Bold"

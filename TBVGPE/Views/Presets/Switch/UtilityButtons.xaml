@@ -9,7 +9,7 @@
     <Canvas Name="PadCanvas">
         <!-- TODO: Put in stack panel -->
         <Button x:Name="PlusBtn"
-                Tag="Start"
+                Tag="Plus"
                 Width="50" Height="30"
                 Content="+"
                 FontSize="11" FontWeight="Bold"
@@ -22,7 +22,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="MinusBtn"
-                Tag="Back"
+                Tag="Minus"
                 Width="50" Height="30"
                 Content="-"
                 FontSize="11" FontWeight="Bold"
@@ -34,7 +34,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="HomeBtn"
-                Tag="Guide"
+                Tag="Home"
                 Width="50" Height="30"
                 Content="HOME"
                 FontSize="11" FontWeight="Bold"

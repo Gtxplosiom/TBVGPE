@@ -4,10 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
-        xmlns:_3DSControllerView="clr-namespace:TBVGPE.Views.Presets._3DS"
-        xmlns:SwitchControllerView="clr-namespace:TBVGPE.Views.Presets.Switch"
-        xmlns:_3DSControllerViewModel="clr-namespace:TBVGPE.ViewModels.Controllers._3DS"
-        xmlns:SwitchControllerViewModel="clr-namespace:TBVGPE.ViewModels.Controllers.Switch"
+        xmlns:ControllerViews="clr-namespace:TBVGPE.Views.Presets"
+        xmlns:ControllerViewModels="clr-namespace:TBVGPE.ViewModels.Controllers"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="Manual"
@@ -20,12 +18,26 @@
         Focusable="False">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type _3DSControllerViewModel:_3DSControllerViewModel}">
-            <_3DSControllerView:_3DSControllerLayout />
+        <!-- TODO: Fix the buttons not changing color when pressed -->
+        <DataTemplate DataType="{x:Type ControllerViewModels:GBAControllerViewModel}">
+            <ControllerViews:GBAControllerLayout />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type SwitchControllerViewModel:SwitchControllerViewModel}">
-            <SwitchControllerView:SwitchControllerLayout />
+        <DataTemplate DataType="{x:Type ControllerViewModels:DSControllerViewModel}">
+            <ControllerViews:DSControllerLayout />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ControllerViewModels:Xbox360ControllerViewModel}">
+            <ControllerViews:Xbox360ControllerLayout />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ControllerViewModels:_3DSControllerViewModel}">
+            <ControllerViews:_3DSControllerLayout />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ControllerViewModels:PS4ControllerViewModel}">
+            <ControllerViews:PS4ControllerLayout />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ControllerViewModels:SwitchControllerViewModel}">
+            <ControllerViews:SwitchControllerLayout />
+        </DataTemplate>
+        
     </Window.Resources>
 
     <Grid>

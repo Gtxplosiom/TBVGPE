@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="LStickBtn"
-                Tag="LeftThumb"
+                Tag="LeftStick"
                 Width="70" Height="30"
                 Content="&gt;LS&lt;"
                 FontSize="20" FontWeight="Bold"
@@ -27,7 +27,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="RStickBtn"
-                Tag="RightThumb"
+                Tag="RightStick"
                 Width="70" Height="30"
                 Content="&gt;RS&lt;"
                 FontSize="20" FontWeight="Bold"

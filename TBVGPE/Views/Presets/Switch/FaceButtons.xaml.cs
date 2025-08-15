@@ -40,6 +40,13 @@ namespace TBVGPE.Views.Presets.Switch
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
+
+            button.TouchLeave += (s, e) =>
+            {
+                App.Vigem.SetButtonState(faceButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
         }
     }
 }

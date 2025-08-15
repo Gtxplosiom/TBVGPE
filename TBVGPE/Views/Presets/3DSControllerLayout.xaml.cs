@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace TBVGPE.Views.Presets._3DS
+namespace TBVGPE.Views.Presets
 {
     public partial class _3DSControllerLayout : UserControl
     {

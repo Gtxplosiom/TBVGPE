@@ -69,10 +69,10 @@ namespace TBVGPE.Views.Presets.Switch
         {
             switch (tag)
             {
-                case "LeftThumb":
+                case "LeftStick":
                     App.Vigem.SetButtonState(Xbox360Button.LeftThumb, isPressed);
                     break;
-                case "RightThumb":
+                case "RightStick":
                     App.Vigem.SetButtonState(Xbox360Button.RightThumb, isPressed);
                     break;
             }

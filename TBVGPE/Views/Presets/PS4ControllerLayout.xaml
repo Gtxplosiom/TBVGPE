@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="TBVGPE.Views.Presets.PS4ControllerLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TBVGPE.Views.Presets"
+             xmlns:PS4Components="clr-namespace:TBVGPE.Views.Presets.PS4"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <PS4Components:ShoulderButtons x:Name="ShoulderButtonsControl"
+                                       HorizontalAlignment="Center" VerticalAlignment="Top" />
+
+        <Grid Grid.Row="1">
+            <PS4Components:StickButtons x:Name="StickButtonsControl"
+                                        HorizontalAlignment="Center" VerticalAlignment="Top" />
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <PS4Components:DirectionalPad x:Name="DirectionalButtonsControl"
+                                          Width="180" Height="180"
+                                          HorizontalAlignment="Left" VerticalAlignment="Center"
+                                          Grid.Column="0"
+                                          Margin="10,10,0,180" />
+
+            <PS4Components:LeftStick x:Name="LeftStickControl"
+                                     Width="180" Height="180"
+                                     HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                     Grid.Column="0"
+                                     Margin="180,0,0,40" />
+
+            <PS4Components:RightStick x:Name="RightStickControl"
+                                      Width="180" Height="180"
+                                      HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                      Grid.Column="1"
+                                      Margin="0,0,180,40" />
+
+            <PS4Components:FaceButtons x:Name="FaceButtonsControl"
+                                       Width="200" Height="200"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                                       Grid.Column="1"
+                                       Margin="0,0,10,130" />
+
+            <PS4Components:UtilityButtons x:Name="UtilButtonsControl"
+                                          Width="200" Height="50"
+                                          HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                          Grid.Column="1"
+                                          Margin="0,0,0,10" />
+        </Grid>
+    </Grid>
+</UserControl>

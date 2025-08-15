@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="TBVGPE.Views.Presets.DS.ShoulderButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TBVGPE.Views.Presets.DS"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="800">
+    <Grid>
+        <!-- TODO: Integrate stack panels -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="LBtn"
+                Tag="LB"
+                Width="100" Height="30"
+                Content="L"
+                FontSize="20" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Grid.Column="0"
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="10"
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
+
+        <Button x:Name="RBtn"
+                Tag="RB"
+                Width="100" Height="30"
+                Content="R"
+                FontSize="20" FontWeight="Bold"
+                Foreground="White" Background="#AAA"
+                Grid.Column="1"
+                HorizontalAlignment="Right" VerticalAlignment="Top" 
+                Margin="10"
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                FocusVisualStyle="{x:Null}"/>
+    </Grid>
+</UserControl>

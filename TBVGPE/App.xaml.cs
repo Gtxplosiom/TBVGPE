@@ -18,23 +18,31 @@ namespace TBVGPE
 
             // xinput emulator instance
             // TODO: consider switching between input types like dualshock, or directinput
-            // if xinput do something about the double inputs
+            // if xinput do something about the double inputs, kun magkaada problema which i'm positive magkakaada
             Vigem = new VigemService();
 
             // gamepads list
             var virtualGamePadsCollection = new ObservableCollection<VirtualGamePads>
             {
                 new VirtualGamePads { Id = -1, Name = "Select a GamePad..." },
-                new VirtualGamePads { Id = 1, Name = "3DS" },
-                new VirtualGamePads { Id = 2, Name = "Switch" }
+                new VirtualGamePads { Id = 1, Name = "GBA" },
+                new VirtualGamePads { Id = 2, Name = "DS" },
+                new VirtualGamePads { Id = 3, Name = "Xbox360" },
+                new VirtualGamePads { Id = 4, Name = "3DS" },
+                new VirtualGamePads { Id = 5, Name = "PS4" },
+                new VirtualGamePads { Id = 6, Name = "Switch" }
             };
 
             // list of Controllers View Model Instances
             var controllerViewModels = new Dictionary<int, ViewModelBase>
             {
-                [1] = new ViewModels.Controllers._3DS._3DSControllerViewModel(),
-                [2] = new ViewModels.Controllers.Switch.SwitchControllerViewModel()
-                // Add future controller ViewModels here
+                [1] = new ViewModels.Controllers.GBAControllerViewModel(),
+                [2] = new ViewModels.Controllers.DSControllerViewModel(),
+                [3] = new ViewModels.Controllers.Xbox360ControllerViewModel(),
+                [4] = new ViewModels.Controllers._3DSControllerViewModel(),
+                [5] = new ViewModels.Controllers.PS4ControllerViewModel(),
+                [6] = new ViewModels.Controllers.SwitchControllerViewModel()
+                // Add an mga future controller ViewModels dinhi
             };
 
             // View Model Instances

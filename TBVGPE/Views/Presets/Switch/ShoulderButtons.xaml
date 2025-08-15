@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="LBtn"
-                Tag="LB"
+                Tag="L"
                 Width="100" Height="30"
                 Content="L"
                 FontSize="20" FontWeight="Bold"
@@ -28,7 +28,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="ZLBtn"
-                Tag="LT"
+                Tag="ZL"
                 Width="70" Height="30"
                 Content="ZL"
                 FontSize="20" FontWeight="Bold"
@@ -42,7 +42,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="RBtn"
-                Tag="RB"
+                Tag="R"
                 Width="100" Height="30"
                 Content="R"
                 FontSize="20" FontWeight="Bold"
@@ -56,7 +56,7 @@
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="ZRBtn"
-                Tag="RT"
+                Tag="ZR"
                 Width="70" Height="30"
                 Content="ZR"
                 FontSize="20" FontWeight="Bold"

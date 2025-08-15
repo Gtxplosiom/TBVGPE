@@ -34,7 +34,21 @@ namespace TBVGPE.Views.Presets.Switch
                 e.Handled = true;
             };
 
+            button.TouchEnter += (s, e) =>
+            {
+                App.Vigem.SetButtonState(directionalButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
             button.TouchUp += (s, e) =>
+            {
+                App.Vigem.SetButtonState(directionalButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.TouchLeave += (s, e) =>
             {
                 App.Vigem.SetButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;

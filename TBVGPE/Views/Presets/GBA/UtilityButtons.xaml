@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="TBVGPE.Views.Presets.GBA.UtilityButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TBVGPE.Views.Presets.GBA"
+             mc:Ignorable="d" 
+             d:DesignHeight="120" d:DesignWidth="50">
+    <Canvas Name="PadCanvas">
+        <!-- TODO: Put in stack panel -->
+        <Ellipse x:Name="StartBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" />
+        <Label Content="Start"
+               Width="50" Height="50"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="11" FontWeight="Bold"
+               Foreground="White"
+               Background="Transparent"
+               IsHitTestVisible="False"/>
+
+        <Ellipse x:Name="SelectBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Left="0" Canvas.Top="70" />
+        <Label Content="Select"
+               Width="50" Height="50"
+               Canvas.Left="0" Canvas.Top="70"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="11" FontWeight="Bold"
+               Foreground="White"
+               Background="Transparent"
+               IsHitTestVisible="False"/>
+    </Canvas>
+</UserControl>
