@@ -23,29 +23,29 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <_3DSComponents:CirclePad x:Name="CirclePadControl"
-                                      Width="180" Height="180"
-                                      HorizontalAlignment="Left" VerticalAlignment="Center"
-                                      Grid.Column="0"
-                                      Margin="50,0,0,160" />
-
             <_3DSComponents:DirectionalPad x:Name="DirectionalPadControl"
                                            Width="150" Height="150"
                                            HorizontalAlignment="Left" VerticalAlignment="Center"
                                            Grid.Column="0"
-                                           Margin="65,200,0,0" />
+                                           Margin="45,200,0,10" />
+
+            <_3DSComponents:CirclePad x:Name="CirclePadControl"
+                                      Width="180" Height="180"
+                                      HorizontalAlignment="Left" VerticalAlignment="Center"
+                                      Grid.Column="0"
+                                      Margin="30,0,0,160" />
 
             <_3DSComponents:FaceButtons x:Name="FaceButtonsControl"
                                         Width="200" Height="200"
                                         HorizontalAlignment="Right" VerticalAlignment="Center"
                                         Grid.Column="1"
-                                        Margin="0,0,50,50" />
+                                        Margin="0,0,30,50" />
 
             <_3DSComponents:UtilityButtons x:Name="UtilButtonsControl"
                                            Width="200" Height="50"
                                            HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                            Grid.Column="1"
-                                           Margin="0,0,50,0" />
+                                           Margin="0,0,30,0" />
         </Grid>
     </Grid>
 </UserControl>

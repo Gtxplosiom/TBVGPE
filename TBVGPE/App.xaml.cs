@@ -66,3 +66,4 @@ namespace TBVGPE
 }
 
 // TODO: implement ez two face buttons combination and dpad diagonals
+// TODO: implement config for custom user control positions and sizes

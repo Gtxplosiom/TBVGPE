@@ -27,23 +27,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <SwitchComponents:DirectionalButtons x:Name="DirectionalButtonsControl"
+                                                 Width="150" Height="150"
+                                                 HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                 Grid.Column="0"
+                                                 Margin="120,200,0,20" />
+
             <SwitchComponents:LeftStick x:Name="LeftStickControl"
                                         Width="180" Height="180"
                                         HorizontalAlignment="Left" VerticalAlignment="Center"
                                         Grid.Column="0"
                                         Margin="50,0,0,180" />
-
-            <SwitchComponents:DirectionalButtons x:Name="DirectionalButtonsControl"
-                                                 Width="150" Height="150"
-                                                 HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                 Grid.Column="0"
-                                                 Margin="120,200,0,10" />
-
-            <SwitchComponents:RightStick x:Name="RightStickControl"
-                                         Width="180" Height="180"
-                                         HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                         Grid.Column="1"
-                                         Margin="0,0,180,50" />
 
             <SwitchComponents:FaceButtons x:Name="FaceButtonsControl"
                                           Width="200" Height="200"
@@ -56,6 +50,12 @@
                                              HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                              Grid.Column="1"
                                              Margin="0,0,55,0" />
+
+            <SwitchComponents:RightStick x:Name="RightStickControl"
+                                         Width="180" Height="180"
+                                         HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                         Grid.Column="1"
+                                         Margin="0,0,180,50" />
         </Grid>
     </Grid>
 </UserControl>

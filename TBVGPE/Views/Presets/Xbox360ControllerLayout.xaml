@@ -28,23 +28,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Xbox360Components:LeftStick x:Name="LeftStickControl"
-                                         Width="180" Height="180"
-                                         HorizontalAlignment="Left" VerticalAlignment="Center"
-                                         Grid.Column="0"
-                                         Margin="50,0,0,180" />
-
             <Xbox360Components:DirectionalPad x:Name="DirectionalButtonsControl"
                                               Width="150" Height="150"
                                               HorizontalAlignment="Left" VerticalAlignment="Center"
                                               Grid.Column="0"
                                               Margin="120,200,0,10" />
 
-            <Xbox360Components:RightStick x:Name="RightStickControl"
-                                          Width="180" Height="180"
-                                          HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          Grid.Column="1"
-                                          Margin="0,0,180,40" />
+            <Xbox360Components:LeftStick x:Name="LeftStickControl"
+                             Width="180" Height="180"
+                             HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Grid.Column="0"
+                             Margin="50,0,0,180" />
 
             <Xbox360Components:FaceButtons x:Name="FaceButtonsControl"
                                            Width="200" Height="200"
@@ -57,6 +51,12 @@
                                               HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                               Grid.Column="1"
                                               Margin="0,0,10,0" />
+
+            <Xbox360Components:RightStick x:Name="RightStickControl"
+                                          Width="180" Height="180"
+                                          HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                          Grid.Column="1"
+                                          Margin="0,0,180,40" />
         </Grid>
     </Grid>
 </UserControl>

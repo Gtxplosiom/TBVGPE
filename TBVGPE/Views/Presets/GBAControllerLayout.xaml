@@ -33,13 +33,13 @@
                                           Width="70" Height="100"
                                           HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                           Grid.Column="0"
-                                          Margin="180,0,0,70" />
+                                          Margin="115,0,0,70" />
 
             <GBAComponents:FaceButtons x:Name="FaceButtonsControl"
                                        Width="135" Height="135"
                                        HorizontalAlignment="Right" VerticalAlignment="Center"
                                        Grid.Column="1"
-                                       Margin="0,0,70,100" />
+                                       Margin="0,0,50,100" />
         </Grid>
     </Grid>
 </UserControl>

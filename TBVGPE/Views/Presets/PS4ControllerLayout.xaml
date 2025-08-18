@@ -38,13 +38,7 @@
                                      Width="180" Height="180"
                                      HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                      Grid.Column="0"
-                                     Margin="180,0,0,40" />
-
-            <PS4Components:RightStick x:Name="RightStickControl"
-                                      Width="180" Height="180"
-                                      HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                      Grid.Column="1"
-                                      Margin="0,0,180,40" />
+                                     Margin="130,0,0,40" />
 
             <PS4Components:FaceButtons x:Name="FaceButtonsControl"
                                        Width="200" Height="200"
@@ -57,6 +51,12 @@
                                           HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                           Grid.Column="1"
                                           Margin="0,0,0,10" />
+
+            <PS4Components:RightStick x:Name="RightStickControl"
+                                      Width="180" Height="180"
+                                      HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                      Grid.Column="1"
+                                      Margin="0,0,180,40" />
         </Grid>
     </Grid>
 </UserControl>
