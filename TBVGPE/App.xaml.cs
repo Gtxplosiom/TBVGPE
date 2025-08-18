@@ -64,3 +64,5 @@ namespace TBVGPE
     }
 
 }
+
+// TODO: implement ez two face buttons combination and dpad diagonals
