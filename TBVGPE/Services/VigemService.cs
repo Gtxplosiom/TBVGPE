@@ -6,6 +6,9 @@ using Nefarius.ViGEm.Client.Targets.DualShock4;
 public class VigemService
 {
     private readonly ViGEmClient _client;
+
+    // TODO: make this configurable, so users can select if they will use ds4 or x360
+    // or both in their layouts.
     private readonly IXbox360Controller _xBox360Controller;
     private readonly IDualShock4Controller _dualShock4Controller;
 
