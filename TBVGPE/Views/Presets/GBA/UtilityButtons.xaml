@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="120" d:DesignWidth="50">
     <Canvas Name="PadCanvas">
+        <!-- Anti click through -->
+        <Rectangle Width="50" Height="120" RadiusX="25" RadiusY="25" Fill="#999" Opacity="0.1" />
+
         <!-- TODO: Put in stack panel -->
         <Ellipse x:Name="StartBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" />
         <Label Content="Start"

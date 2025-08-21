@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="135" d:DesignWidth="135">
     <Canvas Name="PadCanvas">
+        <!-- Anti click through -->
+        <Rectangle Width="135" Height="135" RadiusX="35" RadiusY="35" Fill="#999" Opacity="0.1" />
+        
         <Ellipse x:Name="BBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="0" Canvas.Top="65" />
         <Label Content="B"
                Width="70" Height="70"

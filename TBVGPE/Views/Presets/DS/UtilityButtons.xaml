@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="70">
     <Canvas Name="PadCanvas">
+        <!-- Anti click through -->
+        <Rectangle Width="50" Height="80" Margin="10" Fill="#999" Opacity="0.1" />
+
         <!-- TODO: Put in stack panel -->
         <Button x:Name="StartBtn"
                 Tag="Start"
@@ -14,11 +17,13 @@
                 Content="START"
                 FontSize="11" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
+                BorderThickness="0"
                 Canvas.Left="0"
                 Margin="10"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="SelectBtn"
@@ -27,11 +32,13 @@
                 Content="SELECT"
                 FontSize="11" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
+                BorderThickness="0"
                 Canvas.Top="50"
                 Margin="10"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"
                 FocusVisualStyle="{x:Null}"/>
     </Canvas>
 </UserControl>

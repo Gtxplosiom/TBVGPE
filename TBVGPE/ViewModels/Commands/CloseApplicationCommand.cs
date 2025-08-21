@@ -11,7 +11,17 @@ namespace TBVGPE.ViewModels.Commands
 
         public override void Execute(object? parameter)
         {
-            Application.Current.Shutdown();
+            MessageBoxResult option = MessageBox.Show("Do you want to close TBVGPE?", "Confirmation",
+                                                      MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (option != MessageBoxResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                Application.Current.Shutdown();
+            }   
         }
     }
 }

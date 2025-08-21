@@ -42,50 +42,73 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" /> <!-- para ma fill an rest na diri gagamit ngan ma anchor ha ubos an utility ngan controller -->
+            <RowDefinition Height="*" />
+            <!-- para ma fill an rest na diri gagamit ngan ma anchor ha ubos an utility ngan controller -->
             <RowDefinition Height="Auto"/>
             <!-- TODO: Make the row height below dynamic kay an controller layouts iba iba an heights -->
             <RowDefinition Height="540"/>
         </Grid.RowDefinitions>
 
+        <!-- Anti click through -->
+        <Rectangle Width="680" Height="40"
+                   Margin="0"
+                   HorizontalAlignment="Right"
+                   Fill="#DDD"
+                   RadiusX="10" RadiusY="10"
+                   Grid.Row="1"
+                   Visibility="{Binding UtilityMenuVisibility}"/>
+
         <StackPanel x:Name="UtilityButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
-            <Button 
-                x:Name="CloseApplicationBtn"
-                Content="Close Application" 
-                Command="{Binding CloseApplicationCommand}"
-                Width="120" Height="35"
-                FontSize="14" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                Margin="10,0,0,0"
-                Visibility="{Binding CloseAppToggleControllerSliderBtnVisibility}"/>
+            <Button x:Name="CloseApplicationBtn"
+                    Content="Close TBVGPE" 
+                    Command="{Binding CloseApplicationCommand}"
+                    Width="120" Height="35"
+                    FontSize="14" FontWeight="Bold"
+                    Foreground="White" Background="Red"
+                    BorderThickness="0"
+                    Visibility="{Binding UtilityMenuVisibility}"/>
 
-            <Button 
-                x:Name="ToggleControllerBtn"
-                Content="{Binding ToggleControllerText}" 
-                Command="{Binding ToggleControllerCommand}"
-                Width="120" Height="35"
-                FontSize="14" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                Margin="10,0,0,0"
-                Visibility="{Binding CloseAppToggleControllerSliderBtnVisibility}"/>
+            <Button x:Name="CloseCurrentAppBtn"
+                    Content="Close Current App" 
+                    Command="{Binding CloseCurrentAppCommand}"
+                    Width="130" Height="35"
+                    FontSize="14" FontWeight="Bold"
+                    Foreground="White" Background="Red"
+                    BorderThickness="0"
+                    Margin="10,0,0,0"
+                    Visibility="{Binding UtilityMenuVisibility}"/>
 
-            <Slider
-                x:Name="ControllerTransparencySlider"
-                Minimum="0.0"
-                Maximum="1.0"
-                Value="{Binding ControllerTransparency}"
-                Width="120" Height="35"
-                Margin="10,0,0,0"
-                Visibility="{Binding CloseAppToggleControllerSliderBtnVisibility}"/>
+            <Line X1="0" Y1="0" X2="0" Y2="30"
+                  Stroke="Black" StrokeThickness="2"
+                  VerticalAlignment="Center"
+                  Margin="10,0,0,0" />
 
-            <Button 
-                x:Name="toggleMenuBtn"
-                Content="{Binding ToggleMenuText}" 
-                Command="{Binding ToggleMenuCommand}"
-                Width="120" Height="35"
-                FontSize="14" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                Margin="10,0,0,0"/>
+            <Button x:Name="ToggleControllerBtn"
+                    Content="{Binding ToggleControllerText}" 
+                    Command="{Binding ToggleControllerCommand}"
+                    Width="120" Height="35"
+                    FontSize="14" FontWeight="Bold"
+                    Foreground="Black" Background="LightGreen"
+                    BorderThickness="0"
+                    Margin="10,0,0,0"
+                    Visibility="{Binding UtilityMenuVisibility}"/>
+
+            <Slider x:Name="ControllerTransparencySlider"
+                    Minimum="0.0"
+                    Maximum="1.0"
+                    Value="{Binding ControllerTransparency}"
+                    Width="120" Height="35"
+                    Margin="10,0,0,0"
+                    Visibility="{Binding UtilityMenuVisibility}"/>
+
+            <Button x:Name="toggleMenuBtn"
+                    Content="{Binding ToggleMenuText}" 
+                    Command="{Binding ToggleMenuCommand}"
+                    Width="120" Height="35"
+                    FontSize="14" FontWeight="Bold"
+                    Foreground="Black" Background="LightGreen"
+                    BorderThickness="0"
+                    Margin="10,0,0,0"/>
         </StackPanel>
 
         <!-- margin is 100 para umigbaw ngan diri mag overlap ha taskbar -->

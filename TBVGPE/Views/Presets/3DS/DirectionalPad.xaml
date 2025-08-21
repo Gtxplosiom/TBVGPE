@@ -58,28 +58,53 @@
                    Canvas.Left="50" Canvas.Top="50"
                    IsHitTestVisible="False"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="0" Canvas.Top="0"
-                   IsHitTestVisible="False"/>
+        <!-- Diagonals -->
+        <Button x:Name="UpLeftBtn"
+                Tag="UpLeft"
+                Width="50" Height="50"
+                Background="#333"
+                BorderThickness="0"
+                Opacity="0.3"
+                Canvas.Left="0" Canvas.Top="0"
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="100" Canvas.Top="0"
-                   IsHitTestVisible="False"/>
+        <Button x:Name="UpRightBtn"
+                Tag="UpRight"
+                Width="50" Height="50"
+                Background="#333"
+                BorderThickness="0"
+                Opacity="0.3"
+                Canvas.Left="100" Canvas.Top="0"
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="0" Canvas.Top="100"
-                   IsHitTestVisible="False"/>
+        <Button x:Name="DownLeftBtn"
+                Tag="DownLeft"
+                Width="50" Height="50"
+                Background="#333"
+                BorderThickness="0"
+                Opacity="0.3"
+                Canvas.Left="0" Canvas.Top="100"
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="100" Canvas.Top="100"
-                   IsHitTestVisible="False"/>
+        <Button x:Name="DownRightBtn"
+                Tag="DownRight"
+                Width="50" Height="50"
+                Background="#333"
+                BorderThickness="0"
+                Opacity="0.3"
+                Canvas.Left="100" Canvas.Top="100"
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
     </Canvas>
 </UserControl>

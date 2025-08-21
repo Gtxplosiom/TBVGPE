@@ -28,13 +28,13 @@ namespace TBVGPE.ViewModels.Commands
                 if (menuBar.VisibilityState == Visibility.Visible)
                 {
                     menuBar.VisibilityState = Visibility.Collapsed;
-                    _mainWindowViewModel.CloseAppToggleControllerSliderBtnVisibility = Visibility.Collapsed;
+                    _mainWindowViewModel.UtilityMenuVisibility = Visibility.Collapsed;
                     _mainWindowViewModel.ToggleMenuText = "Show Menu";
                 }
                 else
                 {
                     menuBar.VisibilityState = Visibility.Visible;
-                    _mainWindowViewModel.CloseAppToggleControllerSliderBtnVisibility = Visibility.Visible;
+                    _mainWindowViewModel.UtilityMenuVisibility = Visibility.Visible;
                     _mainWindowViewModel.ToggleMenuText = "Hide Menu";
                 }
             });

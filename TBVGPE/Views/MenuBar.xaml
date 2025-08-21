@@ -5,19 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE.Views"
         mc:Ignorable="d"
-        Title="MenuBar" Height="40"
+        Title="MenuBar" 
+        Height="30"
         WindowStartupLocation="Manual"
         Left="0" Top="0"
         Visibility="{Binding VisibilityState}"
         WindowStyle="None"
         AllowsTransparency="True"
+        ShowInTaskbar="False"
         Topmost="True">
-    <Grid>
-        <ComboBox 
-            ItemsSource="{Binding VirtualGamePadsCollection}" 
-            DisplayMemberPath="Name" 
-            SelectedValuePath="Id" 
-            SelectedItem="{Binding SelectedVirtualGamePad, Mode=TwoWay}" 
-            Margin="10" />
+    <Grid Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Choose a Controller:" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Left"
+               Foreground="White" Background="#AAA"
+               FontSize="14" 
+               BorderBrush="#555"
+               BorderThickness="1"
+               Grid.Column="0"/>
+
+        <ComboBox ItemsSource="{Binding VirtualGamePadsCollection}" 
+                  DisplayMemberPath="Name" 
+                  SelectedValuePath="Id"
+                  SelectedItem="{Binding SelectedVirtualGamePad, Mode=TwoWay}"
+                  Height="30"
+                  BorderThickness="1"
+                  Grid.Column="1"/>
     </Grid>
 </Window>

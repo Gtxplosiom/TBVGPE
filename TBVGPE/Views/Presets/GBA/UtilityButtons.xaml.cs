@@ -38,6 +38,20 @@ namespace TBVGPE.Views.Presets.GBA
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
+
+            button.TouchLeave += (s, e) =>
+            {
+                App.Vigem.Set360ButtonState(utilityButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.TouchEnter += (s, e) =>
+            {
+                App.Vigem.Set360ButtonState(utilityButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
         }
     }
 }

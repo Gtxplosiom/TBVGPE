@@ -45,6 +45,16 @@ namespace TBVGPE.Views.Presets._3DS
             }
         }
 
+        private void Button_TouchEnter(object sender, TouchEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is string tag)
+            {
+                ApplyControllerInput(tag, false);
+                btn.Background = _pressedButtonBackground;
+                e.Handled = true;
+            }
+        }
+
         private void ApplyControllerInput(string tag, bool isPressed)
         {
             switch (tag)

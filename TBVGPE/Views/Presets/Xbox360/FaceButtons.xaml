@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200">
     <Canvas Name="PadCanvas">
+        <!-- Anti click through -->
+        <Ellipse Width="200" Height="200"  Fill="#999" Opacity="0.1" />
+        
         <Ellipse x:Name="YBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" />
         <Label Content="Y"
                Width="70" Height="70"

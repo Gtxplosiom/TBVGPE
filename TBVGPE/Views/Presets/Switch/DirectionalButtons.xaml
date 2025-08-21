@@ -9,7 +9,13 @@
     <Canvas Name="PadCanvas">
         <!-- Background Filler -->
         <Ellipse Width="150" Height="150"  Fill="#999" Opacity="0.1" />
-        
+
+        <!-- Diagonals -->
+        <Ellipse x:Name="UpLeftBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="20" Canvas.Top="80" />
+        <Ellipse x:Name="DownLeftBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="20" Canvas.Top="20" />
+        <Ellipse x:Name="DownRightBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="80" Canvas.Top="80" />
+        <Ellipse x:Name="UpRightBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="80" Canvas.Top="20" />
+
         <Ellipse x:Name="UpBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Left="50" />
         <Label Content="▲"
                Width="50" Height="50"

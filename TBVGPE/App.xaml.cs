@@ -8,12 +8,18 @@ namespace TBVGPE
 {
     public partial class App : Application
     {
+        // para pag prevent multiple instances of the app to be opened
+        private static Mutex? _mutex;
+        private const string AppGuid = "TBVGPE";    // pwede pa balyuon kung gusto unique gud an identifier, pero yana oks na gad ada ini
+
         // static property to para ig-hold an vigemservice class instance
         // para kun ma hold na, ma tatawag ini hiya via App.Vigem.... chuchu
         public static VigemService Vigem { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            CheckDuplicateAppInstance();
+
             base.OnStartup(e);
 
             // xinput emulator instance
@@ -60,6 +66,18 @@ namespace TBVGPE
                 DataContext = mainWindowViewModel
             };
             mainWindow.Show();
+        }
+
+        private void CheckDuplicateAppInstance()
+        {
+            _mutex = new Mutex(true, "Global\\" + AppGuid, out bool newInstance);
+
+            if (!newInstance)
+            {
+                MessageBox.Show("Another instance of the TBVGPE is already running. Closing...", "Another TBVGPE Instance Is Already Running", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Current.Shutdown();
+                return;
+            }
         }
     }
 

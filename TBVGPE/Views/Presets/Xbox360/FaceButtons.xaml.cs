@@ -47,6 +47,13 @@ namespace TBVGPE.Views.Presets.Xbox360
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
+
+            button.TouchEnter += (s, e) =>
+            {
+                App.Vigem.Set360ButtonState(faceButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
         }
     }
 }

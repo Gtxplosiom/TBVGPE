@@ -13,18 +13,24 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!-- Anti click through -->
+        <Rectangle Width="100" Height="70" HorizontalAlignment="Left" Margin="10" Fill="#999" Opacity="0.1" Grid.Column="0" />
+        <Rectangle Width="100" Height="70" HorizontalAlignment="Right" Margin="10" Fill="#999" Opacity="0.1" Grid.Column="1" />
+
         <Button x:Name="LBBtn"
                 Tag="LB"
                 Width="100" Height="30"
                 Content="LB"
                 FontSize="20" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
+                BorderThickness="0"
                 Grid.Column="0"
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
                 Margin="10"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="LTBtn"
@@ -33,12 +39,14 @@
                 Content="LT"
                 FontSize="20" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
+                BorderThickness="0"
                 Grid.Column="0"
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 Margin="10,50,0,0"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="RBBtn"
@@ -47,12 +55,14 @@
                 Content="RB"
                 FontSize="20" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
+                BorderThickness="0"
                 Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Top" 
                 Margin="10"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"
                 FocusVisualStyle="{x:Null}"/>
 
         <Button x:Name="RTBtn"
@@ -61,12 +71,14 @@
                 Content="RT"
                 FontSize="20" FontWeight="Bold"
                 Foreground="White" Background="#AAA"
+                BorderThickness="0"
                 Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Top"
                 Margin="0,50,10,0"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"
                 FocusVisualStyle="{x:Null}"/>
     </Grid>
 </UserControl>

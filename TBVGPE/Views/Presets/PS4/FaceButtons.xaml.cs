@@ -47,6 +47,13 @@ namespace TBVGPE.Views.Presets.PS4
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
+
+            button.TouchEnter += (s, e) =>
+            {
+                App.Vigem.SetDS4ButtonState(faceButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
         }
     }
 }

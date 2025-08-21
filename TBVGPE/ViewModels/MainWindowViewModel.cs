@@ -23,6 +23,7 @@ namespace TBVGPE.ViewModels
         // implement this
         public ICommand ToggleMenuCommand { get; set; }
         public ICommand ToggleControllerCommand { get; set; }
+        public ICommand CloseCurrentAppCommand { get; set; }
         public ICommand CloseApplicationCommand { get; set; }
 
         // current controller id
@@ -37,6 +38,7 @@ namespace TBVGPE.ViewModels
 
             ToggleMenuCommand = new ToggleMenuCommand(_menuBarViewModel, this);
             ToggleControllerCommand = new ToggleControllerCommand(this);
+            CloseCurrentAppCommand = new CloseCurrentAppCommand();
             CloseApplicationCommand = new CloseApplicationCommand();
 
             ShowMenuBar();
@@ -96,7 +98,7 @@ namespace TBVGPE.ViewModels
             }
         }
 
-        public Visibility CloseAppToggleControllerSliderBtnVisibility
+        public Visibility UtilityMenuVisibility
         {
             get => _closeAppBtnVisibility;
             set
@@ -104,7 +106,7 @@ namespace TBVGPE.ViewModels
                 if (_closeAppBtnVisibility != value)
                 {
                     _closeAppBtnVisibility = value;
-                    OnPropertyChanged(nameof(CloseAppToggleControllerSliderBtnVisibility));
+                    OnPropertyChanged(nameof(UtilityMenuVisibility));
                 }
             }
         }

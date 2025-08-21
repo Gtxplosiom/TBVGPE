@@ -12,6 +12,7 @@
                 Tag="North"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Left="50"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
@@ -22,6 +23,7 @@
                 Tag="West"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Top="50"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
@@ -32,6 +34,7 @@
                 Tag="South"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Left="50" Canvas.Top="100"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
@@ -42,61 +45,67 @@
                 Tag="East"
                 Width="50" Height="50"
                 Background="#AAA"
+                BorderThickness="0"
                 Canvas.Left="100" Canvas.Top="50"
                 PreviewTouchDown="Button_PreviewTouchDown"
                 PreviewTouchUp="Button_PreviewTouchUp"
                 TouchLeave="Button_TouchLeave"
                 TouchEnter="Button_TouchEnter"/>
 
-        <!-- Diagonals -->
+        <!-- Center Filler -->
         <Rectangle Width="50" Height="50"
                    Fill="#333"
                    Opacity="0.3"
                    Canvas.Left="50" Canvas.Top="50"
                    IsHitTestVisible="False"/>
 
+        <!-- Diagonals -->
         <Button x:Name="NorthWestBtn"
                 Tag="Northwest"
                 Width="50" Height="50"
                 Background="#333"
+                BorderThickness="0"
                 Opacity="0.3"
                 Canvas.Left="0" Canvas.Top="0"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"/>
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
 
         <Button x:Name="NorthEastBtn"
                 Tag="Northeast"
                 Width="50" Height="50"
                 Background="#333"
+                BorderThickness="0"
                 Opacity="0.3"
                 Canvas.Left="100" Canvas.Top="0"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"/>
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
 
         <Button x:Name="SouthWestBtn"
                 Tag="Southwest"
                 Width="50" Height="50"
                 Background="#333"
+                BorderThickness="0"
                 Opacity="0.3"
                 Canvas.Left="0" Canvas.Top="100"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"/>
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
 
         <Button x:Name="SouthEastBtn"
                 Tag="Southeast"
                 Width="50" Height="50"
                 Background="#333"
+                BorderThickness="0"
                 Opacity="0.3"
                 Canvas.Left="100" Canvas.Top="100"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"/>
+                PreviewTouchDown="DiagButton_PreviewTouchDown"
+                PreviewTouchUp="DiagButton_PreviewTouchUp"
+                TouchLeave="DiagButton_TouchLeave"
+                TouchEnter="DiagButton_TouchEnter"/>
     </Canvas>
 </UserControl>
