@@ -49,7 +49,7 @@ namespace TBVGPE.Views.Presets.Switch
         {
             if (sender is Button btn && btn.Tag is string tag)
             {
-                ApplyControllerInput(tag, false);
+                ApplyControllerInput(tag, true);
                 btn.Background = _pressedButtonBackground;
                 e.Handled = true;
             }

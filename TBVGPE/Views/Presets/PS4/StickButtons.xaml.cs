@@ -69,7 +69,7 @@ namespace TBVGPE.Views.Presets.PS4
         {
             if (sender is Button btn && btn.Tag is string tag)
             {
-                ApplyControllerInput(tag, false);
+                ApplyControllerInput(tag, true);
                 btn.Background = _pressedButtonBackground;
                 e.Handled = true;
             }
