@@ -50,19 +50,13 @@
         </Grid.RowDefinitions>
 
         <!-- Anti click through -->
-        <Rectangle Width="680" Height="40"
-                   Margin="0"
-                   HorizontalAlignment="Right"
-                   Fill="#DDD"
-                   RadiusX="10" RadiusY="10"
-                   Grid.Row="1"
-                   Visibility="{Binding UtilityMenuVisibility}"/>
+        
 
-        <StackPanel x:Name="UtilityButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
+        <StackPanel x:Name="UtilityButtons" Background="#DDD" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
             <Button x:Name="CloseApplicationBtn"
                     Content="Close TBVGPE" 
                     Command="{Binding CloseApplicationCommand}"
-                    Width="120" Height="35"
+                    Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
                     Foreground="White" Background="Red"
                     BorderThickness="0"
@@ -71,7 +65,7 @@
             <Button x:Name="CloseCurrentAppBtn"
                     Content="Close Current App" 
                     Command="{Binding CloseCurrentAppCommand}"
-                    Width="130" Height="35"
+                    Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
                     Foreground="White" Background="Red"
                     BorderThickness="0"
@@ -81,14 +75,15 @@
             <Line X1="0" Y1="0" X2="0" Y2="30"
                   Stroke="Black" StrokeThickness="2"
                   VerticalAlignment="Center"
-                  Margin="10,0,0,0" />
+                  Margin="10,0,0,0"
+                  Visibility="{Binding UtilityMenuVisibility}"/>
 
             <Button x:Name="ToggleControllerBtn"
                     Content="{Binding ToggleControllerText}" 
                     Command="{Binding ToggleControllerCommand}"
-                    Width="120" Height="35"
+                    Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
-                    Foreground="Black" Background="LightGreen"
+                    Foreground="Black" Background="Cyan"
                     BorderThickness="0"
                     Margin="10,0,0,0"
                     Visibility="{Binding UtilityMenuVisibility}"/>
@@ -104,7 +99,7 @@
             <Button x:Name="toggleMenuBtn"
                     Content="{Binding ToggleMenuText}" 
                     Command="{Binding ToggleMenuCommand}"
-                    Width="120" Height="35"
+                    Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
                     Foreground="Black" Background="LightGreen"
                     BorderThickness="0"

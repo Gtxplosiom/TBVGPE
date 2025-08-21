@@ -14,7 +14,7 @@ namespace TBVGPE.ViewModels
         private ViewModelBase? _currentControllerViewModel;
 
         private string _toggleMenuText = "Hide Menu";
-        private string _toggleControllerText = "Hide Controls";
+        private string _toggleControllerText = "Hide Controller";
         private float _controllerTransparency = 1.0f;
 
         private Visibility _closeAppBtnVisibility = Visibility.Visible;

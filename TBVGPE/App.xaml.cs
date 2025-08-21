@@ -74,7 +74,7 @@ namespace TBVGPE
 
             if (!newInstance)
             {
-                MessageBox.Show("Another instance of the TBVGPE is already running. Closing...", "Another TBVGPE Instance Is Already Running", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Another instance of TBVGPE is already running.", "Cannot Open TBVGPE", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Current.Shutdown();
                 return;
             }
@@ -83,5 +83,4 @@ namespace TBVGPE
 
 }
 
-// TODO: implement ez two face buttons combination and dpad diagonals
 // TODO: implement config for custom user control positions and sizes

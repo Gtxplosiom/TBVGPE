@@ -29,7 +29,7 @@ namespace TBVGPE.ViewModels.Commands
                 {
                     menuBar.VisibilityState = Visibility.Collapsed;
                     _mainWindowViewModel.UtilityMenuVisibility = Visibility.Collapsed;
-                    _mainWindowViewModel.ToggleMenuText = "Show Menu";
+                    _mainWindowViewModel.ToggleMenuText = "Show";
                 }
                 else
                 {
@@ -41,3 +41,8 @@ namespace TBVGPE.ViewModels.Commands
         }
     }
 }
+
+// Consider an idea na kun naka hide aadto anay ha system tray, ngan kailangan la ig click an icon didto para mag appear utro an menu
+// pero an problem what if kun may controller nga active, ngan an menu la an na ha hide hassle kun an menu kailangan na mag appear 
+// magkikinadto pa taskbar
+// or magconsider pa mga idea basta diri la makaksalipod an toggle button, bawal ada an nagbabalhin balhin ngan na transparent kay di macliclick hahhahaha

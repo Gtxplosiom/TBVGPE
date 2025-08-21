@@ -23,12 +23,12 @@ namespace TBVGPE.ViewModels.Commands
                 if (_mainWindowViewModel.ControllerVisibility == Visibility.Visible)
                 {
                     _mainWindowViewModel.ControllerVisibility = Visibility.Collapsed;
-                    _mainWindowViewModel.ToggleControllerText = "Show Controls";
+                    _mainWindowViewModel.ToggleControllerText = "Show Controller";
                 }
                 else
                 {
                     _mainWindowViewModel.ControllerVisibility = Visibility.Visible;
-                    _mainWindowViewModel.ToggleControllerText = "Hide Controls";
+                    _mainWindowViewModel.ToggleControllerText = "Hide Controller";
                 }
             });
         }
