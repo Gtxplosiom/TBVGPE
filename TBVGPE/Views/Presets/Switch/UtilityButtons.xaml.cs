@@ -50,13 +50,13 @@ namespace TBVGPE.Views.Presets.Switch
             switch (tag)
             {
                 case "Plus":
-                    App.Vigem.SetButtonState(Xbox360Button.Start, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.Start, isPressed);
                     break;
                 case "Minus":
-                    App.Vigem.SetButtonState(Xbox360Button.Back, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.Back, isPressed);
                     break;
                 case "Home":
-                    App.Vigem.SetButtonState(Xbox360Button.Guide, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.Guide, isPressed);
                     break;
                 // no capture button, yet
             }

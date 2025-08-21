@@ -8,8 +8,8 @@
              d:DesignHeight="150" d:DesignWidth="150">
 
     <Canvas Name="PadCanvas">
-        <Button x:Name="UpBtn"
-                Tag="Up"
+        <Button x:Name="NorthBtn"
+                Tag="North"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="50"
@@ -18,8 +18,8 @@
                 TouchLeave="Button_TouchLeave"
                 TouchEnter="Button_TouchEnter"/>
 
-        <Button x:Name="LeftBtn"
-                Tag="Left"
+        <Button x:Name="WestBtn"
+                Tag="West"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Top="50"
@@ -28,8 +28,8 @@
                 TouchLeave="Button_TouchLeave"
                 TouchEnter="Button_TouchEnter"/>
 
-        <Button x:Name="DownBtn"
-                Tag="Down"
+        <Button x:Name="SouthBtn"
+                Tag="South"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="50" Canvas.Top="100"
@@ -38,8 +38,8 @@
                 TouchLeave="Button_TouchLeave"
                 TouchEnter="Button_TouchEnter"/>
 
-        <Button x:Name="RightBtn"
-                Tag="Right"
+        <Button x:Name="EastBtn"
+                Tag="East"
                 Width="50" Height="50"
                 Background="#AAA"
                 Canvas.Left="100" Canvas.Top="50"
@@ -48,35 +48,55 @@
                 TouchLeave="Button_TouchLeave"
                 TouchEnter="Button_TouchEnter"/>
 
-        <!-- Filler la ini -->
+        <!-- Diagonals -->
         <Rectangle Width="50" Height="50"
                    Fill="#333"
                    Opacity="0.3"
                    Canvas.Left="50" Canvas.Top="50"
                    IsHitTestVisible="False"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="0" Canvas.Top="0"
-                   IsHitTestVisible="False"/>
+        <Button x:Name="NorthWestBtn"
+                Tag="Northwest"
+                Width="50" Height="50"
+                Background="#333"
+                Opacity="0.3"
+                Canvas.Left="0" Canvas.Top="0"
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="100" Canvas.Top="0"
-                   IsHitTestVisible="False"/>
+        <Button x:Name="NorthEastBtn"
+                Tag="Northeast"
+                Width="50" Height="50"
+                Background="#333"
+                Opacity="0.3"
+                Canvas.Left="100" Canvas.Top="0"
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="0" Canvas.Top="100"
-                   IsHitTestVisible="False"/>
+        <Button x:Name="SouthWestBtn"
+                Tag="Southwest"
+                Width="50" Height="50"
+                Background="#333"
+                Opacity="0.3"
+                Canvas.Left="0" Canvas.Top="100"
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"/>
 
-        <Rectangle Width="50" Height="50"
-                   Fill="#333"
-                   Opacity="0.3"
-                   Canvas.Left="100" Canvas.Top="100"
-                   IsHitTestVisible="False"/>
+        <Button x:Name="SouthEastBtn"
+                Tag="Southeast"
+                Width="50" Height="50"
+                Background="#333"
+                Opacity="0.3"
+                Canvas.Left="100" Canvas.Top="100"
+                PreviewTouchDown="Button_PreviewTouchDown"
+                PreviewTouchUp="Button_PreviewTouchUp"
+                TouchLeave="Button_TouchLeave"
+                TouchEnter="Button_TouchEnter"/>
     </Canvas>
 </UserControl>

@@ -29,28 +29,28 @@ namespace TBVGPE.Views.Presets.Switch
         {
             button.TouchDown += (s, e) =>
             {
-                App.Vigem.SetButtonState(directionalButtons, true);
+                App.Vigem.Set360ButtonState(directionalButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
 
             button.TouchEnter += (s, e) =>
             {
-                App.Vigem.SetButtonState(directionalButtons, true);
+                App.Vigem.Set360ButtonState(directionalButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
 
             button.TouchUp += (s, e) =>
             {
-                App.Vigem.SetButtonState(directionalButtons, false);
+                App.Vigem.Set360ButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
 
             button.TouchLeave += (s, e) =>
             {
-                App.Vigem.SetButtonState(directionalButtons, false);
+                App.Vigem.Set360ButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };

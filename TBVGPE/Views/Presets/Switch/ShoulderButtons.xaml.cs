@@ -67,16 +67,16 @@ namespace TBVGPE.Views.Presets.Switch
             switch (tag)
             {
                 case "L":
-                    App.Vigem.SetButtonState(Xbox360Button.LeftShoulder, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.LeftShoulder, isPressed);
                     break;
                 case "R":
-                    App.Vigem.SetButtonState(Xbox360Button.RightShoulder, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.RightShoulder, isPressed);
                     break;
                 case "ZL":
-                    App.Vigem.SetTriggerValue(Xbox360Slider.LeftTrigger, isPressed ? (byte)255 : (byte)0);
+                    App.Vigem.Set360TriggerValue(Xbox360Slider.LeftTrigger, isPressed ? (byte)255 : (byte)0);
                     break;
                 case "ZR":
-                    App.Vigem.SetTriggerValue(Xbox360Slider.RightTrigger, isPressed ? (byte)255 : (byte)0);
+                    App.Vigem.Set360TriggerValue(Xbox360Slider.RightTrigger, isPressed ? (byte)255 : (byte)0);
                     break;
             }
         }

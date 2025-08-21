@@ -70,10 +70,10 @@ namespace TBVGPE.Views.Presets.DS
             switch (tag)
             {
                 case "LB":
-                    App.Vigem.SetButtonState(Xbox360Button.LeftShoulder, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.LeftShoulder, isPressed);
                     break;
                 case "RB":
-                    App.Vigem.SetButtonState(Xbox360Button.RightShoulder, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.RightShoulder, isPressed);
                     break;
             }
         }

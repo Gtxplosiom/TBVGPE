@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Nefarius.ViGEm.Client.Targets.Xbox360;
+using Nefarius.ViGEm.Client.Targets.DualShock4;
 
 namespace TBVGPE.Views.Presets.PS4
 {
@@ -50,13 +50,13 @@ namespace TBVGPE.Views.Presets.PS4
             switch (tag)
             {
                 case "Options":
-                    App.Vigem.SetButtonState(Xbox360Button.Start, isPressed);
+                    App.Vigem.SetDS4ButtonState(DualShock4Button.Options, isPressed);
                     break;
                 case "Share":
-                    App.Vigem.SetButtonState(Xbox360Button.Back, isPressed);
+                    App.Vigem.SetDS4ButtonState(DualShock4Button.Share, isPressed);
                     break;
-                case "Home":
-                    App.Vigem.SetButtonState(Xbox360Button.Guide, isPressed);
+                case "Ps":
+                    App.Vigem.SetDS4ButtonState(DualShock4SpecialButton.Ps, isPressed);
                     break;
             }
         }

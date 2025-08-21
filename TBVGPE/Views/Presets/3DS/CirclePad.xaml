@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TBVGPE.Views.Presets._3DS"
+             xmlns:local="cc:\gtxplosion\tbvgpe\tbvgpe\views\presets\3ds\circlepad.xaml.cs
+c:\gtxplosion\tbvgpe\tbvgpe\views\presets\3ds\circlepad.xaml
+lr-namespace:TBVGPE.Views.Presets._3DS"
              mc:Ignorable="d" 
              d:DesignHeight="180" d:DesignWidth="180"
              Background="Transparent">

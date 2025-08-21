@@ -33,8 +33,8 @@
                 TouchLeave="Button_TouchLeave"
                 FocusVisualStyle="{x:Null}"/>
 
-        <Button x:Name="HomeBtn"
-                Tag="Home"
+        <Button x:Name="PsBtn"
+                Tag="Ps"
                 Width="50" Height="30"
                 Content="PS"
                 FontSize="15" FontWeight="Bold"

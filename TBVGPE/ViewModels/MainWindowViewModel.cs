@@ -25,6 +25,9 @@ namespace TBVGPE.ViewModels
         public ICommand ToggleControllerCommand { get; set; }
         public ICommand CloseApplicationCommand { get; set; }
 
+        // current controller id
+        private int _selectedId;
+
         public MainWindowViewModel(MenuBarViewModel menuBarViewModel, Dictionary<int, ViewModelBase> controllerViewModels)
         {
             _menuBarViewModel = menuBarViewModel;
@@ -131,25 +134,31 @@ namespace TBVGPE.ViewModels
         private void UpdateCurrentController()
         {
             // Get the ID of the selected gamepad
-            var selectedId = _menuBarViewModel.SelectedVirtualGamePad?.Id ?? -1;
+            _selectedId = _menuBarViewModel.SelectedVirtualGamePad?.Id ?? -1;
 
             // Look up the corresponding ViewModel in our dictionary
-            if (_controllerViewModels.TryGetValue(selectedId, out var controllerVM))
+            if (_controllerViewModels.TryGetValue(_selectedId, out var controllerVM))
             {
                 // an layout na magiging visible ay an layout nga naka attach or connected to the viewmodel
                 // na naka attach via datatemplate, which is set ha ubos na line, ha currentcontrollerviewmodel property
                 CurrentControllerViewModel = controllerVM;
 
                 // "connect" the controller, kun may na select ha virtualgamepad list
-                App.Vigem.ActivateController();
+                if (_selectedId == 5)
+                {
+                    App.Vigem.ConnectController("DualShock4");
+                }
+                else
+                {
+                    App.Vigem.ConnectController("Xbox360");
+                }
             }
             else
             {
                 // If nothing is selected or found, show nothing
                 CurrentControllerViewModel = null;
 
-                // "disconnect" the controller, kun waray na select
-                App.Vigem.DeactivateController();
+                App.Vigem.DisconnectController();
             }
         }
 

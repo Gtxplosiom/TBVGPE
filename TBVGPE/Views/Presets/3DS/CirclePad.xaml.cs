@@ -80,7 +80,7 @@ namespace TBVGPE.Views.Presets._3DS
             _yValue = offset.Y / extendedRadius;
 
             // send to Vigem (y reversed)
-            App.Vigem.SetLeftStick(_xValue, _yValue * -1);
+            App.Vigem.Set360LeftStick(_xValue, _yValue * -1);
 
             // update thumb position
             Canvas.SetLeft(Thumb, _center.X + offset.X - (Thumb.Width / 2));
@@ -97,7 +97,7 @@ namespace TBVGPE.Views.Presets._3DS
             // reset axes values
             _xValue = 0.0;
             _yValue = 0.0;
-            App.Vigem.SetLeftStick(_xValue, _yValue);
+            App.Vigem.Set360LeftStick(_xValue, _yValue);
 
             ResetThumbPosition();
 

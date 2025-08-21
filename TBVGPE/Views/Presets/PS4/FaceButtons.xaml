@@ -29,7 +29,7 @@
                Background="Transparent"
                IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-        <Ellipse x:Name="XBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" Canvas.Top="130" />
+        <Ellipse x:Name="CrossBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" Canvas.Top="130" />
         <Label Content="X"
                Width="70" Height="70"
                Canvas.Left="65" Canvas.Top="130"

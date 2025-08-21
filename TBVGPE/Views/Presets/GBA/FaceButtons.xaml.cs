@@ -27,21 +27,21 @@ namespace TBVGPE.Views.Presets.GBA
         {
             button.TouchDown += (s, e) =>
             {
-                App.Vigem.SetButtonState(faceButtons, true);
+                App.Vigem.Set360ButtonState(faceButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
 
             button.TouchUp += (s, e) =>
             {
-                App.Vigem.SetButtonState(faceButtons, false);
+                App.Vigem.Set360ButtonState(faceButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
 
             button.TouchLeave += (s, e) =>
             {
-                App.Vigem.SetButtonState(faceButtons, false);
+                App.Vigem.Set360ButtonState(faceButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };

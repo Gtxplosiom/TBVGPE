@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Nefarius.ViGEm.Client.Targets.Xbox360;
+using Nefarius.ViGEm.Client.Targets.DualShock4;
 
 namespace TBVGPE.Views.Presets.PS4
 {
@@ -19,31 +19,31 @@ namespace TBVGPE.Views.Presets.PS4
 
         private void FaceButtons_Loaded(object sender, RoutedEventArgs e)
         {
-            AttachTouchHandlers(TriangleBtn, Xbox360Button.Y);
-            AttachTouchHandlers(SquareBtn, Xbox360Button.X);
-            AttachTouchHandlers(CircleBtn, Xbox360Button.B);
-            AttachTouchHandlers(XBtn, Xbox360Button.A);
+            AttachTouchHandlers(TriangleBtn, DualShock4Button.Triangle);
+            AttachTouchHandlers(SquareBtn, DualShock4Button.Square);
+            AttachTouchHandlers(CircleBtn, DualShock4Button.Circle);
+            AttachTouchHandlers(CrossBtn, DualShock4Button.Cross);
         }
 
-        private void AttachTouchHandlers(Ellipse button, Xbox360Button faceButtons)
+        private void AttachTouchHandlers(Ellipse button, DualShock4Button faceButtons)
         {
             button.TouchDown += (s, e) =>
             {
-                App.Vigem.SetButtonState(faceButtons, true);
+                App.Vigem.SetDS4ButtonState(faceButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
 
             button.TouchUp += (s, e) =>
             {
-                App.Vigem.SetButtonState(faceButtons, false);
+                App.Vigem.SetDS4ButtonState(faceButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
 
             button.TouchLeave += (s, e) =>
             {
-                App.Vigem.SetButtonState(faceButtons, false);
+                App.Vigem.SetDS4ButtonState(faceButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };

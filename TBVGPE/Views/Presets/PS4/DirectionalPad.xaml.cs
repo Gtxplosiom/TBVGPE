@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Nefarius.ViGEm.Client.Targets.Xbox360;
+using Nefarius.ViGEm.Client.Targets.DualShock4;
 
 namespace TBVGPE.Views.Presets.PS4
 {
@@ -57,19 +57,37 @@ namespace TBVGPE.Views.Presets.PS4
 
         private void ApplyControllerInput(string tag, bool isPressed)
         {
+            if (!isPressed)
+            {
+                App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.None);
+                return;
+            }
+
             switch (tag)
             {
-                case "Up":
-                    App.Vigem.SetButtonState(Xbox360Button.Up, isPressed);
+                case "North":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.North);
                     break;
-                case "Left":
-                    App.Vigem.SetButtonState(Xbox360Button.Left, isPressed);
+                case "Northwest":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.Northwest);
                     break;
-                case "Down":
-                    App.Vigem.SetButtonState(Xbox360Button.Down, isPressed);
+                case "West":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.West);
                     break;
-                case "Right":
-                    App.Vigem.SetButtonState(Xbox360Button.Right, isPressed);
+                case "Southwest":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.Southwest);
+                    break;
+                case "South":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.South);
+                    break;
+                case "Southeast":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.Southeast);
+                    break;
+                case "East":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.East);
+                    break;
+                case "Northeast":
+                    App.Vigem.SetDS4DPadDirection(DualShock4DPadDirection.Northeast);
                     break;
             }
         }

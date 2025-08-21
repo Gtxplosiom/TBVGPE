@@ -50,13 +50,13 @@ namespace TBVGPE.Views.Presets._3DS
             switch (tag)
             {
                 case "Start":
-                    App.Vigem.SetButtonState(Xbox360Button.Start, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.Start, isPressed);
                     break;
                 case "Select":
-                    App.Vigem.SetButtonState(Xbox360Button.Back, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.Back, isPressed);
                     break;
                 case "Home":
-                    App.Vigem.SetButtonState(Xbox360Button.Guide, isPressed);
+                    App.Vigem.Set360ButtonState(Xbox360Button.Guide, isPressed);
                     break;
             }
         }

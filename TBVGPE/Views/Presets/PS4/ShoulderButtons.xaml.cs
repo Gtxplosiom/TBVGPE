@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Nefarius.ViGEm.Client.Targets.Xbox360;
+using Nefarius.ViGEm.Client.Targets.DualShock4;
 
 namespace TBVGPE.Views.Presets.PS4
 {
@@ -67,16 +67,16 @@ namespace TBVGPE.Views.Presets.PS4
             switch (tag)
             {
                 case "L1":
-                    App.Vigem.SetButtonState(Xbox360Button.LeftShoulder, isPressed);
+                    App.Vigem.SetDS4ButtonState(DualShock4Button.ShoulderLeft, isPressed);
                     break;
                 case "R1":
-                    App.Vigem.SetButtonState(Xbox360Button.RightShoulder, isPressed);
+                    App.Vigem.SetDS4ButtonState(DualShock4Button.ShoulderRight, isPressed);
                     break;
                 case "L2":
-                    App.Vigem.SetTriggerValue(Xbox360Slider.LeftTrigger, isPressed ? (byte)255 : (byte)0);
+                    App.Vigem.SetDS4TriggerValue(DualShock4Slider.LeftTrigger, isPressed ? (byte)255 : (byte)0);
                     break;
                 case "R2":
-                    App.Vigem.SetTriggerValue(Xbox360Slider.RightTrigger, isPressed ? (byte)255 : (byte)0);
+                    App.Vigem.SetDS4TriggerValue(DualShock4Slider.RightTrigger, isPressed ? (byte)255 : (byte)0);
                     break;
             }
         }
