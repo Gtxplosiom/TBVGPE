@@ -148,7 +148,9 @@ namespace TBVGPE.ViewModels
                 // "connect" the controller, kun may na select ha virtualgamepad list
                 if (_selectedId == 5)
                 {
-                    App.Vigem.ConnectController("DualShock4");
+                    //App.Vigem.ConnectController("DualShock4");
+                    // updating connection logic
+                    App.Vigem.ConnectController("Xbox360");
                 }
                 else
                 {

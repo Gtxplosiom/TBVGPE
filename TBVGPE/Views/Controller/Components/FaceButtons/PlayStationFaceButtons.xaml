@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="TBVGPE.Views.Controller.Components.FaceButtons.PlayStationFaceButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TBVGPE.Views.Controller.Components.FaceButtons"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Canvas Name="PadCanvas">
+        <!-- Anti click through -->
+        <Rectangle Width="200" Height="200" Fill="#EEEE" Opacity="0.1" />
+        
+        <Ellipse x:Name="TriangleBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" />
+        <Label Content="△"
+               Width="70" Height="70"
+               Canvas.Left="65"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="40"
+               Foreground="Cyan"
+               Background="Transparent"
+               IsHitTestVisible="False" HorizontalAlignment="Center" Canvas.Top="-5" VerticalAlignment="Top"/>
+
+        <Ellipse x:Name="SquareBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Top="65" />
+        <Label Content="□"
+               Width="70" Height="85"
+               Canvas.Top="48"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="55"
+               Foreground="Pink"
+               Background="Transparent"
+               IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <Ellipse x:Name="CrossBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" Canvas.Top="130" />
+        <Label Content="X"
+               Width="70" Height="70"
+               Canvas.Left="65" Canvas.Top="130"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="40"
+               Foreground="DodgerBlue"
+               Background="Transparent"
+               IsHitTestVisible="False"/>
+
+        <Ellipse x:Name="CircleBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="130" Canvas.Top="65" />
+        <Label Content="○"
+               Width="70" Height="70"
+               Canvas.Left="130" Canvas.Top="63"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="40"
+               Foreground="Red"
+               Background="Transparent"
+               IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <!-- Combinations -->
+        <Ellipse x:Name="TrianglePlusSquareBtn" Width="60" Height="60" Fill="#333" Opacity="0.0"/>
+        <TextBlock x:Name="TrianglePlusSquareTxt"
+                   Width="60" Height="60"
+                   Canvas.Left="5" Canvas.Top="15"
+                   FontSize="18" FontWeight="Bold"
+                   Background="Transparent"
+                   Opacity="0.0"
+                   IsHitTestVisible="False">
+                   <Run Text="△" Foreground="Cyan"/>
+                   <Run Text="+" Foreground="Lavender"/>
+                   <Run Text="□" Foreground="Pink"/>
+        </TextBlock>
+
+        <Ellipse x:Name="SquarePlusCrossBtn" Width="60" Height="60" Fill="#333" Opacity="0.0" Canvas.Top="140"/>
+        <TextBlock x:Name="SquarePlusCrossTxt"
+                   Width="60" Height="60"
+                   Canvas.Left="5" Canvas.Top="155"
+                   FontSize="18" FontWeight="Bold"
+                   Background="Transparent"
+                   Opacity="0.0"
+                   IsHitTestVisible="False">
+                   <Run Text="□" Foreground="Pink"/>
+                   <Run Text="+" Foreground="MediumPurple"/>
+                   <Run Text="X" Foreground="DodgerBlue"/>
+        </TextBlock>
+
+        <Ellipse x:Name="CrossPlusCircleBtn" Width="60" Height="60" Fill="#333" Opacity="0.0" Canvas.Left="140" Canvas.Top="140"/>
+        <TextBlock x:Name="CrossPlusCircleTxt"
+                   Width="60" Height="60"
+                   Canvas.Left="145" Canvas.Top="155"
+                   FontSize="18" FontWeight="Bold"
+                   Background="Transparent"
+                   Opacity="0.0"
+                   IsHitTestVisible="False">
+                   <Run Text="X" Foreground="DodgerBlue"/>
+                   <Run Text="+" Foreground="Purple"/>
+                   <Run Text="○" Foreground="Red"/>
+        </TextBlock>
+
+        <Ellipse x:Name="CirclePlusTriangleBtn" Width="60" Height="60" Fill="#333" Opacity="0.0" Canvas.Left="140"/>
+        <TextBlock x:Name="CirclePlusTriangleTxt"
+                   Width="60" Height="60"
+                   Canvas.Left="145" Canvas.Top="15"
+                   FontSize="18" FontWeight="Bold"
+                   Background="Transparent"
+                   Opacity="0.0"
+                   IsHitTestVisible="False">
+                   <Run Text="○" Foreground="Red"/>
+                   <Run Text="+" Foreground="Gray"/>
+                   <Run Text="△" Foreground="Cyan"/>
+        </TextBlock>
+    </Canvas>
+</UserControl>

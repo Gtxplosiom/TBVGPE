@@ -21,93 +21,64 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Presets\DS\DirectionalPad.xaml.cs">
+    <Compile Update="Views\Controller\Components\UtilityButtons\DSUtilityButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\DS\FaceButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\DirectionalButtons\StandardDirectionalButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\DS\ShoulderButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\FaceButtons\GBAFaceButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\DS\UtilityButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\ShoulderButtons\StandardShoulderButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\GBA\DirectionalPad.xaml.cs">
+    <Compile Update="Views\Controller\Components\UtilityButtons\GBAUtilityButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\GBA\FaceButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\FaceButtons\PlayStationFaceButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\GBA\ShoulderButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\ShoulderButtons\PlayStationShoulderButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\GBA\UtilityButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\StickButtons\StandardStickButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\PS4\DirectionalPad.xaml.cs">
+    <Compile Update="Views\Controller\Components\UtilityButtons\PS4UtilityButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\PS4\FaceButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\DirectionalButtons\SwitchDirectionalButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\PS4\LeftStick.xaml.cs">
+    <Compile Update="Views\Controller\Components\FaceButtons\NintendoNewFaceButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\PS4\RightStick.xaml.cs">
+    <Compile Update="Views\Controller\Components\AnalogSticks\RightAnalogStick.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\PS4\ShoulderButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\AnalogSticks\LeftAnalogStick.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\PS4\StickButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\ShoulderButtons\NintendoShoulderButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\PS4\UtilityButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\UtilityButtons\SwitchUtilityButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\Switch\DirectionalButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\FaceButtons\XboxFaceButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\Switch\FaceButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\ShoulderButtons\XboxShoulderButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\Switch\RightStick.xaml.cs">
+    <Compile Update="Views\Controller\Components\UtilityButtons\Xbox360UtilityButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Presets\Switch\LeftStick.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Switch\StickButtons.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Switch\ShoulderButtons.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Switch\UtilityButtons.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Xbox360\DirectionalPad.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Xbox360\FaceButtons.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Xbox360\LeftStick.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Xbox360\RightStick.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Xbox360\ShoulderButtons.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Xbox360\StickButtons.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Presets\Xbox360\UtilityButtons.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Controller\Components\Others\" />
   </ItemGroup>
 
 </Project>
