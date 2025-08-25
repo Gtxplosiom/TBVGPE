@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
+using TBVGPE.ViewModels;
 
 namespace TBVGPE
 {
@@ -26,6 +27,8 @@ namespace TBVGPE
 
             this.Width = _screenDimentions.X;
             this.Height = _screenDimentions.Y;
+
+            this.Loaded += MainWindow_Loaded;
         }
 
         protected override void OnSourceInitialized(EventArgs e)
@@ -38,6 +41,16 @@ namespace TBVGPE
             // Get the current extended window style and add the WS_EX_NOACTIVATE flag
             int exStyle = GetWindowLong(helper.Handle, GWL_EXSTYLE);
             SetWindowLong(helper.Handle, GWL_EXSTYLE, exStyle | WS_EX_NOACTIVATE);
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Check if the DataContext is our ViewModel
+            if (DataContext is MainWindowViewModel mainWindowViewModel)
+            {
+                // Now that the window is loaded, run the update check
+                await mainWindowViewModel.RunUpdateChecker();
+            }
         }
     }
 }

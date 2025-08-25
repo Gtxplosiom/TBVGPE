@@ -18,9 +18,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <Label Content="Choose a Controller:" 
+               Width="Auto" Height="30"
                VerticalAlignment="Center" 
                HorizontalAlignment="Left"
                Foreground="White" Background="#AAA"
@@ -36,5 +39,23 @@
                   Height="30"
                   BorderThickness="1"
                   Grid.Column="1"/>
+
+        <Button Content="&lt;+ Add Custom Layout"
+                Width="Auto" Height="30"
+                Foreground="White" Background="#999"
+                FontSize="14"
+                BorderBrush="#555"
+                BorderThickness="1"
+                Command="{Binding OpenCustomLayoutCreatorCommand}"
+                Grid.Column="2" />
+
+        <Button Content="Update TBVGPE"
+                Width="Auto" Height="30"
+                Foreground="White" Background="#BBB"
+                FontSize="14"
+                BorderBrush="#555"
+                BorderThickness="1"
+                Command="{Binding OpenUpdaterCommand}"
+                Grid.Column="3" />
     </Grid>
 </Window>

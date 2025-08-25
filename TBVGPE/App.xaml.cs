@@ -1,6 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows;
 using TBVGPE.Models;
+using TBVGPE.Services;
 using TBVGPE.ViewModels;
 using TBVGPE.Views;
 
@@ -14,7 +18,17 @@ namespace TBVGPE
 
         // static property to para ig-hold an vigemservice class instance
         // para kun ma hold na, ma tatawag ini hiya via App.Vigem.... chuchu
-        public static VigemService Vigem { get; private set; }
+        // aparrently kailangan maging static
+        public static VigemService? Vigem { get; private set; }
+
+        // expose ko lat ini na duha para ma easily accessed by other classes espacially the updates shits classe
+        public static string? PackageJson { get; set; }
+        public static string? CurrentVersion { get; set; }
+
+        public static string? UpdateVersion { get; set; }
+        public static string? UpdateLink { get; set; }
+
+        private readonly string _jsonPath = Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)!,"package.json");
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -26,6 +40,12 @@ namespace TBVGPE
             // TODO: consider switching between input types like dualshock, or directinput
             // if xinput do something about the double inputs, kun magkaada problema which i'm positive magkakaada
             Vigem = new VigemService();
+
+            // set this shits as well
+            PackageJson = _jsonPath;
+            CurrentVersion = GetVersion();
+            UpdateVersion = "";
+            UpdateLink = "";
 
             // gamepads list
             var virtualGamePadsCollection = new ObservableCollection<VirtualGamePads>
@@ -78,6 +98,35 @@ namespace TBVGPE
                 Current.Shutdown();
                 return;
             }
+        }
+
+        public string? GetVersion()
+        {
+            if (!File.Exists(PackageJson))
+            {
+                Console.WriteLine($"Error: The file at path '{PackageJson}' was not found.");
+                return null;
+            }
+
+            try
+            {
+                string jsonString = File.ReadAllText(PackageJson);
+
+                var packageInfo = JsonSerializer.Deserialize<PackageInfo>(jsonString);
+
+                return packageInfo?.CurrentVersion;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while reading the JSON file: {ex.Message}");
+                return null;
+            }
+        }
+
+        public class PackageInfo
+        {
+            [JsonPropertyName("appversion")]
+            public string? CurrentVersion { get; set; }
         }
     }
 

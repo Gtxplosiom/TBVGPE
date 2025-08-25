@@ -1,7 +1,10 @@
-﻿using System.ComponentModel;
+﻿using NuGet.Versioning;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using TBVGPE.Services;
 using TBVGPE.ViewModels.Commands;
+using TBVGPE.Views;
 
 namespace TBVGPE.ViewModels
 {
@@ -45,6 +48,31 @@ namespace TBVGPE.ViewModels
             _controllerViewModels = controllerViewModels;
 
             UpdateCurrentController();
+        }
+
+        public async Task RunUpdateChecker()
+        {
+            // run updater
+            var updateService = new UpdateService();
+            var result = await updateService.CheckForUpdateAsync();
+            var updaterWindow = new UpdaterWindow(result.version.ToString(), result.downloadLink.ToString());
+
+            if (result != (null, null))
+            {
+                // kun may result ig set para ma pasa ha open updater window, kay an updater window kailangan
+                // ito na arguments apra contructor, para pag click han update button mapakita kun may available na update
+                App.UpdateVersion = result.version.ToString();
+                App.UpdateLink = result.downloadLink.ToString();
+
+                // check kun updated
+                if (App.UpdateVersion.CompareTo(App.CurrentVersion) > 0)
+                {
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        updaterWindow.Show();
+                    });
+                }
+            }
         }
 
         // Properties

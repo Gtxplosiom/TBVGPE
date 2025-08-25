@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Input;
 using TBVGPE.Models;
+using TBVGPE.ViewModels.Commands;
 
 namespace TBVGPE.ViewModels
 {
@@ -11,6 +13,8 @@ namespace TBVGPE.ViewModels
         private VirtualGamePads? _selectedVirtualGamepad;
         private Visibility _visibilityState = Visibility.Collapsed;
 
+        public ICommand OpenUpdaterCommand { get; set; }
+
         public MenuBarViewModel(ObservableCollection<VirtualGamePads>? virtualGamePadsCollection)
         {
             if (virtualGamePadsCollection == null) return;
@@ -18,6 +22,8 @@ namespace TBVGPE.ViewModels
             VirtualGamePadsCollection = virtualGamePadsCollection;
 
             SelectedVirtualGamePad = VirtualGamePadsCollection[0];
+
+            OpenUpdaterCommand = new OpenUpdaterCommand();
         }
 
         public VirtualGamePads SelectedVirtualGamePad

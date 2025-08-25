@@ -1,0 +1,62 @@
+﻿<Window x:Class="TBVGPE.Views.UpdaterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TBVGPE.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        Topmost="True"
+        Title="UpdaterWindow" Height="250" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Content="Updater"
+               FontSize="20" FontWeight="Bold"
+               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               Margin="10"
+               Grid.Row="0"/>
+
+        <TextBlock x:Name="ResultText"
+                   Text=""
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Margin="10"
+                   Grid.Row="1"/>
+
+        <Button Content="Check for Update"
+                Width="100" Height="25"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Margin="10"
+                Click="CheckUpdate"
+                Grid.Row="2"/>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="UpdateBtn"
+                    Content="Update"
+                    Width="50" Height="25"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="10"
+                    Click="Update"
+                    Grid.Column="0"/>
+            
+            <Button Content="Close"
+                    Width="50" Height="25"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="10"
+                    Click="Close"
+                    Grid.Column="1"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -2,7 +2,7 @@
 
 namespace TBVGPE.ViewModels.Commands
 {
-    class ToggleControllerCommand : CommandBase
+    public class ToggleControllerCommand : CommandBase
     {
         private readonly MainWindowViewModel? _mainWindowViewModel;
 
