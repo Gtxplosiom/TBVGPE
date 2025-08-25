@@ -50,7 +50,7 @@
     <Compile Update="Views\Controller\Components\ShoulderButtons\PlayStationShoulderButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Controller\Components\StickButtons\StandardStickButtons.xaml.cs">
+    <Compile Update="Views\Controller\Components\AnalogStickButtons\StandardAnalogStickButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Controller\Components\UtilityButtons\PS4UtilityButtons.xaml.cs">

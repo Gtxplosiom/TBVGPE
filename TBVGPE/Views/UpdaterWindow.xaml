@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:TBVGPE.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        ShowInTaskbar="False"
         Topmost="True"
-        Title="UpdaterWindow" Height="250" Width="250">
+        Title="TBVGPE Updater" Height="250" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

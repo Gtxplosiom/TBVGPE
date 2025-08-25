@@ -2,7 +2,7 @@
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
+using System.Windows.Shapes;
 using System.Windows.Media;
 using Nefarius.ViGEm.Client.Targets.Xbox360;
 
@@ -11,15 +11,15 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
     public partial class NintendoShoulderButtons : UserControl
     {
         private Vector2 _screenDimensions;
-        private readonly SolidColorBrush _defaultButtonBackground = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA));
-        private readonly SolidColorBrush _pressedButtonBackground = new SolidColorBrush(Colors.DarkGray);
+        private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA));
+        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray);
 
         public NintendoShoulderButtons()
         {
             InitializeComponent();
-
             UpdateDimensions();
             SystemEvents.DisplaySettingsChanged += OnDisplaySettingsChanged;
+            Loaded += ShoulderButtons_Loaded;
         }
 
         private void OnDisplaySettingsChanged(object? sender, EventArgs e) => UpdateDimensions();
@@ -32,63 +32,75 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             this.Width = _screenDimensions.X;
         }
 
-        private void Button_PreviewTouchDown(object sender, TouchEventArgs e)
+        private void ShoulderButtons_Loaded(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.Tag is string tag)
-            {
-                ApplyControllerInput(tag, true);
-                btn.Background = _pressedButtonBackground;
-                e.Handled = true;
-            }
+            AttachTouchHandlers(LBtn, Xbox360Button.LeftShoulder);
+            AttachTouchHandlers(RBtn, Xbox360Button.RightShoulder);
+
+            AttachTriggerHandlers(ZLBtn, Xbox360Slider.LeftTrigger);
+            AttachTriggerHandlers(ZRBtn, Xbox360Slider.RightTrigger);
         }
 
-        private void Button_PreviewTouchUp(object sender, TouchEventArgs e)
+        private void AttachTouchHandlers(Rectangle button, Xbox360Button shoulderButtons)
         {
-            if (sender is Button btn && btn.Tag is string tag)
+            button.TouchDown += (s, e) =>
             {
-                ApplyControllerInput(tag, false);
-                btn.Background = _defaultButtonBackground;
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                button.Fill = _pressedButtonFill;
                 e.Handled = true;
-            }
+            };
+
+            button.TouchUp += (s, e) =>
+            {
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.TouchLeave += (s, e) =>
+            {
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.TouchEnter += (s, e) =>
+            {
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
         }
 
-        private void Button_TouchLeave(object sender, TouchEventArgs e)
+        private void AttachTriggerHandlers(Rectangle button, Xbox360Slider shoulderButtons)
         {
-            if (sender is Button btn && btn.Tag is string tag)
+            button.TouchDown += (s, e) =>
             {
-                ApplyControllerInput(tag, false);
-                btn.Background = _defaultButtonBackground;
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
+                button.Fill = _pressedButtonFill;
                 e.Handled = true;
-            }
-        }
+            };
 
-        private void Button_TouchEnter(object sender, TouchEventArgs e)
-        {
-            if (sender is Button btn && btn.Tag is string tag)
+            button.TouchUp += (s, e) =>
             {
-                ApplyControllerInput(tag, true);
-                btn.Background = _pressedButtonBackground;
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
+                button.Fill = _defaultButtonFill;
                 e.Handled = true;
-            }
-        }
+            };
 
-        private void ApplyControllerInput(string tag, bool isPressed)
-        {
-            switch (tag)
+            button.TouchLeave += (s, e) =>
             {
-                case "L":
-                    App.Vigem.Set360ButtonState(Xbox360Button.LeftShoulder, isPressed);
-                    break;
-                case "R":
-                    App.Vigem.Set360ButtonState(Xbox360Button.RightShoulder, isPressed);
-                    break;
-                case "ZL":
-                    App.Vigem.Set360TriggerValue(Xbox360Slider.LeftTrigger, isPressed ? (byte)255 : (byte)0);
-                    break;
-                case "ZR":
-                    App.Vigem.Set360TriggerValue(Xbox360Slider.RightTrigger, isPressed ? (byte)255 : (byte)0);
-                    break;
-            }
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.TouchEnter += (s, e) =>
+            {
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
         }
     }
 }

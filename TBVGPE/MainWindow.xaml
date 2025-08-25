@@ -46,11 +46,10 @@
             <!-- para ma fill an rest na diri gagamit ngan ma anchor ha ubos an utility ngan controller -->
             <RowDefinition Height="Auto"/>
             <!-- TODO: Make the row height below dynamic kay an controller layouts iba iba an heights -->
-            <RowDefinition Height="540"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Anti click through -->
-        
 
         <StackPanel x:Name="UtilityButtons" Background="#DDD" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
             <Button x:Name="CloseApplicationBtn"
@@ -110,9 +109,9 @@
         <!-- Dapat an height hini dynamic lat kay amo ini an controller placeholder/container -->
         <ContentControl Grid.Row="2"
                         Content="{Binding CurrentControllerViewModel}"
-                        Height="500"
+                        Height="Auto"
                         VerticalAlignment="Bottom"
-                        Margin="0,0,0,40"
+                        Margin="0,0,0,50"
                         Visibility="{Binding ControllerVisibility}"
                         Opacity="{Binding ControllerTransparency}"/>
     </Grid>

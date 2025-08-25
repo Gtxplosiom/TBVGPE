@@ -8,10 +8,10 @@
              xmlns:DirectionalButtons="clr-namespace:TBVGPE.Views.Controller.Components.DirectionalButtons"
              xmlns:FaceButtons="clr-namespace:TBVGPE.Views.Controller.Components.FaceButtons"
              xmlns:ShoulderButtons="clr-namespace:TBVGPE.Views.Controller.Components.ShoulderButtons"
-             xmlns:StickButtons="clr-namespace:TBVGPE.Views.Controller.Components.StickButtons"
+             xmlns:AnalogStickButtons="clr-namespace:TBVGPE.Views.Controller.Components.AnalogStickButtons"
              xmlns:UtilityButtons="clr-namespace:TBVGPE.Views.Controller.Components.UtilityButtons"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,7 +23,7 @@
                        HorizontalAlignment="Center" VerticalAlignment="Top" />
 
         <Grid Grid.Row="1">
-            <StickButtons:StandardStickButtons x:Name="StandardStickButtonsControl"
+            <AnalogStickButtons:StandardAnalogStickButtons x:Name="StandardAnalogStickButtonsControl"
                HorizontalAlignment="Center" VerticalAlignment="Top" />
         </Grid>
 
@@ -33,35 +33,55 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <DirectionalButtons:StandardDirectionalButtons x:Name="StandardDirectionalButtonsControl"
-                                              Width="150" Height="150"
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <DirectionalButtons:StandardDirectionalButtons x:Name="StandardDirectionalButtonsControl"
+                                                               Width="150" Height="150"
+                                                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                               Grid.Row="1"
+                                                               Margin="150,0,0,40" />
+
+                <AnalogSticks:LeftAnalogStick x:Name="LeftAnalogStickControl"
+                                              Width="180" Height="180"
                                               HorizontalAlignment="Left" VerticalAlignment="Center"
                                               Grid.Column="0"
-                                              Margin="120,200,0,10" />
+                                              Margin="50,20,20,20" />
+            </Grid>
 
-            <AnalogSticks:LeftAnalogStick x:Name="LeftAnalogStickControl"
-                             Width="180" Height="180"
-                             HorizontalAlignment="Left" VerticalAlignment="Center"
-                             Grid.Column="0"
-                             Margin="50,0,0,180" />
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <FaceButtons:XboxFaceButtons x:Name="XboxFaceButtonsControl"
-                                           Width="200" Height="200"
-                                           HorizontalAlignment="Right" VerticalAlignment="Center"
-                                           Grid.Column="1"
-                                           Margin="0,0,10,130" />
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-            <UtilityButtons:Xbox360UtilityButtons x:Name="Xbox360UtilityButtonsControl"
-                                              Width="200" Height="50"
-                                              HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                              Grid.Column="1"
-                                              Margin="0,0,10,0" />
+                    <FaceButtons:XboxFaceButtons x:Name="XboxFaceButtonsControl"
+                                                 Width="200" Height="200"
+                                                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                 Grid.Row="0"
+                                                 Margin="0,10,10,130" />
 
-            <AnalogSticks:RightAnalogStick x:Name="RightAnalogStickControl"
-                                          Width="180" Height="180"
-                                          HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                          Grid.Column="1"
-                                          Margin="0,0,180,40" />
+                    <UtilityButtons:Xbox360UtilityButtons x:Name="Xbox360UtilityButtonsControl"
+                                                          Width="200" Height="50"
+                                                          HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                          Grid.Row="1"
+                                                          Margin="0,0,0,40" />
+                </Grid>
+
+                <AnalogSticks:RightAnalogStick x:Name="RightAnalogStickControl"
+                                               Width="180" Height="180"
+                                               HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                               Margin="0,0,0,40" />
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

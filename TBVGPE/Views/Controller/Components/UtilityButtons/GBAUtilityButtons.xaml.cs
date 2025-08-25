@@ -9,7 +9,7 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
     public partial class GBAUtilityButtons : UserControl
     {
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)); // #333 with 0.5 opacity
-        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.DarkGray);
+        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray);
 
         public GBAUtilityButtons()
         {

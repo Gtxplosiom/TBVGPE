@@ -134,3 +134,4 @@ namespace TBVGPE
 
 // TODO: implement config for custom user control positions and sizes
 // TODO: Add completely custom layouts
+// TODO: cleanup code in updater, cause that is a mess wth

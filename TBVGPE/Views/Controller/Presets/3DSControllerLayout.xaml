@@ -7,19 +7,18 @@
              xmlns:DirectionalButtons="clr-namespace:TBVGPE.Views.Controller.Components.DirectionalButtons"
              xmlns:FaceButtons="clr-namespace:TBVGPE.Views.Controller.Components.FaceButtons"
              xmlns:ShoulderButtons="clr-namespace:TBVGPE.Views.Controller.Components.ShoulderButtons"
-             xmlns:StickButtons="clr-namespace:TBVGPE.Views.Controller.Components.StickButtons"
              xmlns:UtilityButtons="clr-namespace:TBVGPE.Views.Controller.Components.UtilityButtons"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- refer ha margins para dynamic positions han each controls -->
         <ShoulderButtons:NintendoShoulderButtons x:Name="NintendoShoulderButtonsControl"
-                                        Height="90"
+                                        Height="Auto"
                                         HorizontalAlignment="Center" VerticalAlignment="Top" />
 
         <Grid Grid.Row="1">
@@ -28,29 +27,43 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <DirectionalButtons:StandardDirectionalButtons x:Name="StandardDirectionalButtonsControl"
-                                           Width="150" Height="150"
-                                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                                           Grid.Column="0"
-                                           Margin="45,200,0,10" />
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <DirectionalButtons:StandardDirectionalButtons x:Name="StandardDirectionalButtonsControl"
+                               Width="180" Height="180"
+                               HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               Grid.Row="1"
+                               Margin="45,10,10,10" />
 
-            <AnalogSticks:LeftAnalogStick x:Name="LeftAnalogStickControl"
-                                      Width="180" Height="180"
-                                      HorizontalAlignment="Left" VerticalAlignment="Center"
-                                      Grid.Column="0"
-                                      Margin="30,0,0,160" />
+                <AnalogSticks:LeftAnalogStick x:Name="LeftAnalogStickControl"
+                          Width="180" Height="180"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          Grid.Row="0"
+                          Margin="45,30,30,30" />
+            </Grid>
 
-            <FaceButtons:NintendoNewFaceButtons x:Name="NintendoNewFaceButtonsControl"
-                                        Width="200" Height="200"
-                                        HorizontalAlignment="Right" VerticalAlignment="Center"
-                                        Grid.Column="1"
-                                        Margin="0,0,30,50" />
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <UtilityButtons:_3DSUtilityButtons x:Name="_3DSUtilityButtonsControl"
-                                           Width="200" Height="50"
-                                           HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                           Grid.Column="1"
-                                           Margin="0,0,30,0" />
+                <FaceButtons:NintendoNewFaceButtons x:Name="NintendoNewFaceButtonsControl"
+                            Width="200" Height="200"
+                            HorizontalAlignment="Right" VerticalAlignment="Center"
+                            Grid.Row="0"
+                            Margin="50" />
+
+                <UtilityButtons:_3DSUtilityButtons x:Name="_3DSUtilityButtonsControl"
+                               Width="200" Height="50"
+                               HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                               Grid.Row="1"
+                               Margin="50" />
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

@@ -1,74 +1,58 @@
-﻿using System.Windows.Controls;
-using System.Windows.Input;
+﻿using Nefarius.ViGEm.Client.Targets.Xbox360;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Shapes;
 using System.Windows.Media;
-using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace TBVGPE.Views.Controller.Components.UtilityButtons
 {
     public partial class _3DSUtilityButtons : UserControl
     {
-        private readonly SolidColorBrush _defaultButtonBackground = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA)); // #AAA
-        private readonly SolidColorBrush _pressedButtonBackground = new SolidColorBrush(Colors.DarkGray);
+        private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA)); // #AAA
+        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray);
 
         public _3DSUtilityButtons()
         {
             InitializeComponent();
+            Loaded += UtilityButtons_Loaded;
         }
 
-        private void Button_PreviewTouchDown(object sender, TouchEventArgs e)
+        private void UtilityButtons_Loaded(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.Tag is string tag)
+            AttachTouchHandlers(SelectBtn, Xbox360Button.Back);
+            AttachTouchHandlers(HomeBtn, Xbox360Button.Guide);
+            AttachTouchHandlers(StartBtn, Xbox360Button.Start);
+        }
+
+        private void AttachTouchHandlers(Rectangle button, Xbox360Button utilityButtons)
+        {
+            button.TouchDown += (s, e) =>
             {
-                ApplyControllerInput(tag, true);
-                btn.Background = _pressedButtonBackground;
+                App.Vigem.Set360ButtonState(utilityButtons, true);
+                button.Fill = _pressedButtonFill;
                 e.Handled = true;
-            }
-        }
+            };
 
-        private void Button_PreviewTouchUp(object sender, TouchEventArgs e)
-        {
-            if (sender is Button btn && btn.Tag is string tag)
+            button.TouchUp += (s, e) =>
             {
-                ApplyControllerInput(tag, false);
-                btn.Background = _defaultButtonBackground;
+                App.Vigem.Set360ButtonState(utilityButtons, false);
+                button.Fill = _defaultButtonFill;
                 e.Handled = true;
-            }
-        }
+            };
 
-        private void Button_TouchLeave(object sender, TouchEventArgs e)
-        {
-            if (sender is Button btn && btn.Tag is string tag)
+            button.TouchLeave += (s, e) =>
             {
-                ApplyControllerInput(tag, false);
-                btn.Background = _defaultButtonBackground;
+                App.Vigem.Set360ButtonState(utilityButtons, false);
+                button.Fill = _defaultButtonFill;
                 e.Handled = true;
-            }
-        }
+            };
 
-        private void Button_TouchEnter(object sender, TouchEventArgs e)
-        {
-            if (sender is Button btn && btn.Tag is string tag)
+            button.TouchEnter += (s, e) =>
             {
-                ApplyControllerInput(tag, true);
-                btn.Background = _pressedButtonBackground;
+                App.Vigem.Set360ButtonState(utilityButtons, true);
+                button.Fill = _pressedButtonFill;
                 e.Handled = true;
-            }
-        }
-
-        private void ApplyControllerInput(string tag, bool isPressed)
-        {
-            switch (tag)
-            {
-                case "Start":
-                    App.Vigem.Set360ButtonState(Xbox360Button.Start, isPressed);
-                    break;
-                case "Select":
-                    App.Vigem.Set360ButtonState(Xbox360Button.Back, isPressed);
-                    break;
-                case "Home":
-                    App.Vigem.Set360ButtonState(Xbox360Button.Guide, isPressed);
-                    break;
-            }
+            };
         }
     }
 }

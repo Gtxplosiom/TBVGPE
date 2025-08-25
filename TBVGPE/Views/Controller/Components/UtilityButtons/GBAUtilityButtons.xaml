@@ -5,25 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TBVGPE.Views.Controller.Components.UtilityButtons"
              mc:Ignorable="d" 
-             d:DesignHeight="120" d:DesignWidth="50">
+             d:DesignHeight="130" d:DesignWidth="70">
     <Canvas Name="PadCanvas">
         <!-- Anti click through -->
-        <Rectangle Width="50" Height="120" RadiusX="25" RadiusY="25" Fill="#999" Opacity="0.1" />
+        <Rectangle Width="70" Height="130" Fill="#01000000" />
 
         <!-- TODO: Put in stack panel -->
-        <Ellipse x:Name="StartBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" />
+        <Ellipse x:Name="StartBtn"
+                 Width="50" Height="50"
+                 Canvas.Left="10" Canvas.Top="5"
+                 Fill="#333"
+                 Opacity="0.5" />
         <Label Content="Start"
                Width="50" Height="50"
+               Canvas.Left="10" Canvas.Top="5"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                FontSize="11" FontWeight="Bold"
                Foreground="White"
                Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="SelectBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Left="0" Canvas.Top="70" />
+        <Ellipse x:Name="SelectBtn"
+                 Width="50" Height="50"
+                 Fill="#333"
+                 Opacity="0.5"
+                 Canvas.Left="10" Canvas.Top="75" />
         <Label Content="Select"
                Width="50" Height="50"
-               Canvas.Left="0" Canvas.Top="70"
+               Canvas.Left="10" Canvas.Top="75"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                FontSize="11" FontWeight="Bold"
                Foreground="White"

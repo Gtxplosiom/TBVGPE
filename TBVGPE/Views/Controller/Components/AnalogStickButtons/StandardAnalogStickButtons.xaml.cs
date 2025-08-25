@@ -3,30 +3,29 @@ using Nefarius.ViGEm.Client.Targets.Xbox360;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Shapes;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
-namespace TBVGPE.Views.Controller.Components.ShoulderButtons
+namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
 {
-    public partial class StandardShoulderButtons : UserControl
+    public partial class StandardAnalogStickButtons : UserControl
     {
         private Vector2 _screenDimentions;
 
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA)); // #AAA
         private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray);
 
-        public StandardShoulderButtons()
+        public StandardAnalogStickButtons()
         {
             InitializeComponent();
             UpdateDimensions();
             SystemEvents.DisplaySettingsChanged += OnDisplaySettingsChanged;
-            Loaded += ShoulderButtons_Loaded;
+            Loaded += AnalogStickButtons_Loaded;
         }
 
         private void OnDisplaySettingsChanged(object? sender, EventArgs e)
         {
             UpdateDimensions();
-            Loaded += ShoulderButtons_Loaded;
         }
 
         private void UpdateDimensions()
@@ -37,38 +36,38 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             this.Width = _screenDimentions.X;
         }
 
-        private void ShoulderButtons_Loaded(object sender, RoutedEventArgs e)
+        private void AnalogStickButtons_Loaded(object sender, RoutedEventArgs e)
         {
-            AttachTouchHandlers(LBtn, Xbox360Button.LeftShoulder);
-            AttachTouchHandlers(RBtn, Xbox360Button.RightShoulder);
+            AttachTouchHandlers(LStickBtn, Xbox360Button.LeftThumb);
+            AttachTouchHandlers(RStickBtn, Xbox360Button.RightThumb);
         }
 
-        private void AttachTouchHandlers(Rectangle button, Xbox360Button shoulderButtons)
+        private void AttachTouchHandlers(Rectangle button, Xbox360Button analogStickButtons)
         {
             button.TouchDown += (s, e) =>
             {
-                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
 
             button.TouchUp += (s, e) =>
             {
-                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
 
             button.TouchLeave += (s, e) =>
             {
-                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
 
             button.TouchEnter += (s, e) =>
             {
-                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };

@@ -8,7 +8,7 @@
              xmlns:DirectionalButtons="clr-namespace:TBVGPE.Views.Controller.Components.DirectionalButtons"
              xmlns:FaceButtons="clr-namespace:TBVGPE.Views.Controller.Components.FaceButtons"
              xmlns:ShoulderButtons="clr-namespace:TBVGPE.Views.Controller.Components.ShoulderButtons"
-             xmlns:StickButtons="clr-namespace:TBVGPE.Views.Controller.Components.StickButtons"
+             xmlns:AnalogStickButtons="clr-namespace:TBVGPE.Views.Controller.Components.AnalogStickButtons"
              xmlns:UtilityButtons="clr-namespace:TBVGPE.Views.Controller.Components.UtilityButtons"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">

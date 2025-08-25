@@ -8,51 +8,54 @@
              d:DesignHeight="50" d:DesignWidth="200">
     <Canvas Name="PadCanvas">
         <!-- Anti click through -->
-        <Rectangle Width="180" Height="30" Margin="10" Fill="#999" Opacity="0.1" />
+        <Rectangle Width="200" Height="50" Fill="#01000000" />
 
         <!-- TODO: Put in stack panel -->
-        <Button x:Name="StartBtn"
-                Tag="Start"
-                Width="50" Height="30"
-                Content="START"
-                FontSize="11" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                BorderThickness="0"
-                Canvas.Left="130"
-                Margin="10"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"
-                FocusVisualStyle="{x:Null}"/>
+        <Rectangle x:Name="StartBtn"
+                   Tag="Start"
+                   Width="50" Height="30"
+                   Fill="#AAA"
+                   Canvas.Left="130"
+                   Margin="10"/>
+        <Label Content="Start"
+               Width="50" Height="30"
+               Grid.Column="0"
+               Margin="10"
+               Canvas.Left="130"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="10" FontWeight="Bold"
+               Foreground="White" Background="Transparent"
+               IsHitTestVisible="False"/>
 
-        <Button x:Name="SelectBtn"
-                Tag="Select"
-                Width="50" Height="30"
-                Content="SELECT"
-                FontSize="11" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                BorderThickness="0"
-                Margin="10"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"
-                FocusVisualStyle="{x:Null}"/>
+        <Rectangle x:Name="SelectBtn"
+                   Tag="Select"
+                   Width="50" Height="30"
+                   Fill="#AAA"
+                   Margin="10"/>
+        <Label Content="Select"
+               Width="50" Height="30"
+               Grid.Column="0"
+               Margin="10"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="10" FontWeight="Bold"
+               Foreground="White" Background="Transparent"
+               IsHitTestVisible="False"/>
+        
 
-        <Button x:Name="HomeBtn"
-                Tag="Home"
-                Width="50" Height="30"
-                Content="HOME"
-                FontSize="11" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                BorderThickness="0"
-                Canvas.Left="65"
-                Margin="10"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"
-                FocusVisualStyle="{x:Null}"/>
+        <Rectangle x:Name="HomeBtn"
+                   Tag="Home"
+                   Width="50" Height="30"
+                   Fill="#AAA"
+                   Canvas.Left="65"
+                   Margin="10"/>
+        <Label Content="Home"
+               Width="50" Height="30"
+               Grid.Column="0"
+               Margin="10"
+               Canvas.Left="65"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="10" FontWeight="Bold"
+               Foreground="White" Background="Transparent"
+               IsHitTestVisible="False"/>
     </Canvas>
 </UserControl>

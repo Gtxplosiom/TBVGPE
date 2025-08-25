@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TBVGPE.Views.Controller.Components.ShoulderButtons"
              mc:Ignorable="d" 
-             d:DesignHeight="90" d:DesignWidth="800">
+             d:DesignHeight="120" d:DesignWidth="800">
     <Grid>
         <!-- TODO: Integrate stack panels -->
         <Grid.ColumnDefinitions>
@@ -14,71 +14,75 @@
         </Grid.ColumnDefinitions>
 
         <!-- Anti click through -->
-        <Rectangle Width="100" Height="70" HorizontalAlignment="Left" Margin="10" Fill="#999" Opacity="0.1" Grid.Column="0" />
-        <Rectangle Width="100" Height="70" HorizontalAlignment="Right" Margin="10" Fill="#999" Opacity="0.1" Grid.Column="1" />
+        <Rectangle Width="120" Height="120" HorizontalAlignment="Left" Fill="#01000000" Grid.Column="0" />
+        <Rectangle Width="120" Height="120" HorizontalAlignment="Right" Fill="#01000000" Grid.Column="1" />
 
-        <Button x:Name="LBtn"
-                Tag="L"
-                Width="100" Height="30"
-                Content="L"
-                FontSize="20" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                BorderThickness="0"
-                Grid.Column="0"
-                HorizontalAlignment="Left" VerticalAlignment="Top" 
-                Margin="10"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"
-                FocusVisualStyle="{x:Null}"/>
+        <Rectangle x:Name="LBtn"
+                   Tag="L"
+                   Width="100" Height="45"
+                   Fill="#AAA"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left" VerticalAlignment="Top" 
+                   Margin="10"/>
+        <Label Content="L"
+               Width="100" Height="45"
+               Grid.Column="0"
+               Margin="10"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="15" FontWeight="Bold"
+               Foreground="White" Background="Transparent"
+               IsHitTestVisible="False"/>
 
-        <Button x:Name="ZLBtn"
-                Tag="ZL"
-                Width="100" Height="30"
-                Content="ZL"
-                FontSize="20" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                BorderThickness="0"
-                Grid.Column="0"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="10,50,0,0"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"
-                FocusVisualStyle="{x:Null}"/>
+        <Rectangle x:Name="ZLBtn"
+                   Tag="ZL"
+                   Width="100" Height="45"
+                   Fill="#AAA"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                   Margin="10"/>
+        <Label Content="ZL"
+               Width="100" Height="45"
+               Grid.Column="0"
+               Margin="10"
+               HorizontalAlignment="Left" VerticalAlignment="Bottom"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="15" FontWeight="Bold"
+               Foreground="White" Background="Transparent"
+               IsHitTestVisible="False"/>
 
-        <Button x:Name="RBtn"
-                Tag="R"
-                Width="100" Height="30"
-                Content="R"
-                FontSize="20" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                BorderThickness="0"
-                Grid.Column="1"
-                HorizontalAlignment="Right" VerticalAlignment="Top" 
-                Margin="10"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"
-                FocusVisualStyle="{x:Null}"/>
+        <Rectangle x:Name="RBtn"
+                   Tag="R"
+                   Width="100" Height="45"
+                   Fill="#AAA"
+                   Grid.Column="1"
+                   HorizontalAlignment="Right" VerticalAlignment="Top" 
+                   Margin="10"/>
+        <Label Content="R"
+               Width="100" Height="45"
+               Grid.Column="1"
+               Margin="10"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="15" FontWeight="Bold"
+               Foreground="White" Background="Transparent"
+               IsHitTestVisible="False"/>
 
-        <Button x:Name="ZRBtn"
-                Tag="ZR"
-                Width="100" Height="30"
-                Content="ZR"
-                FontSize="20" FontWeight="Bold"
-                Foreground="White" Background="#AAA"
-                BorderThickness="0"
-                Grid.Column="1"
-                HorizontalAlignment="Right" VerticalAlignment="Top"
-                Margin="0,50,10,0"
-                PreviewTouchDown="Button_PreviewTouchDown"
-                PreviewTouchUp="Button_PreviewTouchUp"
-                TouchLeave="Button_TouchLeave"
-                TouchEnter="Button_TouchEnter"
-                FocusVisualStyle="{x:Null}"/>
+        <Rectangle x:Name="ZRBtn"
+                   Tag="ZR"
+                   Width="100" Height="45"
+                   Fill="#AAA"
+                   Grid.Column="1"
+                   HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                   Margin="10"/>
+        <Label Content="ZR"
+               Width="100" Height="45"
+               Grid.Column="1"
+               Margin="10"
+               HorizontalAlignment="Right" VerticalAlignment="Bottom"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="15" FontWeight="Bold"
+               Foreground="White" Background="Transparent"
+               IsHitTestVisible="False"/>
     </Grid>
 </UserControl>
