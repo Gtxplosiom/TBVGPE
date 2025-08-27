@@ -5,52 +5,55 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TBVGPE.Views.Controller.Components.DirectionalButtons"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="150">
+             d:DesignHeight="180" d:DesignWidth="180">
     <Canvas Name="PadCanvas">
+        <!-- Anti click through -->
+        <Rectangle Width="180" Height="180" Fill="#01000000" />
+        
         <!-- Background Filler -->
-        <Ellipse Width="150" Height="150"  Fill="#999" Opacity="0.1" />
+        <Ellipse Width="180" Height="180"  Fill="#999" Opacity="0.1" />
 
         <!-- Diagonals -->
-        <Ellipse x:Name="UpLeftBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="20" Canvas.Top="20" />
-        <Ellipse x:Name="DownLeftBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="20" Canvas.Top="80" />
-        <Ellipse x:Name="DownRightBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="80" Canvas.Top="80" />
-        <Ellipse x:Name="UpRightBtn" Width="50" Height="50" Fill="Transparent" Opacity="0.1" Canvas.Left="80" Canvas.Top="20" />
+        <Ellipse x:Name="UpLeftBtn" Width="60" Height="60" Fill="Transparent" Opacity="0.1" Canvas.Left="20" Canvas.Top="20" />
+        <Ellipse x:Name="DownLeftBtn" Width="60" Height="60" Fill="Transparent" Opacity="0.1" Canvas.Left="20" Canvas.Top="100" />
+        <Ellipse x:Name="DownRightBtn" Width="60" Height="60" Fill="Transparent" Opacity="0.1" Canvas.Left="100" Canvas.Top="100" />
+        <Ellipse x:Name="UpRightBtn" Width="60" Height="60" Fill="Transparent" Opacity="0.1" Canvas.Left="100" Canvas.Top="20" />
 
-        <Ellipse x:Name="UpBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Left="50" />
+        <Ellipse x:Name="UpBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Left="60" />
         <Label Content="▲"
-               Width="50" Height="50"
-               Canvas.Left="50"
+               Width="60" Height="60"
+               Canvas.Left="60"
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center"
-               FontSize="20" FontWeight="Bold"
+               FontSize="25" FontWeight="Bold"
                Foreground="White" Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="LeftBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Top="50" />
+        <Ellipse x:Name="LeftBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Top="60" />
         <Label Content="◄"
-               Width="50" Height="50"
-               Canvas.Top="50"
+               Width="60" Height="60"
+               Canvas.Top="60"
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center"
-               FontSize="30" FontWeight="Bold"
+               FontSize="35" FontWeight="Bold"
                Foreground="White" Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="DownBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Left="50" Canvas.Top="100" />
+        <Ellipse x:Name="DownBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Left="60" Canvas.Top="120" />
         <Label Content="▼"
-               Width="50" Height="50"
-               Canvas.Left="50" Canvas.Top="100"
+               Width="60" Height="60"
+               Canvas.Left="60" Canvas.Top="120"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               FontSize="20" FontWeight="Bold"
+               FontSize="25" FontWeight="Bold"
                Foreground="White" Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="RightBtn" Width="50" Height="50" Fill="#333" Opacity="0.5" Canvas.Left="100" Canvas.Top="50" />
+        <Ellipse x:Name="RightBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Left="120" Canvas.Top="60" />
         <Label Content="►"
-               Width="50" Height="50"
-               Canvas.Left="100" Canvas.Top="50"
+               Width="60" Height="60"
+               Canvas.Left="120" Canvas.Top="60"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               FontSize="30" FontWeight="Bold"
+               FontSize="35" FontWeight="Bold"
                Foreground="White" Background="Transparent"
                IsHitTestVisible="False"/>
     </Canvas>

@@ -12,24 +12,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
     <Canvas x:Name="LayoutCanvas" Width="{Binding LayoutCanvasWidth}" Height="500">
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding ShoulderButtonsX}" Canvas.Top="{Binding ShoulderButtonsY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding ShoulderButtons}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <ShoulderButtons:StandardShoulderButtons x:Name="StandardShoulderButtonsControl"
-                                                     Height="70" />
+                                                     Height="{Binding DataContext.ShoulderButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding DirectionalButtonsX}" Canvas.Top="{Binding DirectionalButtonsY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding DirectionalButtons}"
+                                              Canvas.Left="{Binding X}"
+                                              Canvas.Top="{Binding Y}">
             <DirectionalButtons:StandardDirectionalButtons x:Name="StandardDirectionalButtonsControl"
-                                                           Width="180" Height="180" />
+                                                           Width="{Binding DataContext.DirectionalButtonsWidth, RelativeSource={RelativeSource AncestorType=Canvas}}"
+                                                           Height="{Binding DataContext.DirectionalButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding FaceButtonsX}" Canvas.Top="{Binding FaceButtonsY}">
-            <FaceButtons:GBAFaceButtons x:Name="GBAFaceButtonsControl"
-                                        Width="135" Height="135" />
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding FaceButtons}"
+                                              Canvas.Left="{Binding X}"
+                                              Canvas.Top="{Binding Y}">
+            <FaceButtons:GBAFaceButtons x:Name="FaceButtonsControl"
+                                        Width="{Binding DataContext.FaceButtonsWidth, RelativeSource={RelativeSource AncestorType=Canvas}}"
+                                        Height="{Binding DataContext.FaceButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding UtilityButtonsX}" Canvas.Top="{Binding UtilityButtonsY}">
-            <UtilityButtons:GBAUtilityButtons x:Name="GBAUtilityButtonsControl"
-                                              Width="70" Height="130" />
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding UtilityButtons}"
+                                              Canvas.Left="{Binding X}"
+                                              Canvas.Top="{Binding Y}">
+            <UtilityButtons:GBAUtilityButtons x:Name="UtilityButtonsControl"
+                                              Width="{Binding DataContext.UtilityButtonsWidth, RelativeSource={RelativeSource AncestorType=Canvas}}"
+                                              Height="{Binding DataContext.UtilityButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
     </Canvas>
 </UserControl>

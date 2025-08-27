@@ -63,14 +63,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel x:Name="UtilityButtons" Background="#DDD" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
+        <StackPanel x:Name="UtilityButtons" Background="#DDD" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,10,0,10" Grid.Row="1">
             <Button x:Name="CloseApplicationBtn"
                     Content="Close TBVGPE" 
                     Command="{Binding CloseApplicationCommand}"
                     Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
                     Foreground="White" Background="Red"
-                    BorderThickness="0"
+                    BorderThickness="1"
+                    BorderBrush="#555"
                     Visibility="{Binding UtilityMenuVisibility}"/>
 
             <Button x:Name="CloseCurrentAppBtn"
@@ -79,7 +80,8 @@
                     Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
                     Foreground="White" Background="Red"
-                    BorderThickness="0"
+                    BorderThickness="1"
+                    BorderBrush="#555"
                     Margin="10,0,0,0"
                     Visibility="{Binding UtilityMenuVisibility}"/>
 
@@ -94,8 +96,20 @@
                     Command="{Binding ToggleEditModeCommand}"
                     Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
-                    Foreground="White" Background="Lime"
-                    BorderThickness="0"
+                    Foreground="White" Background="#DDD"
+                    BorderThickness="1"
+                    BorderBrush="#555"
+                    Margin="10,0,0,0"
+                    Visibility="{Binding UtilityMenuVisibility}"/>
+
+            <Button x:Name="LoadDefaultLayoutBtn"
+                    Content="Load Default" 
+                    Command="{Binding LoadDefaultLayoutCommand}"
+                    Width="Auto" Height="35"
+                    FontSize="14" FontWeight="Bold"
+                    Foreground="White" Background="#CCC"
+                    BorderThickness="1"
+                    BorderBrush="#555"
                     Margin="10,0,0,0"
                     Visibility="{Binding UtilityMenuVisibility}"/>
 
@@ -104,8 +118,9 @@
                     Command="{Binding ToggleControllerCommand}"
                     Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
-                    Foreground="White" Background="Cyan"
-                    BorderThickness="0"
+                    Foreground="White" Background="#BBB"
+                    BorderThickness="1"
+                    BorderBrush="#555"
                     Margin="10,0,0,0"
                     Visibility="{Binding UtilityMenuVisibility}"/>
 
@@ -122,8 +137,9 @@
                     Command="{Binding ToggleMenuCommand}"
                     Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
-                    Foreground="White" Background="LimeGreen"
-                    BorderThickness="0"
+                    Foreground="White" Background="#AAA"
+                    BorderThickness="1"
+                    BorderBrush="#555"
                     Margin="10,0,0,0"/>
         </StackPanel>
 

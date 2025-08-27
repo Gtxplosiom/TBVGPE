@@ -14,7 +14,6 @@ namespace TBVGPE.ViewModels.Controllers
 
         public ControllerWrapperViewModel()
         {
-            // Add these lines to ensure proper measurement
             HorizontalAlignment = HorizontalAlignment.Left;
             VerticalAlignment = VerticalAlignment.Top;
 
@@ -62,6 +61,14 @@ namespace TBVGPE.ViewModels.Controllers
 
                     _isDragging = false;
                     ReleaseTouchCapture(args.TouchDevice);
+
+                    if (DataContext is ILayoutElement element)
+                    {
+                        double left = Canvas.GetLeft(this);
+                        double top = Canvas.GetTop(this);
+                        element.X = left;
+                        element.Y = top;
+                    }
                 };
             };
         }

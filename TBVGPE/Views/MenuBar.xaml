@@ -42,7 +42,7 @@
 
         <Button Content="&lt;+ Add Custom Layout"
                 Width="Auto" Height="30"
-                Foreground="White" Background="#999"
+                Foreground="White" Background="#AAA"
                 FontSize="14"
                 BorderBrush="#555"
                 BorderThickness="1"

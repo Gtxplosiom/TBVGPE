@@ -28,14 +28,14 @@ namespace TBVGPE.ViewModels.Commands
                 App.EditMode = false;
 
                 _mainWindowViewModel.ToggleEditModeText = "Edit Layout";
+
+                _mainWindowViewModel.SaveCurrentLayout();
             }
             else
             {
                 App.EditMode = true;
 
                 _mainWindowViewModel.ToggleEditModeText = "Save Layout";
-
-                // Implement actual saving
             }
         }
     }

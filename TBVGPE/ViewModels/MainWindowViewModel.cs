@@ -1,10 +1,12 @@
-﻿using NuGet.Versioning;
+﻿using System.Diagnostics;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using TBVGPE.Services;
 using TBVGPE.ViewModels.Commands;
 using TBVGPE.Views;
+using TBVGPE.Views.Controller.Presets;
+using System.IO;
 
 namespace TBVGPE.ViewModels
 {
@@ -31,6 +33,10 @@ namespace TBVGPE.ViewModels
         public ICommand ToggleEditModeCommand { get; set; }
         public ICommand CloseCurrentAppCommand { get; set; }
         public ICommand CloseApplicationCommand { get; set; }
+        public ICommand LoadDefaultLayoutCommand { get; set; }
+
+        // For layout saving
+        private readonly Dictionary<int, string> _idNameMap;
 
         // current controller id
         private int _selectedId;
@@ -45,11 +51,22 @@ namespace TBVGPE.ViewModels
             ToggleMenuCommand = new ToggleMenuCommand(_menuBarViewModel, this);
             ToggleControllerCommand = new ToggleControllerCommand(this);
             ToggleEditModeCommand = new ToggleEditModeCommand(this);
+            LoadDefaultLayoutCommand = new LoadDefaultLayoutCommand(this);
             CloseCurrentAppCommand = new CloseCurrentAppCommand();
             CloseApplicationCommand = new CloseApplicationCommand();
 
             ShowMenuBar();
             _controllerViewModels = controllerViewModels;
+
+            _idNameMap = new Dictionary<int, string>
+            {
+                [1] = "gba",
+                [2] = "ds",
+                [3] = "xbox360",
+                [4] = "3ds",
+                [5] = "ps4",
+                [6] = "switch"
+            };
 
             UpdateCurrentController();
         }
@@ -85,8 +102,11 @@ namespace TBVGPE.ViewModels
             get => _currentControllerViewModel;
             set
             {
-                _currentControllerViewModel = value;
-                OnPropertyChanged(nameof(CurrentControllerViewModel));
+                if (_currentControllerViewModel != value)
+                {
+                    _currentControllerViewModel = value;
+                    OnPropertyChanged(nameof(CurrentControllerViewModel));
+                }
             }
         }
 
@@ -190,6 +210,10 @@ namespace TBVGPE.ViewModels
                 // na naka attach via datatemplate, which is set ha ubos na line, ha currentcontrollerviewmodel property
                 CurrentControllerViewModel = controllerVM;
 
+                Debug.WriteLine($"Raw: {CurrentControllerViewModel}");
+                Debug.WriteLine($"Casted: {nameof(CurrentControllerViewModel)}");
+
+                // so every switching of controller layout and the edit mode is active, ma au-auto save
                 if (App.EditMode)
                 {
                     ToggleEditModeCommand.Execute(null);
@@ -222,6 +246,36 @@ namespace TBVGPE.ViewModels
             {
                 _menuBarViewModel.VisibilityState = Visibility.Visible;
             });
+        }
+
+        public void SaveCurrentLayout()
+        {
+            if (CurrentControllerViewModel is IControllerLayoutManagerInterface layout && _idNameMap.TryGetValue(_selectedId, out var name))
+            {
+                string jsonFile = $"{name}_config.json";
+
+                string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string appFolder = Path.Combine(appData, "TBVGPE", "Layouts");
+
+                if(!Directory.Exists(appFolder))
+                    Directory.CreateDirectory(appFolder);
+
+                string configPath = Path.Combine(appFolder, jsonFile);
+
+                layout.SaveLayout(configPath);
+
+                Debug.WriteLine("Saving layout...");
+            }
+        }
+
+        public void LoadDefaultLayout()
+        {
+            if (CurrentControllerViewModel is IControllerLayoutManagerInterface layout)
+            {
+                layout.LoadDefault();
+
+                Debug.WriteLine("Loading default...");
+            }
         }
     }
 }

@@ -23,6 +23,8 @@ namespace TBVGPE
         {
             InitializeComponent();
 
+            // TODO: make the codebase consistent in style and syntax, this is outdated I use tuple typing now for dimentions,
+            // but considering structs
             _screenDimentions = new Vector2((int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
 
             this.Width = _screenDimentions.X;

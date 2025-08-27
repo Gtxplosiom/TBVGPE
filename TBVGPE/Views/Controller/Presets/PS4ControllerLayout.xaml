@@ -14,42 +14,51 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
     <Canvas x:Name="LayoutCanvas" Width="{Binding LayoutCanvasWidth}" Height="600">
-        <!-- Be sure to take into account the codebehinds loaded event whe setting the shoulder and analig stick buttons' dimentions(widths, heights) or positions -->
-        <!-- if you want to migrate the logiv here -->
-        <!-- TODO: consider dividing each shoulder buttons individually nala kaysa an naka grupo na ngadaan pareho adi yana -->
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding ShoulderButtonsX}" Canvas.Top="{Binding ShoulderButtonsY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding ShoulderButtons}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <ShoulderButtons:PlayStationShoulderButtons x:Name="PlayStationShoulderButtonsControl"
-                                                        Height="120" />
+                                                 Height="{Binding DataContext.ShoulderButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}" />
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding AnalogStickButtonsX}" Canvas.Top="{Binding AnalogStickButtonsY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding AnalogStickButtons}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <AnalogStickButtons:StandardAnalogStickButtons x:Name="StandardAnalogStickButtonsControl"
-                                                           Height="70" />
+                                                           Height="{Binding DataContext.AnalogStickButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}" />
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding DirectionalButtonsX}" Canvas.Top="{Binding DirectionalButtonsY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding DirectionalButtons}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <DirectionalButtons:StandardDirectionalButtons x:Name="StandardDirectionalButtonsControl"
-                                                           Width="180" Height="180"/>
+                                                           Width="{Binding DataContext.DirectionalButtonsWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" 
+                                                           Height="{Binding DataContext.DirectionalButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding LeftAnalogStickX}" Canvas.Top="{Binding LeftAnalogStickY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding LeftAnalogStick}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <AnalogSticks:LeftAnalogStick x:Name="LeftAnalogStickControl"
-                                          Width="180" Height="180"/>
+                                          Width="{Binding DataContext.LeftAnalogStickWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" 
+                                          Height="{Binding DataContext.LeftAnalogStickHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding FaceButtonsX}" Canvas.Top="{Binding FaceButtonsY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding FaceButtons}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <FaceButtons:PlayStationFaceButtons x:Name="PlayStationFaceButtonsControl"
-                                                Width="200" Height="200"/>
+                                                Width="{Binding DataContext.FaceButtonsWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" 
+                                                Height="{Binding DataContext.FaceButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding UtilityButtonsX}" Canvas.Top="{Binding UtilityButtonsY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding UtilityButtons}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <UtilityButtons:PS4UtilityButtons x:Name="PS4UtilityButtonsControl"
-                                              Width="200" Height="50"/>
+                                              Width="{Binding DataContext.UtilityButtonsWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" 
+                                              Height="{Binding DataContext.UtilityButtonsHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
 
-        <viewModel:ControllerWrapperViewModel Canvas.Left="{Binding RightAnalogStickX}" Canvas.Top="{Binding RightAnalogStickY}">
+        <viewModel:ControllerWrapperViewModel DataContext="{Binding RightAnalogStick}"
+                                              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
             <AnalogSticks:RightAnalogStick x:Name="RightAnalogStickControl"
-                                           Width="180" Height="180"/>
+                                           Width="{Binding DataContext.RightAnalogStickWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" 
+                                           Height="{Binding DataContext.RightAnalogStickHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"/>
         </viewModel:ControllerWrapperViewModel>
     </Canvas>
 </UserControl>
