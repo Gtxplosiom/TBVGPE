@@ -57,12 +57,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- para ma fill an rest na diri gagamit ngan ma anchor ha ubos an utility ngan controller -->
             <RowDefinition Height="Auto"/>
-            <!-- TODO: Make the row height below dynamic kay an controller layouts iba iba an heights -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- TODO: Consider adding more button tools like fullscreen toggle, minimize, and etc -->
         <StackPanel x:Name="UtilityButtons" Background="#DDD" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,10,0,10" Grid.Row="1">
             <Button x:Name="CloseApplicationBtn"
                     Content="Close TBVGPE" 

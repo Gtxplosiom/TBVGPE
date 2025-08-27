@@ -208,3 +208,8 @@ namespace TBVGPE
         }
     }
 }
+
+// TODO: Implement resize and improve editing by exposing move handles and etc.
+// TODO: Implement custom controls
+// TODO: Fix when hiding the controller, dasok dasokan an menu ha ubos
+// TODO: make the transparency saved also to the config, better kun individual na layouts makaka iba iba an transparency
