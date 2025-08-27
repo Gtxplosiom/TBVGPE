@@ -18,7 +18,19 @@
         Focusable="False">
 
     <Window.Resources>
-        <!-- TODO: Fix the buttons not changing color when pressed -->
+        <Style TargetType="{x:Type ControllerViewModels:ControllerWrapperViewModel}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ControllerViewModels:ControllerWrapperViewModel}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <DataTemplate DataType="{x:Type ControllerViewModels:GBAControllerViewModel}">
             <ControllerViews:GBAControllerLayout />
         </DataTemplate>
@@ -37,7 +49,6 @@
         <DataTemplate DataType="{x:Type ControllerViewModels:SwitchControllerViewModel}">
             <ControllerViews:SwitchControllerLayout />
         </DataTemplate>
-        
     </Window.Resources>
 
     <Grid>
@@ -48,8 +59,6 @@
             <!-- TODO: Make the row height below dynamic kay an controller layouts iba iba an heights -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <!-- Anti click through -->
 
         <StackPanel x:Name="UtilityButtons" Background="#DDD" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
             <Button x:Name="CloseApplicationBtn"
@@ -77,12 +86,22 @@
                   Margin="10,0,0,0"
                   Visibility="{Binding UtilityMenuVisibility}"/>
 
+            <Button x:Name="ToggleEditModeBtn"
+                    Content="{Binding ToggleEditModeText}" 
+                    Command="{Binding ToggleEditModeCommand}"
+                    Width="Auto" Height="35"
+                    FontSize="14" FontWeight="Bold"
+                    Foreground="White" Background="Lime"
+                    BorderThickness="0"
+                    Margin="10,0,0,0"
+                    Visibility="{Binding UtilityMenuVisibility}"/>
+
             <Button x:Name="ToggleControllerBtn"
                     Content="{Binding ToggleControllerText}" 
                     Command="{Binding ToggleControllerCommand}"
                     Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
-                    Foreground="Black" Background="Cyan"
+                    Foreground="White" Background="Cyan"
                     BorderThickness="0"
                     Margin="10,0,0,0"
                     Visibility="{Binding UtilityMenuVisibility}"/>
@@ -100,13 +119,11 @@
                     Command="{Binding ToggleMenuCommand}"
                     Width="Auto" Height="35"
                     FontSize="14" FontWeight="Bold"
-                    Foreground="Black" Background="LightGreen"
+                    Foreground="White" Background="LimeGreen"
                     BorderThickness="0"
                     Margin="10,0,0,0"/>
         </StackPanel>
 
-        <!-- margin is 100 para umigbaw ngan diri mag overlap ha taskbar -->
-        <!-- Dapat an height hini dynamic lat kay amo ini an controller placeholder/container -->
         <ContentControl Grid.Row="2"
                         Content="{Binding CurrentControllerViewModel}"
                         Height="Auto"

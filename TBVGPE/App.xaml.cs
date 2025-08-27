@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading; // Added for Mutex
 using System.Windows;
 using TBVGPE.Models;
 using TBVGPE.Services;
@@ -14,7 +15,7 @@ namespace TBVGPE
     {
         // para pag prevent multiple instances of the app to be opened
         private static Mutex? _mutex;
-        private const string AppGuid = "TBVGPE";    // pwede pa balyuon kung gusto unique gud an identifier, pero yana oks na gad ada ini
+        private const string AppGuid = "TBVGPE";     // pwede pa balyuon kung gusto unique gud an identifier, pero yana oks na gad ada ini
 
         // static property to para ig-hold an vigemservice class instance
         // para kun ma hold na, ma tatawag ini hiya via App.Vigem.... chuchu
@@ -22,13 +23,78 @@ namespace TBVGPE
         public static VigemService? Vigem { get; private set; }
 
         // expose ko lat ini na duha para ma easily accessed by other classes espacially the updates shits classe
-        public static string? PackageJson { get; set; }
-        public static string? CurrentVersion { get; set; }
+        private static string? _packageJson;
+        private static string? _currentVersion;
+        private static string? _updateVersion;
+        private static string? _updateLink;
 
-        public static string? UpdateVersion { get; set; }
-        public static string? UpdateLink { get; set; }
+        // for toggling edit mode. A cleaner approach is to use a DependencyProperty or ObservableProperty in a ViewModel.
+        private static bool _editMode = false;
+        public static event EventHandler? EditModeToggled;
 
-        private readonly string _jsonPath = Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)!,"package.json");
+        // Propateeees
+        public static string? PackageJson
+        {
+            get => _packageJson;
+            set
+            {
+                if (_packageJson != value)
+                {
+                    _packageJson = value;
+                }
+            }
+        }
+
+        public static string? CurrentVersion
+        {
+            get => _currentVersion;
+            set
+            {
+                if (_currentVersion != value)
+                {
+                    _currentVersion = value;
+                }
+            }
+        }
+
+        public static string? UpdateVersion
+        {
+            get => _updateVersion;
+            set
+            {
+                if (_updateVersion != value)
+                {
+                    _updateVersion = value;
+                }
+            }
+        }
+
+        public static string? UpdateLink
+        {
+            get => _updateLink;
+            set
+            {
+                if (_updateLink != value)
+                {
+                    _updateLink = value;
+                }
+            }
+        }
+        
+        public static bool EditMode
+        {
+            get => _editMode;
+            set
+            {
+                if (_editMode != value)
+                {
+                    _editMode = value;
+                    EditModeToggled?.Invoke(null, EventArgs.Empty);
+                }
+            }
+        }
+
+        private readonly string _jsonPath = Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName) ?? string.Empty, "package.json");
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -36,17 +102,40 @@ namespace TBVGPE
 
             base.OnStartup(e);
 
+            InitializeApplicationState();
+            InitializeViewModelsAndViews();
+        }
+
+        private void CheckDuplicateAppInstance()
+        {
+            _mutex = new Mutex(true, "Global\\" + AppGuid, out bool newInstance);
+
+            if (!newInstance)
+            {
+                MessageBox.Show("Another instance of TBVGPE is already running.", "Cannot Open TBVGPE", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Current.Shutdown();
+            }
+        }
+
+        private void InitializeApplicationState()
+        {
+            // Initialize static properties in a single, dedicated method for clarity.
             // xinput emulator instance
             // TODO: consider switching between input types like dualshock, or directinput
             // if xinput do something about the double inputs, kun magkaada problema which i'm positive magkakaada
             Vigem = new VigemService();
 
-            // set this shits as well
+            // set this shits' initial states as well
             PackageJson = _jsonPath;
             CurrentVersion = GetVersion();
-            UpdateVersion = "";
-            UpdateLink = "";
+            UpdateVersion = string.Empty;
+            UpdateLink = string.Empty;
+      
+            EditMode = false;
+        }
 
+        private void InitializeViewModelsAndViews()
+        {
             // gamepads list
             var virtualGamePadsCollection = new ObservableCollection<VirtualGamePads>
             {
@@ -57,6 +146,7 @@ namespace TBVGPE
                 new VirtualGamePads { Id = 4, Name = "3DS" },
                 new VirtualGamePads { Id = 5, Name = "PS4" },
                 new VirtualGamePads { Id = 6, Name = "Switch" }
+                // Add an mga future controller ViewModels dinhi
             };
 
             // list of Controllers View Model Instances
@@ -73,7 +163,7 @@ namespace TBVGPE
 
             // View Model Instances
             var menuBarViewModel = new MenuBarViewModel(virtualGamePadsCollection);
-            var mainWindowViewModel = new MainWindowViewModel(menuBarViewModel, controllerViewModels);   
+            var mainWindowViewModel = new MainWindowViewModel(menuBarViewModel, controllerViewModels);
 
             // View Instances
             var menuBar = new MenuBar()
@@ -86,18 +176,6 @@ namespace TBVGPE
                 DataContext = mainWindowViewModel
             };
             mainWindow.Show();
-        }
-
-        private void CheckDuplicateAppInstance()
-        {
-            _mutex = new Mutex(true, "Global\\" + AppGuid, out bool newInstance);
-
-            if (!newInstance)
-            {
-                MessageBox.Show("Another instance of TBVGPE is already running.", "Cannot Open TBVGPE", MessageBoxButton.OK, MessageBoxImage.Warning);
-                Current.Shutdown();
-                return;
-            }
         }
 
         public string? GetVersion()
@@ -129,9 +207,4 @@ namespace TBVGPE
             public string? CurrentVersion { get; set; }
         }
     }
-
 }
-
-// TODO: implement config for custom user control positions and sizes
-// TODO: Add completely custom layouts
-// TODO: cleanup code in updater, cause that is a mess wth

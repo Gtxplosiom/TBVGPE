@@ -86,6 +86,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Assets\Config\Layouts\" />
     <Folder Include="Views\Controller\Components\Others\" />
   </ItemGroup>
 

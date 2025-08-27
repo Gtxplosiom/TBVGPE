@@ -20,12 +20,15 @@ namespace TBVGPE.ViewModels
         private string _toggleControllerText = "Hide Controller";
         private float _controllerTransparency = 1.0f;
 
+        private string _toggleEditModeText = "Edit Layout";
+
         private Visibility _closeAppBtnVisibility = Visibility.Visible;
         private Visibility _controllerVisibility = Visibility.Visible;
 
         // implement this
         public ICommand ToggleMenuCommand { get; set; }
         public ICommand ToggleControllerCommand { get; set; }
+        public ICommand ToggleEditModeCommand { get; set; }
         public ICommand CloseCurrentAppCommand { get; set; }
         public ICommand CloseApplicationCommand { get; set; }
 
@@ -41,6 +44,7 @@ namespace TBVGPE.ViewModels
 
             ToggleMenuCommand = new ToggleMenuCommand(_menuBarViewModel, this);
             ToggleControllerCommand = new ToggleControllerCommand(this);
+            ToggleEditModeCommand = new ToggleEditModeCommand(this);
             CloseCurrentAppCommand = new CloseCurrentAppCommand();
             CloseApplicationCommand = new CloseApplicationCommand();
 
@@ -108,6 +112,19 @@ namespace TBVGPE.ViewModels
                 {
                     _toggleControllerText = value;
                     OnPropertyChanged(nameof(ToggleControllerText));
+                }
+            }
+        }
+
+        public string ToggleEditModeText
+        {
+            get => _toggleEditModeText;
+            set
+            {
+                if (_toggleEditModeText != value)
+                {
+                    _toggleEditModeText = value;
+                    OnPropertyChanged(nameof(ToggleEditModeText));
                 }
             }
         }
