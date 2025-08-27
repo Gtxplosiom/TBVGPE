@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBVGPE"
-        xmlns:ControllerViews="clr-namespace:TBVGPE.Views.Presets"
+        xmlns:ControllerViews="clr-namespace:TBVGPE.Views.Controller.Presets"
         xmlns:ControllerViewModels="clr-namespace:TBVGPE.ViewModels.Controllers"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -48,6 +48,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type ControllerViewModels:SwitchControllerViewModel}">
             <ControllerViews:SwitchControllerLayout />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ControllerViewModels:CustomControllerLayout}">
+            <ControllerViews:CustomControllerLayout />
         </DataTemplate>
     </Window.Resources>
 

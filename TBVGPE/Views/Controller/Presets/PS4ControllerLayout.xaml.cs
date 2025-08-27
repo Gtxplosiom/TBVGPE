@@ -2,35 +2,33 @@
 using System.IO;
 using System.Text.Json;
 using System.Windows.Controls;
+using System.Xml;
+using TBVGPE.Models;
 using TBVGPE.ViewModels.Controllers;
-using TBVGPE.Views.Controller;
-using TBVGPE.Views.Controller.Components.ShoulderButtons;
-using TBVGPE.Views.Controller.Components.UtilityButtons;
-using TBVGPE.Views.Controller.Presets;
 
-namespace TBVGPE.Views.Presets
+namespace TBVGPE.Views.Controller.Presets
 {
     public partial class PS4ControllerLayout : UserControl, INotifyPropertyChanged
     {
         // properties values
-        private int _layoutCanvasWidth;
-        private int _playStationShoulderButtonsLeft;
-        private int _playStationShoulderButtonsTop;
-        private int _standardAnalogStickButtonsLeft;
-        private int _standardAnalogStickButtonsTop;
-        private int _standardDirectionalButtonsLeft;
-        private int _leftAnalogStickLeft;
-        private int _standardDirectionalButtonsTop;
-        private int _leftAnalogStickTop;
-        private int _playStationFaceButtonsLeft;
-        private int _ps4UtilityButtonsLeft;
-        private int _rightAnalogStickLeft;
-        private int _playStationFaceButtonsTop;
-        private int _ps4UtilityButtonsTop;
-        private int _rightAnalogStickTop;
+        private double _layoutCanvasWidth;
+        private double _shoulderButtonsX;
+        private double _shoulderButtonsY;
+        private double _analogStickButtonsX;
+        private double _analogStickButtonsY;
+        private double _directionalButtonsX;
+        private double _directionalButtonsY;
+        private double _leftAnalogStickX;
+        private double _leftAnalogStickY;
+        private double _faceButtonsX;
+        private double _faceButtonsY;
+        private double _utilityButtonsX;
+        private double _utilityButtonsY;
+        private double _rightAnalogStickX;
+        private double _rightAnalogStickY;
 
         // properties
-        public int LayoutCanvasWidth
+        public double LayoutCanvasWidth
         {
             get => _layoutCanvasWidth;
             set
@@ -43,184 +41,184 @@ namespace TBVGPE.Views.Presets
             }
         }
 
-        public int PlayStationShoulderButtonsLeft
+        public double ShoulderButtonsX
         {
-            get => _playStationShoulderButtonsLeft;
+            get => _shoulderButtonsX;
             set
             {
-                if (_playStationShoulderButtonsLeft != value)
+                if (_shoulderButtonsX != value)
                 {
-                    _playStationShoulderButtonsLeft = value;
-                    OnPropertyChanged(nameof(PlayStationShoulderButtonsLeft));
+                    _shoulderButtonsX = value;
+                    OnPropertyChanged(nameof(ShoulderButtonsX));
                 }
             }
         }
 
-        public int PlayStationShoulderButtonsTop
+        public double ShoulderButtonsY
         {
-            get => _playStationShoulderButtonsTop;
+            get => _shoulderButtonsY;
             set
             {
-                if (_playStationShoulderButtonsTop != value)
+                if (_shoulderButtonsY != value)
                 {
-                    _playStationShoulderButtonsTop = value;
-                    OnPropertyChanged(nameof(PlayStationShoulderButtonsTop));
+                    _shoulderButtonsY = value;
+                    OnPropertyChanged(nameof(ShoulderButtonsY));
                 }
             }
         }
 
-        public int StandardAnalogStickButtonsLeft
+        public double AnalogStickButtonsX
         {
-            get => _standardAnalogStickButtonsLeft;
+            get => _analogStickButtonsX;
             set
             {
-                if (_standardAnalogStickButtonsLeft != value)
+                if (_analogStickButtonsX != value)
                 {
-                    _standardAnalogStickButtonsLeft = value;
-                    OnPropertyChanged(nameof(StandardAnalogStickButtonsLeft));
+                    _analogStickButtonsX = value;
+                    OnPropertyChanged(nameof(AnalogStickButtonsX));
                 }
             }
         }
 
-        public int StandardAnalogStickButtonsTop
+        public double AnalogStickButtonsY
         {
-            get => _standardAnalogStickButtonsTop;
+            get => _analogStickButtonsY;
             set
             {
-                if (_standardAnalogStickButtonsTop != value)
+                if (_analogStickButtonsY != value)
                 {
-                    _standardAnalogStickButtonsTop = value;
-                    OnPropertyChanged(nameof(StandardAnalogStickButtonsTop));
+                    _analogStickButtonsY = value;
+                    OnPropertyChanged(nameof(AnalogStickButtonsY));
                 }
             }
         }
 
-        public int StandardDirectionalButtonsLeft
+        public double DirectionalButtonsX
         {
-            get => _standardDirectionalButtonsLeft;
+            get => _directionalButtonsX;
             set
             {
-                if (_standardDirectionalButtonsLeft != value)
+                if (_directionalButtonsX != value)
                 {
-                    _standardDirectionalButtonsLeft = value;
-                    OnPropertyChanged(nameof(StandardDirectionalButtonsLeft));
+                    _directionalButtonsX = value;
+                    OnPropertyChanged(nameof(DirectionalButtonsX));
                 }
             }
         }
 
-        public int StandardDirectionalButtonsTop
+        public double DirectionalButtonsY
         {
-            get => _standardDirectionalButtonsTop;
+            get => _directionalButtonsY;
             set
             {
-                if (_standardDirectionalButtonsTop != value)
+                if (_directionalButtonsY != value)
                 {
-                    _standardDirectionalButtonsTop = value;
-                    OnPropertyChanged(nameof(StandardDirectionalButtonsTop));
+                    _directionalButtonsY = value;
+                    OnPropertyChanged(nameof(DirectionalButtonsY));
                 }
             }
         }
 
-        public int LeftAnalogStickLeft
+        public double LeftAnalogStickX
         {
-            get => _leftAnalogStickLeft;
+            get => _leftAnalogStickX;
             set
             {
-                if (_leftAnalogStickLeft != value)
+                if (_leftAnalogStickX != value)
                 {
-                    _leftAnalogStickLeft = value;
-                    OnPropertyChanged(nameof(LeftAnalogStickLeft));
+                    _leftAnalogStickX = value;
+                    OnPropertyChanged(nameof(LeftAnalogStickX));
                 }
             }
         }
 
-        public int LeftAnalogStickTop
+        public double LeftAnalogStickY
         {
-            get => _leftAnalogStickTop;
+            get => _leftAnalogStickY;
             set
             {
-                if (_leftAnalogStickTop != value)
+                if (_leftAnalogStickY != value)
                 {
-                    _leftAnalogStickTop = value;
-                    OnPropertyChanged(nameof(LeftAnalogStickTop));
+                    _leftAnalogStickY = value;
+                    OnPropertyChanged(nameof(LeftAnalogStickY));
                 }
             }
         }
 
-        public int PlayStationFaceButtonsLeft
+        public double FaceButtonsX
         {
-            get => _playStationFaceButtonsLeft;
+            get => _faceButtonsX;
             set
             {
-                if (_playStationFaceButtonsLeft != value)
+                if (_faceButtonsX != value)
                 {
-                    _playStationFaceButtonsLeft = value;
-                    OnPropertyChanged(nameof(PlayStationFaceButtonsLeft));
+                    _faceButtonsX = value;
+                    OnPropertyChanged(nameof(FaceButtonsX));
                 }
             }
         }
 
-        public int PS4UtilityButtonsLeft
+        public double FaceButtonsY
         {
-            get => _ps4UtilityButtonsLeft;
+            get => _faceButtonsY;
             set
             {
-                if (_ps4UtilityButtonsLeft != value)
+                if (_faceButtonsY != value)
                 {
-                    _ps4UtilityButtonsLeft = value;
-                    OnPropertyChanged(nameof(PS4UtilityButtonsLeft));
+                    _faceButtonsY = value;
+                    OnPropertyChanged(nameof(FaceButtonsY));
                 }
             }
         }
 
-        public int RightAnalogStickLeft
+        public double UtilityButtonsX
         {
-            get => _rightAnalogStickLeft;
+            get => _utilityButtonsX;
             set
             {
-                if (_rightAnalogStickLeft != value)
+                if (_utilityButtonsX != value)
                 {
-                    _rightAnalogStickLeft = value;
-                    OnPropertyChanged(nameof(RightAnalogStickLeft));
+                    _utilityButtonsX = value;
+                    OnPropertyChanged(nameof(UtilityButtonsX));
                 }
             }
         }
 
-        public int PlayStationFaceButtonsTop
+        public double UtilityButtonsY
         {
-            get => _playStationFaceButtonsTop;
+            get => _utilityButtonsY;
             set
             {
-                if (_playStationFaceButtonsTop != value)
+                if (_utilityButtonsY != value)
                 {
-                    _playStationFaceButtonsTop = value;
-                    OnPropertyChanged(nameof(PlayStationFaceButtonsTop));
+                    _utilityButtonsY = value;
+                    OnPropertyChanged(nameof(UtilityButtonsY));
                 }
             }
         }
 
-        public int PS4UtilityButtonsTop
+        public double RightAnalogStickX
         {
-            get => _ps4UtilityButtonsTop;
+            get => _rightAnalogStickX;
             set
             {
-                if (_ps4UtilityButtonsTop != value)
+                if (_rightAnalogStickX != value)
                 {
-                    _ps4UtilityButtonsTop = value;
-                    OnPropertyChanged(nameof(PS4UtilityButtonsTop));
+                    _rightAnalogStickX = value;
+                    OnPropertyChanged(nameof(RightAnalogStickX));
                 }
             }
         }
 
-        public int RightAnalogStickTop
+        public double RightAnalogStickY
         {
-            get => _rightAnalogStickTop;
+            get => _rightAnalogStickY;
             set
             {
-                if (_rightAnalogStickTop != value)
+                if (_rightAnalogStickY != value)
                 {
-                    _rightAnalogStickTop = value;
-                    OnPropertyChanged(nameof(RightAnalogStickTop));
+                    _rightAnalogStickY = value;
+                    OnPropertyChanged(nameof(RightAnalogStickY));
                 }
             }
         }
@@ -234,7 +232,7 @@ namespace TBVGPE.Views.Presets
 
             DataContext = this;
 
-            Loaded += PositionControllerElements;
+            Loaded += InitializeControllerLayout;
         }
 
         // methods
@@ -243,57 +241,62 @@ namespace TBVGPE.Views.Presets
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void SaveLayout()
+        public void SaveLayout(string path)
         {
-            var elements = new List<object>();
-
-            foreach (var child in LayoutCanvas.Children.OfType<ControllerWrapperViewModel>())
+            var controllerLayout = new ControllerLayoutModel
             {
-                elements.Add(new
-                {
-                    Column = 1,
-                    X = Canvas.GetLeft(child),
-                    Y = Canvas.GetTop(child),
-                    Width = child.ActualWidth,
-                    Height = child.ActualHeight,
-                    Type = child.Content.GetType().Name
-                });
-            }
+                ShoulderButtonsX = ShoulderButtonsX,
+                ShoulderButtonsY = ShoulderButtonsY,
+                AnalogStickButtonsX = AnalogStickButtonsX,
+                AnalogStickButtonsY = AnalogStickButtonsY,
+                DirectionalButtonsX = DirectionalButtonsX,
+                DirectionalButtonsY = DirectionalButtonsY,
+                LeftAnalogStickX = LeftAnalogStickX,
+                LeftAnalogStickY = LeftAnalogStickY,
+                FaceButtonsX = FaceButtonsX,
+                FaceButtonsY = FaceButtonsY,
+                UtilityButtonsX = UtilityButtonsX,
+                UtilityButtonsY = UtilityButtonsY,
+                RightAnalogStickX = RightAnalogStickX,
+                RightAnalogStickY = RightAnalogStickY
+            };
 
-            File.WriteAllText(Path.Combine(AppContext.BaseDirectory,"Assets\\Config\\Layouts\\ps4layout.json"), JsonSerializer.Serialize(elements));
+            File.WriteAllText(path, JsonSerializer.Serialize(controllerLayout, new JsonSerializerOptions { WriteIndented = true }));
         }
 
-        private void PositionControllerElements(object sender, EventArgs e)
+        private void InitializeControllerLayout(object sender, EventArgs e)
         {
+            (double Width, double Height) screenDimentions = (
+                System.Windows.SystemParameters.PrimaryScreenWidth,
+                System.Windows.SystemParameters.PrimaryScreenHeight
+                );
+
+            // default positionings
+            LayoutCanvasWidth = screenDimentions.Width;
+
             if ("ps4_config" != null)
             {
                 // load position from config file and assign them in the properties
                 // return;
             }
 
-            (int Width, int Height) screenDimentions = (
-                (int)System.Windows.SystemParameters.PrimaryScreenWidth,
-                (int)System.Windows.SystemParameters.PrimaryScreenHeight
-                );
-
             // default positionings
             LayoutCanvasWidth = screenDimentions.Width;
 
-            PlayStationShoulderButtonsLeft = 0;
-            StandardAnalogStickButtonsLeft = 0;
-            StandardDirectionalButtonsLeft = 20;
-            LeftAnalogStickLeft = 170;
-            PlayStationFaceButtonsLeft = (int)LayoutCanvas.Width - (int)PlayStationFaceButtonsControl.Width - 20;
-            PS4UtilityButtonsLeft = (int)LayoutCanvas.Width - (int)PS4UtilityButtonsControl.Width - 20;
-            RightAnalogStickLeft = (int)LayoutCanvas.Width - (int)RightAnalogStickControl.Width - 250;
-
-            PlayStationShoulderButtonsTop = 0;
-            StandardAnalogStickButtonsTop = (int)PlayStationShoulderButtonsControl.Height;
-            StandardDirectionalButtonsTop = 220;
-            LeftAnalogStickTop = 400;
-            PlayStationFaceButtonsTop = 220;
-            PS4UtilityButtonsTop = 450;
-            RightAnalogStickTop = 400;
+            ShoulderButtonsX = 0;
+            ShoulderButtonsY = 0;
+            AnalogStickButtonsX = 0;
+            AnalogStickButtonsY = PlayStationShoulderButtonsControl.Height;
+            DirectionalButtonsX = 20;
+            DirectionalButtonsY = 220;
+            LeftAnalogStickX = 170;
+            LeftAnalogStickY = 400;
+            FaceButtonsX = LayoutCanvas.Width - PlayStationFaceButtonsControl.Width - 20;
+            FaceButtonsY = 220;
+            UtilityButtonsX = LayoutCanvas.Width - PS4UtilityButtonsControl.Width - 20;
+            UtilityButtonsY = 470;
+            RightAnalogStickX = LayoutCanvas.Width - RightAnalogStickControl.Width - 250;
+            RightAnalogStickY = 400;
         }
     }
 }

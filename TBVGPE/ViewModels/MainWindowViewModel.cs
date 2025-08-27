@@ -190,6 +190,11 @@ namespace TBVGPE.ViewModels
                 // na naka attach via datatemplate, which is set ha ubos na line, ha currentcontrollerviewmodel property
                 CurrentControllerViewModel = controllerVM;
 
+                if (App.EditMode)
+                {
+                    ToggleEditModeCommand.Execute(null);
+                }
+
                 // "connect" the controller, kun may na select ha virtualgamepad list
                 if (_selectedId == 5)
                 {

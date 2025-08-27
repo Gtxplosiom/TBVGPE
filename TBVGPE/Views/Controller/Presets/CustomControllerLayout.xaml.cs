@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace TBVGPE.Views.Controller.Presets
 {
-    /// <summary>
-    /// Interaction logic for CustomControllerLayout.xaml
-    /// </summary>
     public partial class CustomControllerLayout : UserControl
     {
         public CustomControllerLayout()

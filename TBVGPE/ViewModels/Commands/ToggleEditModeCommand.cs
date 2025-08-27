@@ -33,7 +33,9 @@ namespace TBVGPE.ViewModels.Commands
             {
                 App.EditMode = true;
 
-                _mainWindowViewModel.ToggleEditModeText = "Cancel Edit";
+                _mainWindowViewModel.ToggleEditModeText = "Save Layout";
+
+                // Implement actual saving
             }
         }
     }
