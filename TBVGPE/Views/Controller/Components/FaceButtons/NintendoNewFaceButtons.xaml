@@ -10,7 +10,7 @@
         <!-- Anti click through -->
         <Rectangle Width="200" Height="200" Fill="#01000000" />
         
-        <Ellipse x:Name="XBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" />
+        <Ellipse x:Name="XBtn" Width="70" Height="70" Fill="#AAA" Canvas.Left="65" />
         <Label Content="X"
                Width="70" Height="70"
                Canvas.Left="65"
@@ -21,7 +21,7 @@
                Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="YBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Top="65" />
+        <Ellipse x:Name="YBtn" Width="70" Height="70" Fill="#AAA" Canvas.Top="65" />
         <Label Content="Y"
                Width="70" Height="70"
                Canvas.Top="65"
@@ -32,7 +32,7 @@
                Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="BBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" Canvas.Top="130" />
+        <Ellipse x:Name="BBtn" Width="70" Height="70" Fill="#AAA" Canvas.Left="65" Canvas.Top="130" />
         <Label Content="B"
                Width="70" Height="70"
                Canvas.Left="65" Canvas.Top="130"
@@ -42,7 +42,7 @@
                Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="ABtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="130" Canvas.Top="65" />
+        <Ellipse x:Name="ABtn" Width="70" Height="70" Fill="#AAA" Canvas.Left="130" Canvas.Top="65" />
         <Label Content="A"
                Width="70" Height="70"
                Canvas.Left="130" Canvas.Top="65"

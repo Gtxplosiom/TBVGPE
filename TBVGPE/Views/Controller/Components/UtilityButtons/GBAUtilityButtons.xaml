@@ -14,8 +14,7 @@
         <Ellipse x:Name="StartBtn"
                  Width="50" Height="50"
                  Canvas.Left="10" Canvas.Top="5"
-                 Fill="#333"
-                 Opacity="0.5" />
+                 Fill="#AAA"/>
         <Label Content="Start"
                Width="50" Height="50"
                Canvas.Left="10" Canvas.Top="5"
@@ -27,9 +26,8 @@
 
         <Ellipse x:Name="SelectBtn"
                  Width="50" Height="50"
-                 Fill="#333"
-                 Opacity="0.5"
-                 Canvas.Left="10" Canvas.Top="75" />
+                 Canvas.Left="10" Canvas.Top="75"
+                 Fill="#AAA"/>
         <Label Content="Select"
                Width="50" Height="50"
                Canvas.Left="10" Canvas.Top="75"

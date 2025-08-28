@@ -22,7 +22,7 @@
                Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="BBtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="0" Canvas.Top="65" />
+        <Ellipse x:Name="BBtn" Width="70" Height="70" Fill="#AAA" Canvas.Left="0" Canvas.Top="65" />
         <Label Content="B"
                Width="70" Height="70"
                Canvas.Left="0" Canvas.Top="65"
@@ -32,7 +32,7 @@
                Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="ABtn" Width="70" Height="70" Fill="#333" Opacity="0.5" Canvas.Left="65" Canvas.Top="0" />
+        <Ellipse x:Name="ABtn" Width="70" Height="70" Fill="#AAA" Canvas.Left="65" Canvas.Top="0" />
         <Label Content="A"
                Width="70" Height="70"
                Canvas.Left="65" Canvas.Top="0"

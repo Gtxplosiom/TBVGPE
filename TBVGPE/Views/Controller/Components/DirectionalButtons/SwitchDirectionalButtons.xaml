@@ -19,7 +19,7 @@
         <Ellipse x:Name="DownRightBtn" Width="60" Height="60" Fill="Transparent" Opacity="0.1" Canvas.Left="100" Canvas.Top="100" />
         <Ellipse x:Name="UpRightBtn" Width="60" Height="60" Fill="Transparent" Opacity="0.1" Canvas.Left="100" Canvas.Top="20" />
 
-        <Ellipse x:Name="UpBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Left="60" />
+        <Ellipse x:Name="UpBtn" Width="60" Height="60" Fill="#AAA" Canvas.Left="60" />
         <Label Content="▲"
                Width="60" Height="60"
                Canvas.Left="60"
@@ -29,7 +29,7 @@
                Foreground="White" Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="LeftBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Top="60" />
+        <Ellipse x:Name="LeftBtn" Width="60" Height="60" Fill="#AAA" Canvas.Top="60" />
         <Label Content="◄"
                Width="60" Height="60"
                Canvas.Top="60"
@@ -39,7 +39,7 @@
                Foreground="White" Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="DownBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Left="60" Canvas.Top="120" />
+        <Ellipse x:Name="DownBtn" Width="60" Height="60" Fill="#AAA" Canvas.Left="60" Canvas.Top="120" />
         <Label Content="▼"
                Width="60" Height="60"
                Canvas.Left="60" Canvas.Top="120"
@@ -48,7 +48,7 @@
                Foreground="White" Background="Transparent"
                IsHitTestVisible="False"/>
 
-        <Ellipse x:Name="RightBtn" Width="60" Height="60" Fill="#333" Opacity="0.5" Canvas.Left="120" Canvas.Top="60" />
+        <Ellipse x:Name="RightBtn" Width="60" Height="60" Fill="#AAA" Canvas.Left="120" Canvas.Top="60" />
         <Label Content="►"
                Width="60" Height="60"
                Canvas.Left="120" Canvas.Top="60"
