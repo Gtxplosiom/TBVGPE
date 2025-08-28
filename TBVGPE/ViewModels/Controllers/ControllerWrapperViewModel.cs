@@ -46,8 +46,7 @@ namespace TBVGPE.ViewModels.Controllers
                         double offsetX = currentPosition.X - _clickPosition.X;
                         double offsetY = currentPosition.Y - _clickPosition.Y;
 
-                        // ✨ KEY CHANGE: Update the ViewModel properties directly
-                        // The binding `Canvas.Left="{Binding X}"` will handle the visual update.
+                        // update the elements' viewmodel values instead of position the canavs.left and canvas.top in the view
                         element.X += offsetX;
                         element.Y += offsetY;
 
@@ -61,9 +60,6 @@ namespace TBVGPE.ViewModels.Controllers
 
                     _isDragging = false;
                     ReleaseTouchCapture(args.TouchDevice);
-
-                    // The ViewModel is already updated in real-time during TouchMove,
-                    // so no extra work is needed here.
                 };
             };
         }
