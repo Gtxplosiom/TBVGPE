@@ -40,15 +40,6 @@
                   BorderThickness="1"
                   Grid.Column="1"/>
 
-        <Button Content="&lt;+ Add Custom Layout"
-                Width="Auto" Height="30"
-                Foreground="White" Background="#AAA"
-                FontSize="14"
-                BorderBrush="#555"
-                BorderThickness="1"
-                Command="{Binding OpenCustomLayoutCreatorCommand}"
-                Grid.Column="2" />
-
         <Button Content="Update TBVGPE"
                 Width="Auto" Height="30"
                 Foreground="White" Background="#BBB"

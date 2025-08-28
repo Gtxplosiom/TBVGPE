@@ -34,6 +34,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
         {
             button.TouchDown += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(faceButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -41,6 +43,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
 
             button.TouchUp += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(faceButtons, false);
                 button.Fill =_defaultButtonFill;
                 e.Handled = true;
@@ -48,6 +52,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
 
             button.TouchLeave += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(faceButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -55,6 +61,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
 
             button.TouchEnter += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(faceButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -65,6 +73,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
         {
             button.TouchDown += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(faceButton1, true);
                 App.Vigem.Set360ButtonState(faceButton2, true);
                 button.Fill = _pressedButtonFill;
@@ -74,6 +84,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
 
             button.TouchUp += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(faceButton1, false);
                 App.Vigem.Set360ButtonState(faceButton2, false);
                 button.Fill = _defaultButtonFill;
@@ -83,6 +95,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
 
             button.TouchLeave += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(faceButton1, false);
                 App.Vigem.Set360ButtonState(faceButton2, false);
                 button.Fill = _defaultButtonFill;

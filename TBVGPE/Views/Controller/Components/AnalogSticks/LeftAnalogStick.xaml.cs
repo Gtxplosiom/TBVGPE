@@ -35,6 +35,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
 
         private void Thumb_TouchDown(object sender, TouchEventArgs e)
         {
+            if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
             _isDragging = true;
             Thumb.CaptureTouch(e.TouchDevice);
 
@@ -52,6 +54,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
 
         private void Thumb_TouchMove(object sender, TouchEventArgs e)
         {
+            if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
             if (!_isDragging) return;
 
             // how far the finger moved since TouchDown
@@ -91,6 +95,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
 
         private void Thumb_TouchUp(object sender, TouchEventArgs e)
         {
+            if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
             _isDragging = false;
             Thumb.ReleaseTouchCapture(e.TouchDevice);
 

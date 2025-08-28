@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TBVGPE.Views.Controller.Presets"
+             xmlns:viewModel="clr-namespace:TBVGPE.ViewModels.Controllers"
              xmlns:AnalogSticks="clr-namespace:TBVGPE.Views.Controller.Components.AnalogSticks"
              xmlns:DirectionalButtons="clr-namespace:TBVGPE.Views.Controller.Components.DirectionalButtons"
              xmlns:FaceButtons="clr-namespace:TBVGPE.Views.Controller.Components.FaceButtons"
@@ -12,7 +13,7 @@
              xmlns:UtilityButtons="clr-namespace:TBVGPE.Views.Controller.Components.UtilityButtons"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Canvas>
             
-    </Grid>
+    </Canvas>
 </UserControl>

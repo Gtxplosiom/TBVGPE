@@ -46,6 +46,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
         {
             button.TouchDown += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -53,6 +55,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
 
             button.TouchUp += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -60,6 +64,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
 
             button.TouchLeave += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -67,6 +73,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
 
             button.TouchEnter += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;

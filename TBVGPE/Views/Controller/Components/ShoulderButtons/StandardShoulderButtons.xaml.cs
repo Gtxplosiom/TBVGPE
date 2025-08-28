@@ -47,6 +47,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
         {
             button.TouchDown += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(shoulderButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -54,6 +56,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
             button.TouchUp += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -61,6 +65,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
             button.TouchLeave += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -68,6 +74,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
             button.TouchEnter += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(shoulderButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;

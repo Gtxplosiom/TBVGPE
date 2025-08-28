@@ -27,6 +27,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
         {
             button.TouchDown += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(utilityButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -34,6 +36,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
 
             button.TouchUp += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(utilityButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -41,6 +45,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
 
             button.TouchLeave += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(utilityButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -48,6 +54,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
 
             button.TouchEnter += (s, e) =>
             {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
                 App.Vigem.Set360ButtonState(utilityButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
