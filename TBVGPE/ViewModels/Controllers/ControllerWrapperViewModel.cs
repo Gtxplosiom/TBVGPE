@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿// ControllerWrapperViewModel.cs
+
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -25,7 +27,6 @@ namespace TBVGPE.ViewModels.Controllers
 
                 this.TouchDown += (sender, args) =>
                 {
-                    // input blocking yeah
                     if (App.EditMode == false) return;
 
                     _isDragging = true;
@@ -37,21 +38,20 @@ namespace TBVGPE.ViewModels.Controllers
                 {
                     if (App.EditMode == false) return;
 
-                    if (_isDragging)
+                    if (_isDragging && DataContext is ILayoutElement element)
                     {
                         var canvas = parent;
-                        var position = args.GetTouchPoint(canvas).Position;
+                        var currentPosition = args.GetTouchPoint(canvas).Position;
 
-                        double offsetX = position.X - _clickPosition.X;
-                        double offsetY = position.Y - _clickPosition.Y;
+                        double offsetX = currentPosition.X - _clickPosition.X;
+                        double offsetY = currentPosition.Y - _clickPosition.Y;
 
-                        double newLeft = Canvas.GetLeft(this) + offsetX;
-                        double newTop = Canvas.GetTop(this) + offsetY;
+                        // ✨ KEY CHANGE: Update the ViewModel properties directly
+                        // The binding `Canvas.Left="{Binding X}"` will handle the visual update.
+                        element.X += offsetX;
+                        element.Y += offsetY;
 
-                        Canvas.SetLeft(this, newLeft);
-                        Canvas.SetTop(this, newTop);
-
-                        _clickPosition = position;
+                        _clickPosition = currentPosition;
                     }
                 };
 
@@ -62,13 +62,8 @@ namespace TBVGPE.ViewModels.Controllers
                     _isDragging = false;
                     ReleaseTouchCapture(args.TouchDevice);
 
-                    if (DataContext is ILayoutElement element)
-                    {
-                        double left = Canvas.GetLeft(this);
-                        double top = Canvas.GetTop(this);
-                        element.X = left;
-                        element.Y = top;
-                    }
+                    // The ViewModel is already updated in real-time during TouchMove,
+                    // so no extra work is needed here.
                 };
             };
         }
