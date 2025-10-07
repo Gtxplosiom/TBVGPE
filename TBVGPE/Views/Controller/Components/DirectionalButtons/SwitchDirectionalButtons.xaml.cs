@@ -12,6 +12,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
         private readonly SolidColorBrush _defaultDiagButtonFill = new SolidColorBrush(Colors.Transparent);
         private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray); // A darker gray for pressed state
 
+        private bool _isTouchDevice;
+
         public SwitchDirectionalButtons()
         {
             InitializeComponent();
@@ -49,6 +51,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = true;
+
                 App.Vigem.Set360ButtonState(directionalButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -57,6 +61,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             button.TouchUp += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = false;
 
                 App.Vigem.Set360ButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -67,6 +73,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = false;
+
                 App.Vigem.Set360ButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -75,6 +83,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             button.TouchEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = true;
 
                 App.Vigem.Set360ButtonState(directionalButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -88,6 +98,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = true;
+
                 App.Vigem.Set360ButtonState(directionalButton1, true);
                 App.Vigem.Set360ButtonState(directionalButton2, true);
                 button.Fill = _pressedButtonFill;
@@ -97,6 +109,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             button.TouchUp += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = false;
 
                 App.Vigem.Set360ButtonState(directionalButton1, false);
                 App.Vigem.Set360ButtonState(directionalButton2, false);
@@ -108,6 +122,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = false;
+
                 App.Vigem.Set360ButtonState(directionalButton1, false);
                 App.Vigem.Set360ButtonState(directionalButton2, false);
                 button.Fill = _defaultDiagButtonFill;
@@ -117,6 +133,8 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             button.TouchEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = true;
 
                 App.Vigem.Set360ButtonState(directionalButton1, true);
                 App.Vigem.Set360ButtonState(directionalButton2, true);
@@ -129,7 +147,7 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
         {
             button.PreviewMouseDown += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(directionalButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -138,7 +156,7 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
 
             button.PreviewMouseUp += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -147,7 +165,7 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
 
             button.MouseLeave += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(directionalButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -159,7 +177,7 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
         {
             button.PreviewMouseDown += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(directionalButton1, true);
                 App.Vigem.Set360ButtonState(directionalButton2, true);
@@ -169,7 +187,7 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
 
             button.PreviewMouseUp += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(directionalButton1, false);
                 App.Vigem.Set360ButtonState(directionalButton2, false);
@@ -179,7 +197,7 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
 
             button.MouseLeave += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(directionalButton1, false);
                 App.Vigem.Set360ButtonState(directionalButton2, false);

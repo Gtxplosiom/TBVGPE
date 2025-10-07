@@ -61,6 +61,42 @@ namespace TBVGPE.ViewModels.Controllers
                     _isDragging = false;
                     ReleaseTouchCapture(args.TouchDevice);
                 };
+
+                this.PreviewMouseDown += (sender, args) =>
+                {
+                    if (App.EditMode == false) return;
+
+                    _isDragging = true;
+                    _clickPosition = args.GetPosition(parent);
+                    CaptureMouse();
+                };
+
+                this.PreviewMouseMove += (sender, args) =>
+                {
+                    if (App.EditMode == false) return;
+
+                    if (_isDragging && DataContext is ILayoutElement element)
+                    {
+                        var canvas = parent;
+                        var currentPosition = args.GetPosition(canvas);
+
+                        double offsetX = currentPosition.X - _clickPosition.X;
+                        double offsetY = currentPosition.Y - _clickPosition.Y;
+
+                        element.X += offsetX;
+                        element.Y += offsetY;
+
+                        _clickPosition = currentPosition;
+                    }
+                };
+
+                this.PreviewMouseUp += (sender, args) =>
+                {
+                    if (App.EditMode == false) return;
+
+                    _isDragging = false;
+                    ReleaseMouseCapture();
+                };
             };
         }
 

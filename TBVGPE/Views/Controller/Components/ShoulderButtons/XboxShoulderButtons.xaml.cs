@@ -14,6 +14,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA));
         private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray);
 
+        private bool _isTouchDevice;
+
         public XboxShoulderButtons()
         {
             InitializeComponent();
@@ -53,6 +55,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = true;
+
                 App.Vigem.Set360ButtonState(shoulderButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -61,6 +65,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             button.TouchUp += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = false;
 
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -71,6 +77,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = false;
+
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -79,6 +87,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             button.TouchEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = true;
 
                 App.Vigem.Set360ButtonState(shoulderButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -90,7 +100,7 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
         {
             button.PreviewMouseDown += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(shoulderButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -99,7 +109,7 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
             button.PreviewMouseUp += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -108,7 +118,7 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
             button.MouseLeave += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -122,6 +132,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = true;
+
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -130,6 +142,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             button.TouchUp += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = false;
 
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
                 button.Fill = _defaultButtonFill;
@@ -140,6 +154,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = false;
+
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -148,6 +164,8 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             button.TouchEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = true;
 
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
                 button.Fill = _pressedButtonFill;
@@ -159,7 +177,7 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
         {
             button.PreviewMouseDown += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
                 button.Fill = _pressedButtonFill;
@@ -168,7 +186,7 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
             button.PreviewMouseUp += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
                 button.Fill = _defaultButtonFill;
@@ -177,7 +195,7 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
             button.MouseLeave += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
                 button.Fill = _defaultButtonFill;

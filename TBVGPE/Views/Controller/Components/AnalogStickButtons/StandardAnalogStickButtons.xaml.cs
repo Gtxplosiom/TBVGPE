@@ -11,6 +11,7 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
     public partial class StandardAnalogStickButtons : UserControl
     {
         private Vector2 _screenDimentions;
+        private bool _isTouchDevice;
 
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA)); // #AAA
         private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray);
@@ -51,6 +52,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = true;
+
                 App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -59,6 +62,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
             button.TouchUp += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = false;
 
                 App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -69,6 +74,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = false;
+
                 App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -77,6 +84,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
             button.TouchEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = true;
 
                 App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -88,7 +97,7 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
         {
             button.MouseLeftButtonDown += (s, e) =>
             {
-                if (App.EditMode) return;
+                if (App.EditMode || _isTouchDevice) return;
 
                 App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -97,7 +106,7 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
 
             button.MouseLeftButtonUp += (s, e) =>
             {
-                if (App.EditMode) return;
+                if (App.EditMode || _isTouchDevice) return;
 
                 App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -106,7 +115,7 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
 
             button.MouseLeave += (s, e) =>
             {
-                if (App.EditMode) return;
+                if (App.EditMode || _isTouchDevice) return;
 
                 App.Vigem.Set360ButtonState(analogStickButtons, false);
                 button.Fill = _defaultButtonFill;

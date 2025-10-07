@@ -11,6 +11,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA)); // #AAA
         private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray);
 
+        private bool _isTouchDevice;
+
         public PS4UtilityButtons()
         {
             InitializeComponent();
@@ -34,6 +36,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = true;
+
                 App.Vigem.Set360ButtonState(utilityButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
@@ -42,6 +46,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
             button.TouchUp += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = false;
 
                 App.Vigem.Set360ButtonState(utilityButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -52,6 +58,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
+                _isTouchDevice = false;
+
                 App.Vigem.Set360ButtonState(utilityButtons, false);
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
@@ -60,6 +68,8 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
             button.TouchEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                _isTouchDevice = true;
 
                 App.Vigem.Set360ButtonState(utilityButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -71,7 +81,7 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
         {
             button.PreviewMouseDown += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(shoulderButtons, true);
                 button.Fill = _pressedButtonFill;
@@ -80,7 +90,7 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
 
             button.PreviewMouseUp += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;
@@ -89,7 +99,7 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
 
             button.MouseLeave += (s, e) =>
             {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+                if (App.EditMode || _isTouchDevice) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(shoulderButtons, false);
                 button.Fill = _defaultButtonFill;

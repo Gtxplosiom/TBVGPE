@@ -7,6 +7,7 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
     public partial class LeftAnalogStick : UserControl
     {
         private bool _isDragging;
+        private bool _isTouchDevice;
         private Point _center;
         private double _radius;
         private readonly double _extensionMultiplier = 2.0;
@@ -35,6 +36,10 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
 
         private void Thumb_TouchDown(object sender, TouchEventArgs e)
         {
+            e.Handled = true;
+
+            _isTouchDevice = true;
+
             if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
             _isDragging = true;
@@ -48,12 +53,14 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
             _initialTouchOffset = new Vector(
                 Canvas.GetLeft(Thumb) + Thumb.Width / 2 - _center.X,
                 Canvas.GetTop(Thumb) + Thumb.Height / 2 - _center.Y);
-
-            e.Handled = true;
         }
 
         private void Thumb_TouchMove(object sender, TouchEventArgs e)
         {
+            e.Handled = true;
+
+            _isTouchDevice = true;
+
             if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
             if (!_isDragging) return;
@@ -89,12 +96,14 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
             // update thumb position
             Canvas.SetLeft(Thumb, _center.X + offset.X - (Thumb.Width / 2));
             Canvas.SetTop(Thumb, _center.Y + offset.Y - (Thumb.Height / 2));
-
-            e.Handled = true;
         }
 
         private void Thumb_TouchUp(object sender, TouchEventArgs e)
         {
+            e.Handled = true;
+
+            _isTouchDevice = false;
+
             if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
             _isDragging = false;
@@ -106,22 +115,11 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
             App.Vigem.Set360LeftStick(_xValue, _yValue);
 
             ResetThumbPosition();
-
-            e.Handled = true;
-        }
-
-        private void ResetThumbPosition()
-        {
-            if (_center != default)
-            {
-                Canvas.SetLeft(Thumb, _center.X - (Thumb.Width / 2));
-                Canvas.SetTop(Thumb, _center.Y - (Thumb.Height / 2));
-            }
         }
 
         private void Thumb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (App.EditMode) return;
+            if (App.EditMode || _isTouchDevice) return;
 
             _isDragging = true;
             Thumb.CaptureMouse();
@@ -134,7 +132,8 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
 
         private void Thumb_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-            if (App.EditMode) return;
+            if (App.EditMode || _isTouchDevice) return;
+
             if (!_isDragging || e.LeftButton != MouseButtonState.Pressed)
                 return;
 
@@ -163,7 +162,7 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
 
         private void Thumb_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (App.EditMode) return;
+            if (App.EditMode || _isTouchDevice) return;
 
             _isDragging = false;
             Thumb.ReleaseMouseCapture();
@@ -175,6 +174,15 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
             ResetThumbPosition();
 
             e.Handled = true;
+        }
+
+        private void ResetThumbPosition()
+        {
+            if (_center != default)
+            {
+                Canvas.SetLeft(Thumb, _center.X - (Thumb.Width / 2));
+                Canvas.SetTop(Thumb, _center.Y - (Thumb.Height / 2));
+            }
         }
     }
 }
