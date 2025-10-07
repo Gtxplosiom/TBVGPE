@@ -112,15 +112,6 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
-
-            button.MouseEnter += (s, e) =>
-            {
-                if (App.EditMode) return;
-
-                App.Vigem.Set360ButtonState(analogStickButtons, true);
-                button.Fill = _pressedButtonFill;
-                e.Handled = true;
-            };
         }
     }
 }

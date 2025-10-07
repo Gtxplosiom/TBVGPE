@@ -96,15 +96,6 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
-
-            button.MouseEnter += (s, e) =>
-            {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
-
-                App.Vigem.Set360ButtonState(faceButtons, true);
-                button.Fill = _pressedButtonFill;
-                e.Handled = true;
-            };
         }
 
         private void AttachTouchComboHandlers(Ellipse button, Label buttonName, Xbox360Button faceButton1, Xbox360Button faceButton2)

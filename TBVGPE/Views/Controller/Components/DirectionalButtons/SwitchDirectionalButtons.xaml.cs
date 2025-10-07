@@ -153,15 +153,6 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
-
-            button.MouseEnter += (s, e) =>
-            {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
-
-                App.Vigem.Set360ButtonState(directionalButtons, true);
-                button.Fill = _pressedButtonFill;
-                e.Handled = true;
-            };
         }
 
         private void AttachDiagMouseHandlers(Ellipse button, Xbox360Button directionalButton1, Xbox360Button directionalButton2)
@@ -193,16 +184,6 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
                 App.Vigem.Set360ButtonState(directionalButton1, false);
                 App.Vigem.Set360ButtonState(directionalButton2, false);
                 button.Fill = _defaultDiagButtonFill;
-                e.Handled = true;
-            };
-
-            button.MouseEnter += (s, e) =>
-            {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
-
-                App.Vigem.Set360ButtonState(directionalButton1, true);
-                App.Vigem.Set360ButtonState(directionalButton2, true);
-                button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
         }

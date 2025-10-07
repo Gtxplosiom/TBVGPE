@@ -114,15 +114,6 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
-
-            button.MouseEnter += (s, e) =>
-            {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
-
-                App.Vigem.Set360ButtonState(shoulderButtons, true);
-                button.Fill = _pressedButtonFill;
-                e.Handled = true;
-            };
         }
 
         private void AttachTouchTriggerHandlers(Rectangle button, Xbox360Slider shoulderButtons)
@@ -190,15 +181,6 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
 
                 App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
                 button.Fill = _defaultButtonFill;
-                e.Handled = true;
-            };
-
-            button.MouseEnter += (s, e) =>
-            {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
-
-                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
-                button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };
         }

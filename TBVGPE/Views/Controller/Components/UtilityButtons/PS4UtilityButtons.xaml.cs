@@ -95,15 +95,6 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
                 button.Fill = _defaultButtonFill;
                 e.Handled = true;
             };
-
-            button.MouseEnter += (s, e) =>
-            {
-                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
-
-                App.Vigem.Set360ButtonState(shoulderButtons, true);
-                button.Fill = _pressedButtonFill;
-                e.Handled = true;
-            };
         }
     }
 }
