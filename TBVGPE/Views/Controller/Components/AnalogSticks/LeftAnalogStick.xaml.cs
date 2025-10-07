@@ -118,6 +118,64 @@ namespace TBVGPE.Views.Controller.Components.AnalogSticks
                 Canvas.SetTop(Thumb, _center.Y - (Thumb.Height / 2));
             }
         }
+
+        private void Thumb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (App.EditMode) return;
+
+            _isDragging = true;
+            Thumb.CaptureMouse();
+            _initialTouchPoint = e.GetPosition(PadCanvas);
+            _initialTouchOffset = new Vector(
+                Canvas.GetLeft(Thumb) + Thumb.Width / 2 - _center.X,
+                Canvas.GetTop(Thumb) + Thumb.Height / 2 - _center.Y);
+            e.Handled = true;
+        }
+
+        private void Thumb_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (App.EditMode) return;
+            if (!_isDragging || e.LeftButton != MouseButtonState.Pressed)
+                return;
+
+            Point currentPos = e.GetPosition(PadCanvas);
+            Vector dragAmount = currentPos - _initialTouchPoint;
+            Vector offset = _initialTouchOffset + dragAmount;
+
+            double extendedRadius = _radius * _extensionMultiplier;
+
+            if (offset.Length > extendedRadius)
+            {
+                offset.Normalize();
+                offset *= extendedRadius;
+            }
+
+            _xValue = offset.X / extendedRadius;
+            _yValue = offset.Y / extendedRadius;
+
+            App.Vigem.Set360LeftStick(_xValue, _yValue * -1);
+
+            Canvas.SetLeft(Thumb, _center.X + offset.X - (Thumb.Width / 2));
+            Canvas.SetTop(Thumb, _center.Y + offset.Y - (Thumb.Height / 2));
+
+            e.Handled = true;
+        }
+
+        private void Thumb_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (App.EditMode) return;
+
+            _isDragging = false;
+            Thumb.ReleaseMouseCapture();
+
+            _xValue = 0.0;
+            _yValue = 0.0;
+            App.Vigem.Set360LeftStick(_xValue, _yValue);
+
+            ResetThumbPosition();
+
+            e.Handled = true;
+        }
     }
 }
 

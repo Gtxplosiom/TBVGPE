@@ -10,7 +10,7 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
     {
         private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33));
         private readonly SolidColorBrush _defaultDiagButtonFill = new SolidColorBrush(Colors.Transparent);
-        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.DarkGray); // A darker gray for pressed state
+        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray); // A darker gray for pressed state
 
         public SwitchDirectionalButtons()
         {
@@ -30,6 +30,17 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             AttachDiagTouchHandlers(DownLeftBtn, Xbox360Button.Down, Xbox360Button.Left);
             AttachDiagTouchHandlers(DownRightBtn, Xbox360Button.Down, Xbox360Button.Right);
             AttachDiagTouchHandlers(UpRightBtn, Xbox360Button.Up, Xbox360Button.Right);
+
+            AttachMouseHandlers(UpBtn, Xbox360Button.Up);
+            AttachMouseHandlers(LeftBtn, Xbox360Button.Left);
+            AttachMouseHandlers(DownBtn, Xbox360Button.Down);
+            AttachMouseHandlers(RightBtn, Xbox360Button.Right);
+
+            // Diagonals
+            AttachDiagMouseHandlers(UpLeftBtn, Xbox360Button.Up, Xbox360Button.Left);
+            AttachDiagMouseHandlers(DownLeftBtn, Xbox360Button.Down, Xbox360Button.Left);
+            AttachDiagMouseHandlers(DownRightBtn, Xbox360Button.Down, Xbox360Button.Right);
+            AttachDiagMouseHandlers(UpRightBtn, Xbox360Button.Up, Xbox360Button.Right);
         }
 
         private void AttachTouchHandlers(Ellipse button, Xbox360Button directionalButtons)
@@ -104,6 +115,88 @@ namespace TBVGPE.Views.Controller.Components.DirectionalButtons
             };
 
             button.TouchEnter += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButton1, true);
+                App.Vigem.Set360ButtonState(directionalButton2, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachMouseHandlers(Ellipse button, Xbox360Button directionalButtons)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachDiagMouseHandlers(Ellipse button, Xbox360Button directionalButton1, Xbox360Button directionalButton2)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButton1, true);
+                App.Vigem.Set360ButtonState(directionalButton2, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButton1, false);
+                App.Vigem.Set360ButtonState(directionalButton2, false);
+                button.Fill = _defaultDiagButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(directionalButton1, false);
+                App.Vigem.Set360ButtonState(directionalButton2, false);
+                button.Fill = _defaultDiagButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 

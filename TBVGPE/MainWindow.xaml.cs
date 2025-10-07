@@ -19,6 +19,14 @@ namespace TBVGPE
 
         private readonly Vector2 _screenDimentions;
 
+        [DllImport("user32.dll")]
+        static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+        static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
+        const UInt32 SWP_NOSIZE = 0x0001;
+        const UInt32 SWP_NOMOVE = 0x0002;
+        const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,18 +39,21 @@ namespace TBVGPE
             this.Height = _screenDimentions.Y;
 
             this.Loaded += MainWindow_Loaded;
+
+            this.Topmost = true;
         }
 
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
 
-            // Get the window handle (HWND)
             var helper = new WindowInteropHelper(this);
 
-            // Get the current extended window style and add the WS_EX_NOACTIVATE flag
             int exStyle = GetWindowLong(helper.Handle, GWL_EXSTYLE);
             SetWindowLong(helper.Handle, GWL_EXSTYLE, exStyle | WS_EX_NOACTIVATE);
+
+            var handle = new WindowInteropHelper(this).Handle;
+            SetWindowPos(handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)

@@ -41,6 +41,9 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
         {
             AttachTouchHandlers(LBtn, Xbox360Button.LeftShoulder);
             AttachTouchHandlers(RBtn, Xbox360Button.RightShoulder);
+
+            AttachMouseHandlers(LBtn, Xbox360Button.LeftShoulder);
+            AttachMouseHandlers(RBtn, Xbox360Button.RightShoulder);
         }
 
         private void AttachTouchHandlers(Rectangle button, Xbox360Button shoulderButtons)
@@ -73,6 +76,45 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             };
 
             button.TouchEnter += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachMouseHandlers(Rectangle button, Xbox360Button shoulderButtons)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 

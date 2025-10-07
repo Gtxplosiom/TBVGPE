@@ -21,6 +21,9 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
         {
             AttachTouchHandlers(SelectBtn, Xbox360Button.Back);
             AttachTouchHandlers(StartBtn, Xbox360Button.Start);
+
+            AttachMouseHandlers(SelectBtn, Xbox360Button.Back);
+            AttachMouseHandlers(StartBtn, Xbox360Button.Start);
         }
 
         private void AttachTouchHandlers(Rectangle button, Xbox360Button utilityButtons)
@@ -57,6 +60,45 @@ namespace TBVGPE.Views.Controller.Components.UtilityButtons
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
                 App.Vigem.Set360ButtonState(utilityButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachMouseHandlers(Rectangle button, Xbox360Button shoulderButtons)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
                 button.Fill = _pressedButtonFill;
                 e.Handled = true;
             };

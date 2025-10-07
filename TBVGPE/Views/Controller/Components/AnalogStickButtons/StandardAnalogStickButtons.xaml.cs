@@ -40,6 +40,9 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
         {
             AttachTouchHandlers(LStickBtn, Xbox360Button.LeftThumb);
             AttachTouchHandlers(RStickBtn, Xbox360Button.RightThumb);
+
+            AttachMouseHandlers(LStickBtn, Xbox360Button.LeftThumb);
+            AttachMouseHandlers(RStickBtn, Xbox360Button.RightThumb);
         }
 
         private void AttachTouchHandlers(Rectangle button, Xbox360Button analogStickButtons)
@@ -74,6 +77,45 @@ namespace TBVGPE.Views.Controller.Components.AnalogStickButtons
             button.TouchEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(analogStickButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachMouseHandlers(Rectangle button, Xbox360Button analogStickButtons)
+        {
+            button.MouseLeftButtonDown += (s, e) =>
+            {
+                if (App.EditMode) return;
+
+                App.Vigem.Set360ButtonState(analogStickButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeftButtonUp += (s, e) =>
+            {
+                if (App.EditMode) return;
+
+                App.Vigem.Set360ButtonState(analogStickButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return;
+
+                App.Vigem.Set360ButtonState(analogStickButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
+            {
+                if (App.EditMode) return;
 
                 App.Vigem.Set360ButtonState(analogStickButtons, true);
                 button.Fill = _pressedButtonFill;

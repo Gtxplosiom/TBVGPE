@@ -37,8 +37,14 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             AttachTouchHandlers(LBBtn, Xbox360Button.LeftShoulder);
             AttachTouchHandlers(RBBtn, Xbox360Button.RightShoulder);
 
-            AttachTriggerHandlers(LTBtn, Xbox360Slider.LeftTrigger);
-            AttachTriggerHandlers(RTBtn, Xbox360Slider.RightTrigger);
+            AttachMouseHandlers(LBBtn, Xbox360Button.LeftShoulder);
+            AttachMouseHandlers(RBBtn, Xbox360Button.RightShoulder);
+
+            AttachTouchTriggerHandlers(LTBtn, Xbox360Slider.LeftTrigger);
+            AttachTouchTriggerHandlers(RTBtn, Xbox360Slider.RightTrigger);
+
+            AttachMouseTriggerHandlers(LTBtn, Xbox360Slider.LeftTrigger);
+            AttachMouseTriggerHandlers(RTBtn, Xbox360Slider.RightTrigger);
         }
 
         private void AttachTouchHandlers(Rectangle button, Xbox360Button shoulderButtons)
@@ -80,7 +86,46 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             };
         }
 
-        private void AttachTriggerHandlers(Rectangle button, Xbox360Slider shoulderButtons)
+        private void AttachMouseHandlers(Rectangle button, Xbox360Button shoulderButtons)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(shoulderButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachTouchTriggerHandlers(Rectangle button, Xbox360Slider shoulderButtons)
         {
             button.TouchDown += (s, e) =>
             {
@@ -110,6 +155,45 @@ namespace TBVGPE.Views.Controller.Components.ShoulderButtons
             };
 
             button.TouchEnter += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachMouseTriggerHandlers(Rectangle button, Xbox360Slider shoulderButtons)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)255);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360TriggerValue(shoulderButtons, (byte)0);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 

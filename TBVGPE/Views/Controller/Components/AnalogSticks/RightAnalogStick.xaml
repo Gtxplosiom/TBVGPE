@@ -17,6 +17,9 @@
                  Fill="#AAA"
                  TouchDown="Thumb_TouchDown"
                  TouchMove="Thumb_TouchMove"
-                 TouchUp="Thumb_TouchUp"/>
+                 TouchUp="Thumb_TouchUp"
+                 PreviewMouseDown="Thumb_PreviewMouseDown"
+                 PreviewMouseMove="Thumb_PreviewMouseMove"
+                 PreviewMouseUp="Thumb_PreviewMouseUp"/>
     </Canvas>
 </UserControl>

@@ -8,8 +8,8 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
 {
     public partial class NintendoNewFaceButtons : UserControl
     {
-        private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0x33, 0x33, 0x33)); // #333 with 0.5 opacity
-        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.DarkGray); // A darker gray for pressed state
+        private readonly SolidColorBrush _defaultButtonFill = new SolidColorBrush(Color.FromRgb(0xAA, 0xAA, 0xAA));
+        private readonly SolidColorBrush _pressedButtonFill = new SolidColorBrush(Colors.Gray); // A darker gray for pressed state
 
         public NintendoNewFaceButtons()
         {
@@ -24,11 +24,21 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
             AttachTouchHandlers(BBtn, Xbox360Button.A);
             AttachTouchHandlers(ABtn, Xbox360Button.B);
 
+            AttachMouseHandlers(XBtn, Xbox360Button.Y);
+            AttachMouseHandlers(YBtn, Xbox360Button.X);
+            AttachMouseHandlers(BBtn, Xbox360Button.A);
+            AttachMouseHandlers(ABtn, Xbox360Button.B);
+
             // button combinations yeah yoh
-            AttachComboHandlers(XPlusYBtn, XPlusYTxt, Xbox360Button.Y, Xbox360Button.X);
-            AttachComboHandlers(YPlusBBtn, YPlusBTxt, Xbox360Button.X, Xbox360Button.A);
-            AttachComboHandlers(BPlusABtn, BPlusATxt, Xbox360Button.A, Xbox360Button.B);
-            AttachComboHandlers(APlusXBtn, APlusXTxt, Xbox360Button.B, Xbox360Button.Y);
+            AttachTouchComboHandlers(XPlusYBtn, XPlusYTxt, Xbox360Button.Y, Xbox360Button.X);
+            AttachTouchComboHandlers(YPlusBBtn, YPlusBTxt, Xbox360Button.X, Xbox360Button.A);
+            AttachTouchComboHandlers(BPlusABtn, BPlusATxt, Xbox360Button.A, Xbox360Button.B);
+            AttachTouchComboHandlers(APlusXBtn, APlusXTxt, Xbox360Button.B, Xbox360Button.Y);
+
+            AttachMouseComboHandlers(XPlusYBtn, XPlusYTxt, Xbox360Button.Y, Xbox360Button.X);
+            AttachMouseComboHandlers(YPlusBBtn, YPlusBTxt, Xbox360Button.X, Xbox360Button.A);
+            AttachMouseComboHandlers(BPlusABtn, BPlusATxt, Xbox360Button.A, Xbox360Button.B);
+            AttachMouseComboHandlers(APlusXBtn, APlusXTxt, Xbox360Button.B, Xbox360Button.Y);
         }
 
         private void AttachTouchHandlers(Ellipse button, Xbox360Button faceButtons)
@@ -70,7 +80,46 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
             };
         }
 
-        private void AttachComboHandlers(Ellipse button, TextBlock buttonName, Xbox360Button faceButton1, Xbox360Button faceButton2)
+        private void AttachMouseHandlers(Ellipse button, Xbox360Button faceButtons)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(faceButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(faceButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(faceButtons, false);
+                button.Fill = _defaultButtonFill;
+                e.Handled = true;
+            };
+
+            button.MouseEnter += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(faceButtons, true);
+                button.Fill = _pressedButtonFill;
+                e.Handled = true;
+            };
+        }
+
+        private void AttachTouchComboHandlers(Ellipse button, TextBlock buttonName, Xbox360Button faceButton1, Xbox360Button faceButton2)
         {
             button.TouchDown += (s, e) =>
             {
@@ -95,6 +144,42 @@ namespace TBVGPE.Views.Controller.Components.FaceButtons
             };
 
             button.TouchLeave += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(faceButton1, false);
+                App.Vigem.Set360ButtonState(faceButton2, false);
+                button.Fill = _defaultButtonFill;
+                ToggleComboVisibility(button, buttonName, false);
+                e.Handled = true;
+            };
+        }
+
+        private void AttachMouseComboHandlers(Ellipse button, TextBlock buttonName, Xbox360Button faceButton1, Xbox360Button faceButton2)
+        {
+            button.PreviewMouseDown += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(faceButton1, true);
+                App.Vigem.Set360ButtonState(faceButton2, true);
+                button.Fill = _pressedButtonFill;
+                ToggleComboVisibility(button, buttonName, true);
+                e.Handled = true;
+            };
+
+            button.PreviewMouseUp += (s, e) =>
+            {
+                if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
+
+                App.Vigem.Set360ButtonState(faceButton1, false);
+                App.Vigem.Set360ButtonState(faceButton2, false);
+                button.Fill = _defaultButtonFill;
+                ToggleComboVisibility(button, buttonName, false);
+                e.Handled = true;
+            };
+
+            button.MouseLeave += (s, e) =>
             {
                 if (App.EditMode) return; // temporary blocker la anay kay mahubya pa
 
